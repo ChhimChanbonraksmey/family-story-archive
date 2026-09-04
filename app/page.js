@@ -1,5 +1,5 @@
 import collection from "../collection.config.js";
-import EntryCard from "../components/EntryCard.js";
+import SearchableEntryList from "../components/SearchableEntryList.js";
 import entries from "../data/entries.js";
 
 const styles = {
@@ -67,11 +67,6 @@ const styles = {
     fontSize: 32,
     margin: "0 0 8px",
   },
-  entries: {
-    display: "grid",
-    gap: 28,
-    marginTop: 28,
-  },
   count: {
     fontFamily: "'Courier New', monospace",
     fontSize: 14,
@@ -120,11 +115,7 @@ export default function Home() {
           entries in the collection
         </p>
 
-        <div style={styles.entries}>
-          {entries.map((entry) => (
-            <EntryCard key={entry.id} {...entry} />
-          ))}
-        </div>
+        <SearchableEntryList entries={entries} />
       </section>
 
       <footer style={styles.footer}>
