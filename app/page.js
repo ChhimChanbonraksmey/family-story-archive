@@ -1,26 +1,6 @@
 import collection from "../collection.config.js";
 import EntryCard from "../components/EntryCard.js";
-
-const entries = [
-  {
-    title: "Grandmother's Hidden Rice Jar",
-    description:
-      "During the Khmer Rouge era, Grandmother Sokha kept a small clay jar of rice hidden beneath the packed-earth floor of the family kitchen. She saved one handful at a time, even when doing so placed her at great risk. On nights when her children were too hungry to sleep, she quietly boiled a thin rice porridge and divided it among them. She remembered listening carefully for footsteps outside while the pot warmed over a small flame. For her, the jar represented more than food: it was a private act of care, courage, and determination to keep her family alive during a time of fear and scarcity.",
-    contributor: "Grandmother Sokha",
-    place: "Kampong Cham Province",
-    image: "/images/hidden-rice-jar.png",
-    imageAlt: "A clay rice jar hidden beneath the floor of a rural wooden home.",
-  },
-  {
-    title: "The Bicycle Ride Home",
-    description:
-      "After the Khmer Rouge period ended, Dara began the long journey back to his childhood village on an old bicycle with worn tires and no reliable map. He traveled along damaged roads, slept near pagodas, and asked people in each village for directions and news of surviving relatives. Many familiar landmarks had disappeared, and he worried that he would no longer recognize his home. After several days, he saw the large tamarind tree that had once stood beside the road near his family's house. Although the village had changed and many people were missing, the tree assured him that he had finally returned to the place where his family had lived before the war.",
-    contributor: "Father Dara",
-    place: "Takeo Province",
-    image: "/images/bicycle-ride-home.png",
-    imageAlt: "An old bicycle resting beneath a tamarind tree beside a rural road.",
-  },
-];
+import entries from "../data/entries.js";
 
 const styles = {
   wrap: {
@@ -120,7 +100,7 @@ export default function Home() {
 
       <section style={styles.entries} aria-label="Archive entries">
         {entries.map((entry) => (
-          <EntryCard key={entry.title} {...entry} />
+          <EntryCard key={entry.id} {...entry} />
         ))}
       </section>
 

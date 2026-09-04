@@ -3,6 +3,7 @@ const styles = {
     overflow: "hidden",
     backgroundColor: "#211C18",
     border: "1px solid #493A2D",
+    borderTop: "3px solid #B7623D",
     borderRadius: 16,
     boxShadow: "0 18px 45px rgba(0, 0, 0, 0.24)",
   },
@@ -15,6 +16,7 @@ const styles = {
   body: {
     padding: "28px 30px 30px",
   },
+  number: { color: "#B7623D", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: "0 0 10px" },
   title: {
     color: "#E7B86A",
     fontFamily: "Georgia, 'Times New Roman', serif",
@@ -39,13 +41,13 @@ const styles = {
   contributor: { color: "#F2C879", backgroundColor: "#4A3025", padding: "8px 12px", borderRadius: 20 },
   place: { color: "#C7D5B1", backgroundColor: "#2E392D", padding: "8px 12px", borderRadius: 20 },
 };
-
-// Required props: title, contributor, place, image, and imageAlt. Description is optional.
-export default function EntryCard({ title, description = "", contributor, place, image, imageAlt }) {
+// Required props: number, title, contributor, and place. Description and image are optional.
+export default function EntryCard({ number, title, description = "", contributor, place, image, imageAlt }) {
   return (
     <article style={styles.card}>
-      <img src={image} alt={imageAlt} style={styles.image} />
+      {image ? <img src={image} alt={imageAlt || ""} style={styles.image} /> : null}
       <div style={styles.body}>
+        <p style={styles.number}>ARCHIVE ENTRY {number}</p>
         <h2 style={styles.title}>{title}</h2>
         {description ? <p style={styles.description}>{description}</p> : null}
         <div style={styles.details}>
