@@ -58,16 +58,29 @@ const styles = {
     fontSize: 16,
     margin: "6px 0 0",
   },
+  browse: {
+    marginTop: 64,
+  },
+  browseTitle: {
+    color: "#F1DFC2",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontSize: 32,
+    margin: "0 0 8px",
+  },
   entries: {
     display: "grid",
     gap: 28,
-    marginTop: 64,
+    marginTop: 28,
   },
   count: {
     fontFamily: "'Courier New', monospace",
     fontSize: 14,
     color: "#D49A56",
-    marginTop: 48,
+    margin: 0,
+  },
+  countNumber: {
+    fontSize: 20,
+    fontWeight: 700,
   },
   footer: {
     marginTop: 64,
@@ -98,13 +111,21 @@ export default function Home() {
         </div>
       </div>
 
-      <section style={styles.entries} aria-label="Archive entries">
-        {entries.map((entry) => (
-          <EntryCard key={entry.id} {...entry} />
-        ))}
-      </section>
+      <section style={styles.browse} aria-labelledby="browse-heading">
+        <h2 id="browse-heading" style={styles.browseTitle}>
+          Browse the archive
+        </h2>
+        <p style={styles.count}>
+          <span style={styles.countNumber}>{entries.length}</span>{" "}
+          entries in the collection
+        </p>
 
-      <p style={styles.count}>entries in the archive: {entries.length}</p>
+        <div style={styles.entries}>
+          {entries.map((entry) => (
+            <EntryCard key={entry.id} {...entry} />
+          ))}
+        </div>
+      </section>
 
       <footer style={styles.footer}>
         Built in ICT 340 — Vibe Coding, American University of Phnom Penh, Fall
