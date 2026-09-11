@@ -82,10 +82,29 @@ function highlightMatch(text, query) {
   return parts;
 }
 
+function normalizeSearchQuery(query) {
+  const trimmedQuery = query.trim();
+  const quotePairs = [
+    ['"', '"'],
+    ["'", "'"],
+    ["“", "”"],
+    ["‘", "’"],
+  ];
+  const surroundingQuotes = quotePairs.find(
+    ([opening, closing]) =>
+      trimmedQuery.startsWith(opening) && trimmedQuery.endsWith(closing),
+  );
+  const searchableQuery = surroundingQuotes
+    ? trimmedQuery.slice(1, -1).trim()
+    : trimmedQuery;
+
+  return searchableQuery.toLocaleLowerCase();
+}
+
 export default function SearchableEntryList({ entries }) {
   const [query, setQuery] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
-  const normalizedQuery = query.trim().toLocaleLowerCase();
+  const normalizedQuery = normalizeSearchQuery(query);
   const places = [...new Set(entries.map((entry) => entry.place))].sort();
 
   const filteredEntries = entries.filter((entry) => {
