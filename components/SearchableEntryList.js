@@ -5,9 +5,15 @@ import Link from "next/link";
 import EntryCard from "./EntryCard.js";
 
 const styles = {
+  controls: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: 16,
+    alignItems: "end",
+    marginTop: 28,
+  },
   search: {
     display: "block",
-    marginTop: 28,
     color: "#D49A56",
     fontFamily: "'Courier New', monospace",
     fontSize: 13,
@@ -15,6 +21,18 @@ const styles = {
     letterSpacing: 1,
   },
   input: {
+    display: "block",
+    boxSizing: "border-box",
+    width: "100%",
+    marginTop: 10,
+    padding: "14px 16px",
+    color: "#F1DFC2",
+    backgroundColor: "#211C18",
+    border: "1px solid #5C4938",
+    borderRadius: 10,
+    fontSize: 16,
+  },
+  select: {
     display: "block",
     boxSizing: "border-box",
     width: "100%",
@@ -35,28 +53,57 @@ const styles = {
 
 export default function SearchableEntryList({ entries }) {
   const [query, setQuery] = useState("");
+  const [selectedPlace, setSelectedPlace] = useState("");
   const normalizedQuery = query.trim().toLocaleLowerCase();
+  const places = [...new Set(entries.map((entry) => entry.place))].sort();
 
-  const filteredEntries = entries.filter((entry) =>
-    [entry.title, entry.description, entry.contributor, entry.place].some(
+  const filteredEntries = entries.filter((entry) => {
+    const matchesQuery = [
+      entry.title,
+      entry.description,
+      entry.contributor,
+      entry.place,
+    ].some(
       (value) => value.toLocaleLowerCase().includes(normalizedQuery),
-    ),
-  );
+    );
+    const matchesPlace =
+      selectedPlace === "" || entry.place === selectedPlace;
+
+    return matchesQuery && matchesPlace;
+  });
 
   return (
     <div>
-      <label style={styles.search}>
-        SEARCH THE ARCHIVE
-        <input
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Try a title, story, contributor, or place"
-          style={styles.input}
-        />
-      </label>
+      <div style={styles.controls}>
+        <label style={styles.search}>
+          SEARCH THE ARCHIVE
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Try a title, story, contributor, or place"
+            style={styles.input}
+          />
+        </label>
 
-      {normalizedQuery ? (
+        <label style={styles.search}>
+          FILTER BY PROVINCE
+          <select
+            value={selectedPlace}
+            onChange={(event) => setSelectedPlace(event.target.value)}
+            style={styles.select}
+          >
+            <option value="">All provinces</option>
+            {places.map((place) => (
+              <option key={place} value={place}>
+                {place}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      {normalizedQuery || selectedPlace ? (
         <p style={styles.feedback} aria-live="polite">
           {filteredEntries.length} matching{" "}
           {filteredEntries.length === 1 ? "entry" : "entries"}
@@ -78,9 +125,12 @@ export default function SearchableEntryList({ entries }) {
 
       {filteredEntries.length === 0 ? (
         <p style={styles.empty}>
-          We couldn’t find a family story matching “{query}.” Try another title,
-          place, or contributor.
-          <span lang="km" style={styles.khmer}>រកមិនឃើញរឿងរ៉ាវគ្រួសារដែលត្រូវនឹង “{query}” ទេ។ សូមសាកល្បងចំណងជើង ទីកន្លែង ឬអ្នកផ្តល់រឿងផ្សេងទៀត។</span>
+          We couldn’t find a family story among these choices. Try another
+          title, place, contributor, or province.
+          <span lang="km" style={styles.khmer}>
+            យើងរកមិនឃើញរឿងរ៉ាវគ្រួសារតាមជម្រើសទាំងនេះទេ។ សូមសាកល្បងចំណងជើង
+            ទីកន្លែង អ្នកផ្តល់រឿង ឬខេត្តផ្សេងទៀត។
+          </span>
         </p>
       ) : null}
     </div>
