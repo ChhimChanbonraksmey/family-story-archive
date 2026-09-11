@@ -47,9 +47,40 @@ const styles = {
   feedback: { color: "#BFB2A1", fontSize: 14, margin: "12px 0 0" },
   entries: { display: "grid", gap: 28, marginTop: 28 },
   entryLink: { color: "inherit", display: "block", textDecoration: "none" },
+  highlight: {
+    color: "#211C18",
+    backgroundColor: "#E7B86A",
+    borderRadius: 3,
+    padding: "0 2px",
+  },
   empty: { color: "#BFB2A1", padding: "32px 0", textAlign: "center" },
   khmer: { display: "block", marginTop: 8 },
 };
+
+function highlightMatch(text, query) {
+  if (query.length < 2) {
+    return text;
+  }
+
+  const normalizedText = text.toLocaleLowerCase();
+  const parts = [];
+  let start = 0;
+  let matchIndex = normalizedText.indexOf(query);
+
+  while (matchIndex !== -1) {
+    parts.push(text.slice(start, matchIndex));
+    parts.push(
+      <mark key={matchIndex} style={styles.highlight}>
+        {text.slice(matchIndex, matchIndex + query.length)}
+      </mark>,
+    );
+    start = matchIndex + query.length;
+    matchIndex = normalizedText.indexOf(query, start);
+  }
+
+  parts.push(text.slice(start));
+  return parts;
+}
 
 export default function SearchableEntryList({ entries }) {
   const [query, setQuery] = useState("");
@@ -118,7 +149,13 @@ export default function SearchableEntryList({ entries }) {
             aria-label={`View ${entry.title}`}
             style={styles.entryLink}
           >
-            <EntryCard {...entry} />
+            <EntryCard
+              {...entry}
+              title={highlightMatch(entry.title, normalizedQuery)}
+              description={highlightMatch(entry.description, normalizedQuery)}
+              contributor={highlightMatch(entry.contributor, normalizedQuery)}
+              place={highlightMatch(entry.place, normalizedQuery)}
+            />
           </Link>
         ))}
       </div>
