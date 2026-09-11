@@ -1,5 +1,6 @@
 "use client";
 
+// React state and input events require this App Router component to run in the browser.
 import { useState } from "react";
 import Link from "next/link";
 import EntryCard from "./EntryCard.js";
@@ -58,10 +59,12 @@ const styles = {
 };
 
 function highlightMatch(text, query) {
+  // One-letter highlights create too much visual noise in longer stories.
   if (query.length < 2) {
     return text;
   }
 
+  // Split the original text so each matching section can render as a <mark>.
   const normalizedText = text.toLocaleLowerCase();
   const parts = [];
   let start = 0;
@@ -83,6 +86,7 @@ function highlightMatch(text, query) {
 }
 
 function normalizeSearchQuery(query) {
+  // Ignore extra spaces and quotation marks around an otherwise valid search.
   const trimmedQuery = query.trim();
   const quotePairs = [
     ['"', '"'],
@@ -105,9 +109,13 @@ export default function SearchableEntryList({ entries }) {
   const [query, setQuery] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
   const normalizedQuery = normalizeSearchQuery(query);
+
+  // Generate filter options from the data so new provinces appear automatically.
   const places = [...new Set(entries.map((entry) => entry.place))].sort();
 
+  // An entry remains visible only when it matches both active controls.
   const filteredEntries = entries.filter((entry) => {
+    // A match in any searchable field is enough to pass the text search.
     const matchesQuery = [
       entry.title,
       entry.description,
@@ -153,6 +161,7 @@ export default function SearchableEntryList({ entries }) {
         </label>
       </div>
 
+      {/* Announce changing result counts to visitors using screen readers. */}
       {normalizedQuery || selectedPlace ? (
         <p style={styles.feedback} aria-live="polite">
           {filteredEntries.length} matching{" "}
@@ -168,6 +177,7 @@ export default function SearchableEntryList({ entries }) {
             aria-label={`View ${entry.title}`}
             style={styles.entryLink}
           >
+            {/* Highlight display values without changing the original entry data. */}
             <EntryCard
               {...entry}
               title={highlightMatch(entry.title, normalizedQuery)}
