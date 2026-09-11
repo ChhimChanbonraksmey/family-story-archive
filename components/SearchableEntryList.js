@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import EntryCard from "./EntryCard.js";
 
 const styles = {
@@ -27,6 +28,7 @@ const styles = {
   },
   feedback: { color: "#BFB2A1", fontSize: 14, margin: "12px 0 0" },
   entries: { display: "grid", gap: 28, marginTop: 28 },
+  entryLink: { color: "inherit", display: "block", textDecoration: "none" },
   empty: { color: "#BFB2A1", padding: "32px 0", textAlign: "center" },
   khmer: { display: "block", marginTop: 8 },
 };
@@ -63,7 +65,14 @@ export default function SearchableEntryList({ entries }) {
 
       <div style={styles.entries}>
         {filteredEntries.map((entry) => (
-          <EntryCard key={entry.id} {...entry} />
+          <Link
+            key={entry.id}
+            href={`/entries/${entry.id}`}
+            aria-label={`View ${entry.title}`}
+            style={styles.entryLink}
+          >
+            <EntryCard {...entry} />
+          </Link>
         ))}
       </div>
 
