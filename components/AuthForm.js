@@ -68,6 +68,11 @@ export default function AuthForm({ mode, confirmationFailed = false }) {
           {isSignup
             ? "Create an account to take part in the archive."
             : "Enter your email and password to continue."}
+          <span lang="km" style={{ display: "block" }}>
+            {isSignup
+              ? "សូមបង្កើតគណនី ដើម្បីចូលរួមក្នុងបណ្ណសារនេះ។"
+              : "សូមបញ្ចូលអាសយដ្ឋានអ៊ីមែល និងពាក្យសម្ងាត់របស់អ្នក ដើម្បីបន្ត។"}
+          </span>
         </p>
         <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="email" style={styles.label}>Email</label>
