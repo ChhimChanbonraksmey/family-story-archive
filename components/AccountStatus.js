@@ -6,7 +6,15 @@ import { createClient } from "../lib/supabase/client.js";
 
 const styles = {
   nav: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 18, marginBottom: 32 },
-  link: { color: "#D49A56", textDecoration: "none", fontSize: 14, fontWeight: 700 },
+  link: {
+    color: "#D49A56", textDecoration: "none", fontSize: 14, fontWeight: 700,
+    display: "inline-flex", alignItems: "center", minHeight: 44,
+  },
+  signup: {
+    color: "#171411", backgroundColor: "#E7B86A", textDecoration: "none",
+    fontSize: 14, fontWeight: 700, borderRadius: 8,
+    display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 16px",
+  },
   email: { color: "#F1DFC2", fontSize: 14, overflowWrap: "anywhere" },
   button: {
     color: "#D49A56",
@@ -66,7 +74,7 @@ export default function AccountStatus() {
       ) : (
         <>
           <Link href="/login" style={styles.link}>Log in</Link>
-          <Link href="/signup" style={styles.link}>Sign up</Link>
+          <Link href="/signup" style={styles.signup}>Sign up</Link>
         </>
       )}
       {error && <span role="alert" style={styles.error}>{error}</span>}
