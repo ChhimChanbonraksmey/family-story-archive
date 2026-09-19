@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ClearableInput from "./ClearableInput.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 
 export default function AuthForm({ mode, confirmationFailed = false }) {
   const isSignup = mode === "signup";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [feedback, setFeedback] = useState(
     confirmationFailed
       ? { kind: "error", text: "That confirmation link could not be verified. Please try again." }
@@ -68,13 +71,27 @@ export default function AuthForm({ mode, confirmationFailed = false }) {
         </p>
         <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="email" style={styles.label}>Email</label>
-          <input id="email" name="email" type="email" autoComplete="email" style={styles.input} />
+          <ClearableInput
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            onClear={() => setEmail("")}
+            clearLabel="Clear email"
+            style={styles.input}
+          />
           <label htmlFor="password" style={styles.label}>Password</label>
-          <input
+          <ClearableInput
             id="password"
             name="password"
             type="password"
             autoComplete={isSignup ? "new-password" : "current-password"}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            onClear={() => setPassword("")}
+            clearLabel="Clear password"
             style={styles.input}
           />
           {feedback && (

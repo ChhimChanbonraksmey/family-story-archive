@@ -3,6 +3,7 @@
 // React state and input events require this App Router component to run in the browser.
 import { useState } from "react";
 import Link from "next/link";
+import ClearableInput from "./ClearableInput.js";
 import EntryCard from "./EntryCard.js";
 
 const styles = {
@@ -25,7 +26,6 @@ const styles = {
     display: "block",
     boxSizing: "border-box",
     width: "100%",
-    marginTop: 10,
     padding: "14px 16px",
     color: "#F1DFC2",
     backgroundColor: "#211C18",
@@ -33,6 +33,7 @@ const styles = {
     borderRadius: 10,
     fontSize: 16,
   },
+  inputWrap: { marginTop: 10 },
   select: {
     display: "block",
     boxSizing: "border-box",
@@ -135,12 +136,18 @@ export default function SearchableEntryList({ entries }) {
       <div style={styles.controls}>
         <label style={styles.search}>
           SEARCH THE ARCHIVE
-          <input
-            type="search"
+          <ClearableInput
+            type="text"
+            inputMode="search"
+            enterKeyHint="search"
+            role="searchbox"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
+            onClear={() => setQuery("")}
+            clearLabel="Clear search"
             placeholder="Try a title, story, contributor, or place"
             style={styles.input}
+            wrapperStyle={styles.inputWrap}
           />
         </label>
 
