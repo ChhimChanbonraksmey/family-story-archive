@@ -1,8 +1,11 @@
+import Link from "next/link";
 import collection from "../collection.config.js";
 import SearchableEntryList from "../components/SearchableEntryList.js";
 import entries from "../data/entries.js";
 
 const styles = {
+  authNav: { display: "flex", gap: 18, marginBottom: 32 },
+  authLink: { color: "#D49A56", textDecoration: "none", fontSize: 14, fontWeight: 700 },
   wrap: {
     maxWidth: 960,
     margin: "0 auto",
@@ -90,6 +93,10 @@ export default function Home() {
   return (
     <main style={styles.wrap}>
       <header style={styles.hero}>
+        <nav aria-label="Account" style={styles.authNav}>
+          <Link href="/login" style={styles.authLink}>Log in</Link>
+          <Link href="/signup" style={styles.authLink}>Sign up</Link>
+        </nav>
         <p style={styles.kicker}>KHMER LIVING ARCHIVE</p>
         <h1 style={styles.title}>{collection.name}</h1>
         <p style={styles.description}>{collection.description}</p>
