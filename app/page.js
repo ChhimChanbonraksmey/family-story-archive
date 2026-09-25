@@ -1,7 +1,10 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import collection from "../collection.config.js";
 import AccountStatus from "../components/AccountStatus.js";
 import SearchableEntryList from "../components/SearchableEntryList.js";
-import entries from "../data/entries.js";
+import { createClient } from "../lib/supabase/client.js";
 
 const styles = {
   wrap: {
@@ -88,6 +91,51 @@ const styles = {
 };
 
 export default function Home() {
+  const [entries, setEntries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadEntries() {
+      try {
+        const { data, error } = await createClient()
+          .from("entries")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (!active) return;
+
+        setLoadError(Boolean(error));
+        setEntries(
+          error
+            ? []
+            : data.map((entry) => ({
+                id: entry.id,
+                number: entry.display_order,
+                title: entry.title,
+                description: entry.description,
+                contributor: entry.contributor_name,
+                place: entry.place,
+                image: entry.photo_url,
+                imageAlt: entry.photo_alt,
+              })),
+        );
+      } catch {
+        if (active) {
+          setLoadError(true);
+          setEntries([]);
+        }
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+
+    loadEntries();
+    return () => { active = false; };
+  }, []);
+
   return (
     <main style={styles.wrap}>
       <header style={styles.hero}>
@@ -113,11 +161,21 @@ export default function Home() {
           Browse the archive
         </h2>
         <p style={styles.count}>
-          <span style={styles.countNumber}>{entries.length}</span>{" "}
-          entries in the collection
+          {loading ? (
+            "Loading entries..."
+          ) : (
+            <>
+              <span style={styles.countNumber}>{entries.length}</span>{" "}
+              entries in the collection
+            </>
+          )}
         </p>
 
-        <SearchableEntryList entries={entries} />
+        <SearchableEntryList
+          entries={entries}
+          loading={loading}
+          loadError={loadError}
+        />
       </section>
 
       <footer style={styles.footer}>

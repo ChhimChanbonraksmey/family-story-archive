@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import entries from "../../../data/entries.js";
+import { createClient } from "../../../lib/supabase/server.js";
 
 const styles = {
   wrap: {
@@ -76,15 +76,16 @@ const styles = {
   },
 };
 
-export function generateStaticParams() {
-  return entries.map((entry) => ({ id: entry.id }));
-}
-
 export default async function EntryPage({ params }) {
   const { id } = await params;
-  const entry = entries.find((item) => item.id === id);
+  const supabase = await createClient();
+  const { data: entry, error } = await supabase
+    .from("entries")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
 
-  if (!entry) {
+  if (error || !entry) {
     notFound();
   }
 
@@ -94,19 +95,19 @@ export default async function EntryPage({ params }) {
         ← Back to archive
       </Link>
       <article>
-        {entry.image ? (
+        {entry.photo_url ? (
           <img
-            src={entry.image}
-            alt={entry.imageAlt || ""}
+            src={entry.photo_url}
+            alt={entry.photo_alt || ""}
             style={styles.image}
           />
         ) : null}
         <div style={styles.story}>
-          <p style={styles.number}>ARCHIVE ENTRY {entry.number}</p>
+          <p style={styles.number}>ARCHIVE ENTRY {entry.display_order}</p>
           <h1 style={styles.title}>{entry.title}</h1>
           <div style={styles.details}>
             <span style={styles.contributor}>
-              CONTRIBUTED BY · {entry.contributor}
+              CONTRIBUTED BY · {entry.contributor_name}
             </span>
             <span style={styles.place}>PLACE · {entry.place}</span>
           </div>

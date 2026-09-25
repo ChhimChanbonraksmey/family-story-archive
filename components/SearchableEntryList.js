@@ -106,9 +106,34 @@ function normalizeSearchQuery(query) {
   return searchableQuery.toLocaleLowerCase();
 }
 
-export default function SearchableEntryList({ entries }) {
+export default function SearchableEntryList({
+  entries,
+  loading = false,
+  loadError = false,
+}) {
   const [query, setQuery] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
+
+  if (loading) {
+    return <p role="status" style={styles.empty}>Gathering the family stories...</p>;
+  }
+
+  if (loadError) {
+    return (
+      <p role="alert" style={styles.empty}>
+        The family stories could not be retrieved right now. Please try again.
+      </p>
+    );
+  }
+
+  if (entries.length === 0) {
+    return (
+      <p style={styles.empty}>
+        The archive shelf is ready, but no family stories have been added yet.
+      </p>
+    );
+  }
+
   const normalizedQuery = normalizeSearchQuery(query);
 
   // Generate filter options from the data so new provinces appear automatically.
