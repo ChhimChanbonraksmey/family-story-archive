@@ -17,9 +17,9 @@ const styles = {
   },
   email: { color: "#F1DFC2", fontSize: 14, overflowWrap: "anywhere" },
   button: {
-    color: "#D49A56",
-    backgroundColor: "#302720",
-    border: "1px solid #493A2D",
+    color: "#D9B89C",
+    backgroundColor: "transparent",
+    border: "1px solid #6A5140",
     borderRadius: 8,
     padding: "8px 12px",
     fontSize: 14,

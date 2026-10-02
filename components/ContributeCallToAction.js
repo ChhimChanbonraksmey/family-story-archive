@@ -17,8 +17,9 @@ const styles = {
   text: { color: "#D2C7B8", lineHeight: 1.55, margin: "6px 0 0" },
   link: {
     display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 18px",
-    color: "#F1DFC2", backgroundColor: "#4A3025", border: "1px solid #B7623D",
+    color: "#FFF4E3", backgroundColor: "#8E442F", border: "1px solid #D49A56",
     borderRadius: 8, textDecoration: "none", fontSize: 14, fontWeight: 700,
+    boxShadow: "0 8px 22px rgba(142, 66, 47, 0.28)",
   },
 };
 
