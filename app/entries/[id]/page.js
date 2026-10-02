@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "../../../lib/supabase/server.js";
+import { photoDisclosure } from "../../../lib/entryValidation.js";
 
 const styles = {
   wrap: {
@@ -20,6 +21,13 @@ const styles = {
     maxHeight: 560,
     objectFit: "cover",
     borderRadius: 18,
+  },
+  media: { position: "relative" },
+  imageLabel: {
+    position: "absolute", left: 18, bottom: 18, maxWidth: "calc(100% - 68px)",
+    padding: "8px 11px", color: "#F1DFC2",
+    backgroundColor: "rgba(23, 20, 17, 0.92)", border: "1px solid #6A5140",
+    borderRadius: 6, fontSize: 12, fontWeight: 700,
   },
   story: {
     maxWidth: 760,
@@ -89,6 +97,8 @@ export default async function EntryPage({ params }) {
     notFound();
   }
 
+  const disclosure = photoDisclosure(entry.photo_type);
+
   return (
     <main style={styles.wrap}>
       <Link href="/" style={styles.back}>
@@ -96,11 +106,14 @@ export default async function EntryPage({ params }) {
       </Link>
       <article>
         {entry.photo_url ? (
-          <img
-            src={entry.photo_url}
-            alt={entry.photo_alt || ""}
-            style={styles.image}
-          />
+          <div style={styles.media}>
+            <img
+              src={entry.photo_url}
+              alt={entry.photo_alt || ""}
+              style={styles.image}
+            />
+            {disclosure ? <span style={styles.imageLabel}>{disclosure}</span> : null}
+          </div>
         ) : null}
         <div style={styles.story}>
           <p style={styles.number}>ARCHIVE ENTRY {entry.display_order}</p>

@@ -6,7 +6,7 @@ import ClearableInput from "./ClearableInput.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 
-export default function AuthForm({ mode, confirmationFailed = false }) {
+export default function AuthForm({ mode, confirmationFailed = false, redirectTo = "/" }) {
   const isSignup = mode === "signup";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,12 +42,12 @@ export default function AuthForm({ mode, confirmationFailed = false }) {
           options: { emailRedirectTo: `${window.location.origin}/auth/confirm` },
         });
         if (error) setFeedback({ kind: "error", text: failureText });
-        else if (data.session) window.location.assign("/");
+        else if (data.session) window.location.assign(redirectTo);
         else setFeedback({ kind: "success", text: "Check your email to confirm your account." });
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) setFeedback({ kind: "error", text: failureText });
-        else window.location.assign("/");
+        else window.location.assign(redirectTo);
       }
     } catch {
       setFeedback({ kind: "error", text: failureText });

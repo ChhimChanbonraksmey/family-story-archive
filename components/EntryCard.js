@@ -1,3 +1,5 @@
+import { photoDisclosure } from "../lib/entryValidation.js";
+
 const styles = {
   card: {
     overflow: "hidden",
@@ -12,6 +14,13 @@ const styles = {
     width: "100%",
     height: 300,
     objectFit: "cover",
+  },
+  imageWrap: { position: "relative" },
+  imageLabel: {
+    position: "absolute", left: 16, bottom: 16, padding: "7px 10px",
+    color: "#F1DFC2", backgroundColor: "rgba(23, 20, 17, 0.9)",
+    border: "1px solid #6A5140", borderRadius: 6,
+    fontSize: 11, fontWeight: 700, letterSpacing: 0.8,
   },
   body: {
     padding: "28px 30px 30px",
@@ -42,10 +51,18 @@ const styles = {
   place: { color: "#C7D5B1", backgroundColor: "#2E392D", padding: "8px 12px", borderRadius: 20 },
 };
 // Required props: number, title, contributor, and place. Description and image are optional.
-export default function EntryCard({ number, title, description = "", contributor, place, image, imageAlt }) {
+export default function EntryCard({
+  number, title, description = "", contributor, place, image, imageAlt, photoType,
+}) {
+  const disclosure = photoDisclosure(photoType, true);
   return (
     <article style={styles.card}>
-      {image ? <img src={image} alt={imageAlt || ""} style={styles.image} /> : null}
+      {image ? (
+        <div style={styles.imageWrap}>
+          <img src={image} alt={imageAlt || ""} style={styles.image} />
+          {disclosure ? <span style={styles.imageLabel}>{disclosure}</span> : null}
+        </div>
+      ) : null}
       <div style={styles.body}>
         <p style={styles.number}>ARCHIVE ENTRY {number}</p>
         <h2 style={styles.title}>{title}</h2>

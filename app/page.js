@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import collection from "../collection.config.js";
 import AccountStatus from "../components/AccountStatus.js";
+import ContributeCallToAction from "../components/ContributeCallToAction.js";
 import SearchableEntryList from "../components/SearchableEntryList.js";
 import { createClient } from "../lib/supabase/client.js";
 
@@ -120,6 +121,7 @@ export default function Home() {
                 place: entry.place,
                 image: entry.photo_url,
                 imageAlt: entry.photo_alt,
+                photoType: entry.photo_type,
               })),
         );
       } catch {
@@ -155,6 +157,8 @@ export default function Home() {
           <p style={styles.cardValue}>{collection.source}</p>
         </div>
       </div>
+
+      <ContributeCallToAction />
 
       <section style={styles.browse} aria-labelledby="browse-heading">
         <h2 id="browse-heading" style={styles.browseTitle}>
