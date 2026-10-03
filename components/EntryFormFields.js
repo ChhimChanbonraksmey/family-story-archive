@@ -1,17 +1,34 @@
-import { PHOTO_TYPES, PHOTO_TYPE_LABELS } from "../lib/entryValidation.js";
+import {
+  countVisibleCharacters, FIELD_LIMITS, PHOTO_TYPES, PHOTO_TYPE_LABELS,
+} from "../lib/entryValidation.js";
 import ClearableInput from "./ClearableInput.js";
 import styles from "./contributeStyles.js";
 
 export default function EntryFormFields({
   values, errors, disabled, onChange, onClear, onPhotoChange, photoRequired = true,
 }) {
-  const accessibility = (name) => ({
-    "aria-invalid": Boolean(errors[name]),
-    "aria-describedby": errors[name] ? `${name}-error` : undefined,
-  });
+  const accessibility = (name) => {
+    const describedBy = [
+      FIELD_LIMITS[name] ? `${name}-count` : "",
+      errors[name] ? `${name}-error` : "",
+    ].filter(Boolean).join(" ");
+    return {
+      "aria-invalid": Boolean(errors[name]),
+      "aria-describedby": describedBy || undefined,
+    };
+  };
   const error = (name) => errors[name]
     ? <p id={`${name}-error`} role="alert" style={styles.error}>{errors[name]}</p>
     : null;
+  const counter = (name) => {
+    const count = countVisibleCharacters(values[name] || "");
+    const overLimit = count > FIELD_LIMITS[name];
+    return (
+      <p id={`${name}-count`} style={{ ...styles.count, ...(overLimit ? styles.countError : {}) }}>
+        {count.toLocaleString()} / {FIELD_LIMITS[name].toLocaleString()}
+      </p>
+    );
+  };
 
   return (
     <>
@@ -21,6 +38,7 @@ export default function EntryFormFields({
       <ClearableInput id="title" name="title" value={values.title} onChange={onChange}
         onClear={() => onClear("title")} clearLabel="Clear story title / លុបចំណងជើងរឿង"
         disabled={disabled} style={styles.input} {...accessibility("title")} />
+      {counter("title")}
       {error("title")}
 
       <label htmlFor="description" style={styles.label}>
@@ -30,6 +48,7 @@ export default function EntryFormFields({
         onClear={() => onClear("description")} clearLabel="Clear oral-history story / លុបរឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់"
         onChange={onChange} disabled={disabled} style={{ ...styles.input, ...styles.textarea, ...styles.story }}
         {...accessibility("description")} />
+      {counter("description")}
       {error("description")}
 
       <label htmlFor="contributor_name" style={styles.label}>
@@ -39,6 +58,7 @@ export default function EntryFormFields({
         onClear={() => onClear("contributor_name")} clearLabel="Clear narrator or family source / លុបអ្នកនិទាន ឬប្រភពពីគ្រួសារ"
         onChange={onChange} disabled={disabled} style={styles.input}
         {...accessibility("contributor_name")} />
+      {counter("contributor_name")}
       {error("contributor_name")}
 
       <label htmlFor="place" style={styles.label}>
@@ -47,6 +67,7 @@ export default function EntryFormFields({
       <ClearableInput id="place" name="place" value={values.place} onChange={onChange}
         onClear={() => onClear("place")} clearLabel="Clear place / លុបទីកន្លែង"
         disabled={disabled} style={styles.input} {...accessibility("place")} />
+      {counter("place")}
       <p style={styles.help}>An approximate location or “Unknown” is welcome when an exact place is uncertain.</p>
       {error("place")}
 
@@ -82,6 +103,7 @@ export default function EntryFormFields({
         onClear={() => onClear("photo_alt")} clearLabel="Clear image description / លុបការពិពណ៌នារូបភាព"
         onChange={onChange} disabled={disabled} style={{ ...styles.input, ...styles.textarea }}
         {...accessibility("photo_alt")} />
+      {counter("photo_alt")}
       <p style={styles.help}>Briefly describe the meaningful visible content for screen-reader visitors.</p>
       {error("photo_alt")}
     </>

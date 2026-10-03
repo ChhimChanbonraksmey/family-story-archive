@@ -25,6 +25,8 @@ const styles = {
   story: { minHeight: 260 },
   help: { color: "#9F9182", fontSize: 13, lineHeight: 1.5, margin: "7px 0 0" },
   khmer: { display: "block", marginTop: 4, color: "#BFB2A1", fontSize: 14, fontWeight: 400, lineHeight: 1.6 },
+  count: { color: "#9F9182", fontSize: 12, textAlign: "right", margin: "6px 0 0" },
+  countError: { color: "#F2A69A", fontWeight: 700 },
   error: { color: "#F2A69A", fontSize: 14, lineHeight: 1.5, margin: "7px 0 0" },
   feedback: { color: "#F2A69A", lineHeight: 1.5, margin: "24px 0 0" },
   button: {
