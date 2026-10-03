@@ -19,10 +19,8 @@ const styles = {
   image: {
     display: "block",
     width: "100%",
-    height: "min(70vh, 560px)",
     maxHeight: 560,
-    objectFit: "contain",
-    backgroundColor: "#171411",
+    objectFit: "cover",
     borderRadius: 18,
   },
   media: { position: "relative" },
