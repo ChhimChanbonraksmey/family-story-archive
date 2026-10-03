@@ -29,6 +29,11 @@ export default function ContributionForm() {
     setErrors((current) => ({ ...current, [name]: undefined }));
   }
 
+  function handleClear(name) {
+    setValues((current) => ({ ...current, [name]: "" }));
+    setErrors((current) => ({ ...current, [name]: undefined }));
+  }
+
   async function removeUpload(supabase, path) {
     if (!path) return;
     const { error } = await supabase.storage.from("photos").remove([path]);
@@ -55,7 +60,7 @@ export default function ContributionForm() {
       const { data: userData, error: userError } = await supabase.auth.getUser();
       if (userError || !userData.user) {
         if (userError) console.error("Session check failed", userError);
-        setFeedback("Your session has ended. Log in and try again.");
+        setFeedback("Your session has ended. Log in and try again. សម័យចូលគណនីរបស់អ្នកបានបញ្ចប់។ សូមចូលគណនី ហើយព្យាយាមម្ដងទៀត។");
         return;
       }
 
@@ -67,7 +72,7 @@ export default function ContributionForm() {
       });
       if (uploadError) {
         console.error("Photo upload failed", uploadError);
-        setFeedback("The photo could not be uploaded. Try a different image.");
+        setFeedback("The photo could not be uploaded. Try a different image. មិនអាចបង្ហោះរូបភាពបានទេ។ សូមសាកល្បងរូបភាពផ្សេង។");
         return;
       }
 
@@ -82,7 +87,7 @@ export default function ContributionForm() {
           console.error("Entry save failed", { status: response.status, code: result.code });
           await removeUpload(supabase, storagePath);
           setErrors(result.fieldErrors || {});
-          setFeedback(result.message || "The story could not be saved. Please try again.");
+          setFeedback(result.message || "The story could not be saved. Please try again. មិនអាចរក្សាទុករឿងរ៉ាវបានទេ។ សូមព្យាយាមម្ដងទៀត។");
           return;
         }
         router.push(`/entries/${result.id}`);
@@ -90,11 +95,11 @@ export default function ContributionForm() {
       } catch (error) {
         console.error("Entry request failed", error);
         await removeUpload(supabase, storagePath);
-        setFeedback("The story could not be saved. Check your connection and try again.");
+        setFeedback("The story could not be saved. Check your connection and try again. មិនអាចរក្សាទុករឿងរ៉ាវបានទេ។ សូមពិនិត្យការតភ្ជាប់ ហើយព្យាយាមម្ដងទៀត។");
       }
     } catch (error) {
       console.error("Contribution failed", error);
-      setFeedback("The story could not be submitted. Please try again.");
+      setFeedback("The story could not be submitted. Please try again. មិនអាចដាក់ស្នើរឿងរ៉ាវបានទេ។ សូមព្យាយាមម្ដងទៀត។");
     } finally {
       setBusy(false);
     }
@@ -107,6 +112,7 @@ export default function ContributionForm() {
         errors={errors}
         disabled={busy}
         onChange={handleChange}
+        onClear={handleClear}
         onPhotoChange={() => setErrors((current) => ({ ...current, photo: undefined }))}
       />
       {feedback ? <p role="alert" style={styles.feedback}>{feedback}</p> : null}

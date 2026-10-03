@@ -20,9 +20,10 @@ const styles = {
 };
 
 export default function ClearableInput({
-  value, onClear, clearLabel, style, wrapperStyle, ...inputProps
+  as: Field = "input", value, onClear, clearLabel, style, wrapperStyle, ...inputProps
 }) {
   const inputRef = useRef(null);
+  const multiline = Field === "textarea";
 
   function clear() {
     onClear();
@@ -31,7 +32,7 @@ export default function ClearableInput({
 
   return (
     <span style={{ ...styles.wrapper, ...wrapperStyle }}>
-      <input
+      <Field
         {...inputProps}
         ref={inputRef}
         value={value}
@@ -43,7 +44,7 @@ export default function ClearableInput({
           aria-label={clearLabel}
           title={clearLabel}
           onClick={clear}
-          style={styles.clear}
+          style={{ ...styles.clear, ...(multiline ? { top: 4, transform: "none" } : {}) }}
         >
           ×
         </button>

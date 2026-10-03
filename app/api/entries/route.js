@@ -6,7 +6,7 @@ import {
   validateEntryFields,
 } from "../../../lib/entryValidation.js";
 
-const saveFailure = "The story could not be saved. Please try again.";
+const saveFailure = "The story could not be saved. Please try again. មិនអាចរក្សាទុករឿងរ៉ាវបានទេ។ សូមព្យាយាមម្ដងទៀត។";
 
 async function removePhoto(supabase, path) {
   const { error } = await supabase.storage.from("photos").remove([path]);
@@ -26,7 +26,7 @@ export async function POST(request) {
       console.error("Entry API session check failed", userError);
     }
     return NextResponse.json(
-      { message: "Your session has ended. Log in and try again.", code: "session" },
+      { message: "Your session has ended. Log in and try again. សម័យចូលគណនីរបស់អ្នកបានបញ្ចប់។ សូមចូលគណនី ហើយព្យាយាមម្ដងទៀត។", code: "session" },
       { status: 401 },
     );
   }
@@ -42,7 +42,7 @@ export async function POST(request) {
   const checked = validateEntryFields(body);
   if (Object.keys(checked.errors).length) {
     return NextResponse.json(
-      { message: "Please fix the marked fields.", fieldErrors: checked.errors, code: "fields" },
+      { message: "Please fix the marked fields. សូមកែសម្រួលវាលដែលបានសម្គាល់។", fieldErrors: checked.errors, code: "fields" },
       { status: 400 },
     );
   }
@@ -50,7 +50,7 @@ export async function POST(request) {
   const storagePath = String(body.storagePath || "");
   if (!isOwnedPhotoPath(storagePath, userData.user.id)) {
     return NextResponse.json(
-      { message: "The photo could not be verified. Upload it again.", code: "path" },
+      { message: "The photo could not be verified. Upload it again. មិនអាចផ្ទៀងផ្ទាត់រូបភាពបានទេ។ សូមបង្ហោះម្ដងទៀត។", code: "path" },
       { status: 400 },
     );
   }
@@ -60,7 +60,7 @@ export async function POST(request) {
     if (downloadError) console.error("Uploaded photo verification download failed", downloadError);
     await removePhoto(supabase, storagePath);
     return NextResponse.json(
-      { message: "The photo could not be verified. Upload it again.", code: "download" },
+      { message: "The photo could not be verified. Upload it again. មិនអាចផ្ទៀងផ្ទាត់រូបភាពបានទេ។ សូមបង្ហោះម្ដងទៀត។", code: "download" },
       { status: 400 },
     );
   }
@@ -69,7 +69,7 @@ export async function POST(request) {
   if (photoCheck.error) {
     await removePhoto(supabase, storagePath);
     return NextResponse.json(
-      { message: "Please fix the marked field.", fieldErrors: { photo: photoCheck.error }, code: "photo" },
+      { message: "Please fix the marked field. សូមកែសម្រួលវាលដែលបានសម្គាល់។", fieldErrors: { photo: photoCheck.error }, code: "photo" },
       { status: 400 },
     );
   }

@@ -22,6 +22,10 @@ export default async function ContributePage() {
             <p style={styles.intro}>
               Preserve an oral-history entry in Khmer, English, or both. Every field is reviewed
               before the story and its image are saved.
+              <span lang="km" style={styles.khmer}>
+                អ្នកអាចរក្សាទុករឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ អង់គ្លេស ឬទាំងពីរ។
+                ព័ត៌មាននីមួយៗ និងរូបភាពនឹងត្រូវបានពិនិត្យមុនពេលរក្សាទុក។
+              </span>
             </p>
             <ContributionForm />
           </>
