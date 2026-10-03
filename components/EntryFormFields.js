@@ -2,7 +2,9 @@ import { PHOTO_TYPES, PHOTO_TYPE_LABELS } from "../lib/entryValidation.js";
 import ClearableInput from "./ClearableInput.js";
 import styles from "./contributeStyles.js";
 
-export default function EntryFormFields({ values, errors, disabled, onChange, onClear, onPhotoChange }) {
+export default function EntryFormFields({
+  values, errors, disabled, onChange, onClear, onPhotoChange, photoRequired = true,
+}) {
   const accessibility = (name) => ({
     "aria-invalid": Boolean(errors[name]),
     "aria-describedby": errors[name] ? `${name}-error` : undefined,
@@ -63,10 +65,14 @@ export default function EntryFormFields({ values, errors, disabled, onChange, on
       <label htmlFor="photo" style={styles.label}>
         Entry image / <span lang="km">រូបភាពសម្រាប់រឿង</span>
       </label>
-      <input id="photo" name="photo" type="file" required disabled={disabled}
+      <input id="photo" name="photo" type="file" required={photoRequired} disabled={disabled}
         accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
         onChange={onPhotoChange} style={styles.input} {...accessibility("photo")} />
-      <p style={styles.help}>JPEG, PNG, or WebP; maximum 5 MB. Only upload an image you may publish.</p>
+      <p style={styles.help}>
+        {photoRequired
+          ? "JPEG, PNG, or WebP; maximum 5 MB. Only upload an image you may publish."
+          : "Optional: leave this empty to keep the current image. JPEG, PNG, or WebP; maximum 5 MB."}
+      </p>
       {error("photo")}
 
       <label htmlFor="photo_alt" style={styles.label}>

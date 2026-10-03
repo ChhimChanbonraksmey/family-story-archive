@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import OwnerEntryActions from "../../../components/OwnerEntryActions.js";
 import { createClient } from "../../../lib/supabase/server.js";
 import { photoDisclosure } from "../../../lib/entryValidation.js";
 
@@ -97,6 +98,7 @@ export default async function EntryPage({ params }) {
     notFound();
   }
 
+  const { data: userData } = await supabase.auth.getUser();
   const disclosure = photoDisclosure(entry.photo_type);
 
   return (
@@ -126,6 +128,9 @@ export default async function EntryPage({ params }) {
           </div>
           {entry.description ? (
             <p style={styles.description}>{entry.description}</p>
+          ) : null}
+          {userData.user?.id === entry.owner ? (
+            <OwnerEntryActions entryId={entry.id} photoUrl={entry.photo_url} />
           ) : null}
           <Link href="/" style={styles.returnLink}>
             Return to the family archive →
