@@ -70,8 +70,8 @@ export default function EntryFormFields({
         onChange={onPhotoChange} style={styles.input} {...accessibility("photo")} />
       <p style={styles.help}>
         {photoRequired
-          ? "JPEG, PNG, or WebP; maximum 5 MB. Only upload an image you may publish."
-          : "Optional: leave this empty to keep the current image. JPEG, PNG, or WebP; maximum 5 MB."}
+          ? "JPEG, PNG, or WebP; maximum 5 MB. Landscape 3:2, around 1200 × 800, fits best, but portrait images are accepted. Only upload an image you may publish."
+          : "Optional: leave this empty to keep the current image. Landscape 3:2, around 1200 × 800, fits best, but portrait images are accepted; maximum 5 MB."}
       </p>
       {error("photo")}
 

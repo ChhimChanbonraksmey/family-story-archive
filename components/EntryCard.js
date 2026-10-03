@@ -13,7 +13,8 @@ const styles = {
     display: "block",
     width: "100%",
     height: 300,
-    objectFit: "cover",
+    objectFit: "contain",
+    backgroundColor: "#171411",
   },
   imageWrap: { position: "relative" },
   imageLabel: {
