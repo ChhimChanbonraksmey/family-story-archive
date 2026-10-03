@@ -18,8 +18,8 @@ const styles = {
   email: { color: "#F1DFC2", fontSize: 14, overflowWrap: "anywhere" },
   button: {
     color: "#D9B89C",
-    backgroundColor: "transparent",
-    border: "1px solid #6A5140",
+    backgroundColor: "rgba(142, 66, 47, 0.16)",
+    border: "1px solid #8B6551",
     borderRadius: 8,
     padding: "8px 12px",
     fontSize: 14,
