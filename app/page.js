@@ -104,7 +104,8 @@ export default function Home() {
         const { data, error } = await createClient()
           .from("entries")
           .select("*")
-          .order("created_at", { ascending: false });
+          .order("created_at", { ascending: false })
+          .order("display_order", { ascending: false });
 
         if (!active) return;
 
