@@ -9,6 +9,7 @@ export default async function ContributePage() {
   if (error && error.name !== "AuthSessionMissingError") {
     console.error("Contribution page session check failed", error);
   }
+  const accountUnavailable = Boolean(error && error.name !== "AuthSessionMissingError");
   const user = error ? null : data.user;
 
   return (
@@ -17,7 +18,19 @@ export default async function ContributePage() {
       <section style={styles.panel} aria-labelledby="contribute-title">
         <p style={styles.kicker}>CONTRIBUTE A STORY</p>
         <h1 id="contribute-title" style={styles.title}>Add to the family archive</h1>
-        {user ? (
+        {accountUnavailable ? (
+          <>
+            <p role="alert" style={styles.intro}>
+              We could not check your account right now. Your session may still be active.
+              Please try again shortly.
+              <span lang="km" style={styles.khmer}>
+                យើងមិនអាចពិនិត្យគណនីរបស់អ្នកបាននៅពេលនេះទេ។ សម័យចូលគណនីរបស់អ្នក
+                អាចនៅតែសកម្ម។ សូមសាកល្បងម្តងទៀតបន្តិចទៀត។
+              </span>
+            </p>
+            <a href="/contribute" style={styles.login}>Try again</a>
+          </>
+        ) : user ? (
           <>
             <p style={styles.intro}>
               Preserve an oral-history entry in Khmer, English, or both. Every field is reviewed

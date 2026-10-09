@@ -94,7 +94,30 @@ export default async function EntryPage({ params }) {
     .eq("id", id)
     .maybeSingle();
 
-  if (error || !entry) {
+  if (error) {
+    console.error("Entry detail lookup failed", error);
+    return (
+      <main style={styles.wrap}>
+        <Link href="/" style={styles.back}>← Back to archive</Link>
+        <section style={styles.story} aria-labelledby="archive-error-title">
+          <p style={styles.number}>ARCHIVE NOTICE</p>
+          <h1 id="archive-error-title" style={styles.title}>
+            The archive shelf is temporarily out of reach
+          </h1>
+          <p role="alert" style={styles.description}>
+            The family stories could not be retrieved right now. Your story has not disappeared.
+            Please try again shortly.
+            <span lang="km" style={{ display: "block", marginTop: 16 }}>
+              មិនអាចភ្ជាប់ទៅបណ្ណសារបាននៅពេលនេះទេ។ រឿងរបស់អ្នកមិនបានបាត់ទេ។
+              សូមសាកល្បងម្តងទៀតបន្តិចទៀត។
+            </span>
+          </p>
+        </section>
+      </main>
+    );
+  }
+
+  if (!entry) {
     notFound();
   }
 
