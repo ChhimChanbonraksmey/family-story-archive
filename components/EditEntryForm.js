@@ -43,8 +43,14 @@ export default function EditEntryForm({ entry }) {
       const photo = new FormData(event.currentTarget).get("photo");
       const result = await updateOwnedEntry(createClient(), entry, checked.values, photo);
       setErrors(result.fieldErrors || {});
+      if (result.fieldErrors) return;
       if (result.message) {
         setFeedback(result.message);
+        return;
+      }
+      if (!result.id) {
+        console.error("Entry update returned no entry ID", { entryId: entry.id });
+        setFeedback("That change wasn't saved");
         return;
       }
       router.push(`/entries/${result.id}`);

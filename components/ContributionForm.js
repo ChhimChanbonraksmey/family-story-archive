@@ -90,7 +90,12 @@ export default function ContributionForm() {
           setFeedback(result.message || "The story could not be saved. Please try again. មិនអាចរក្សាទុករឿងរ៉ាវបានទេ។ សូមព្យាយាមម្ដងទៀត។");
           return;
         }
-        router.push(`/entries/${result.id}`);
+      if (!result.id) {
+        console.error("Entry creation returned no entry ID");
+        setFeedback("This story could not be saved. Please try again.");
+        return;
+      }
+      router.push(`/entries/${result.id}`);
         router.refresh();
       } catch (error) {
         console.error("Entry request failed", error);
