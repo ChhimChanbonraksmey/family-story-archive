@@ -19,6 +19,7 @@ export async function GET(request) {
         : { error: true };
 
     if (!result.error) return NextResponse.redirect(new URL(next, url));
+    console.error("Auth confirmation was rejected", result.error);
   } catch (error) {
     console.error("Auth confirmation failed", error);
   }
