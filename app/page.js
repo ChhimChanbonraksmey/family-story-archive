@@ -105,7 +105,8 @@ export default function Home() {
           .from("entries")
           .select("*")
           .order("created_at", { ascending: false })
-          .order("display_order", { ascending: false });
+          .order("display_order", { ascending: false })
+          .order("id", { ascending: false });
 
         if (!active) return;
 
@@ -113,9 +114,10 @@ export default function Home() {
         setEntries(
           error
             ? []
-            : data.map((entry) => ({
+            : data.map((entry, index) => ({
                 id: entry.id,
-                number: entry.display_order,
+                // Visible numbers describe the current shelf, not deleted rows.
+                number: data.length - index,
                 title: entry.title,
                 description: entry.description,
                 contributor: entry.contributor_name,

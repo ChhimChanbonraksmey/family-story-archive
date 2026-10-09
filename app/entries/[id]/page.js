@@ -98,6 +98,16 @@ export default async function EntryPage({ params }) {
     notFound();
   }
 
+  const { data: orderedEntries, error: orderError } = await supabase
+    .from("entries")
+    .select("id")
+    .order("created_at", { ascending: true })
+    .order("display_order", { ascending: true })
+    .order("id", { ascending: true });
+  if (orderError) console.error("Entry number lookup failed", orderError);
+  const entryIndex = orderedEntries?.findIndex((item) => item.id === entry.id) ?? -1;
+  const entryNumber = entryIndex >= 0 ? entryIndex + 1 : entry.display_order;
+
   const { data: userData } = await supabase.auth.getUser();
   const disclosure = photoDisclosure(entry.photo_type);
 
@@ -118,7 +128,7 @@ export default async function EntryPage({ params }) {
           </div>
         ) : null}
         <div style={styles.story}>
-          <p style={styles.number}>ARCHIVE ENTRY {entry.display_order}</p>
+          <p style={styles.number}>ARCHIVE ENTRY {entryNumber}</p>
           <h1 style={styles.title}>{entry.title}</h1>
           <div style={styles.details}>
             <span style={styles.contributor}>
