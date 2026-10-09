@@ -111,6 +111,13 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
             {busy ? "Please wait…" : isSignup ? "Sign up" : "Log in"}
           </button>
         </form>
+        {!isSignup ? (
+          <p style={styles.switch}>
+            <Link href="/forgot-password" style={styles.link}>
+              Forgot your password? / <span lang="km">ភ្លេចពាក្យសម្ងាត់?</span>
+            </Link>
+          </p>
+        ) : null}
         <p style={styles.switch}>
           {isSignup ? "Already have an account? " : "New to the archive? "}
           <Link href={isSignup ? "/login" : "/signup"} style={styles.link}>
