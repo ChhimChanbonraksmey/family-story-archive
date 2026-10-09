@@ -22,6 +22,7 @@ export default function ContributionForm() {
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState("");
   const [busy, setBusy] = useState(false);
+  const [checkingPhoto, setCheckingPhoto] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -32,6 +33,23 @@ export default function ContributionForm() {
   function handleClear(name) {
     setValues((current) => ({ ...current, [name]: "" }));
     setErrors((current) => ({ ...current, [name]: undefined }));
+  }
+
+  async function handlePhotoChange(event) {
+    const input = event.currentTarget;
+    const photo = input.files?.[0];
+    setErrors((current) => ({ ...current, photo: undefined }));
+    if (!photo) {
+      setCheckingPhoto(false);
+      return;
+    }
+
+    setCheckingPhoto(true);
+    const photoCheck = await inspectPhoto(photo);
+    if (input.files?.[0] === photo && photoCheck.error) {
+      setErrors((current) => ({ ...current, photo: photoCheck.error }));
+    }
+    if (input.files?.[0] === photo) setCheckingPhoto(false);
   }
 
   async function removeUpload(supabase, path) {
@@ -118,11 +136,11 @@ export default function ContributionForm() {
         disabled={busy}
         onChange={handleChange}
         onClear={handleClear}
-        onPhotoChange={() => setErrors((current) => ({ ...current, photo: undefined }))}
+        onPhotoChange={handlePhotoChange}
       />
       {feedback ? <p role="alert" style={styles.feedback}>{feedback}</p> : null}
-      <button type="submit" disabled={busy}
-        style={{ ...styles.button, ...(busy ? styles.buttonDisabled : {}) }}>
+      <button type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
+        style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
         {busy ? "Saving story…" : "Add story to the archive"}
       </button>
     </form>

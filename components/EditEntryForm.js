@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { updateOwnedEntry } from "../lib/entryMutations.js";
-import { validateEntryFields } from "../lib/entryValidation.js";
+import { inspectPhoto, validateEntryFields } from "../lib/entryValidation.js";
 import EntryFormFields from "./EntryFormFields.js";
 import styles from "./contributeStyles.js";
 
@@ -18,6 +18,7 @@ export default function EditEntryForm({ entry }) {
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState("");
   const [busy, setBusy] = useState(false);
+  const [checkingPhoto, setCheckingPhoto] = useState(false);
 
   function change(event) {
     const { name, value } = event.target;
@@ -28,6 +29,23 @@ export default function EditEntryForm({ entry }) {
   function clear(name) {
     setValues((current) => ({ ...current, [name]: "" }));
     setErrors((current) => ({ ...current, [name]: undefined }));
+  }
+
+  async function changePhoto(event) {
+    const input = event.currentTarget;
+    const photo = input.files?.[0];
+    setErrors((current) => ({ ...current, photo: undefined }));
+    if (!photo) {
+      setCheckingPhoto(false);
+      return;
+    }
+
+    setCheckingPhoto(true);
+    const photoCheck = await inspectPhoto(photo);
+    if (input.files?.[0] === photo && photoCheck.error) {
+      setErrors((current) => ({ ...current, photo: photoCheck.error }));
+    }
+    if (input.files?.[0] === photo) setCheckingPhoto(false);
   }
 
   async function submit(event) {
@@ -67,10 +85,10 @@ export default function EditEntryForm({ entry }) {
     <form onSubmit={submit} noValidate>
       <EntryFormFields values={values} errors={errors} disabled={busy}
         onChange={change} onClear={clear} photoRequired={false}
-        onPhotoChange={() => setErrors((current) => ({ ...current, photo: undefined }))} />
+        onPhotoChange={changePhoto} />
       {feedback ? <p role="alert" style={styles.feedback}>{feedback}</p> : null}
-      <button type="submit" disabled={busy}
-        style={{ ...styles.button, ...(busy ? styles.buttonDisabled : {}) }}>
+      <button type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
+        style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
         {busy ? "Saving changes…" : "Save changes"}
       </button>
     </form>
