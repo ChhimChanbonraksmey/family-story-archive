@@ -67,7 +67,6 @@ export default function AccountStatus() {
       ) : user ? (
         <>
           <span style={styles.email}>{user.email}</span>
-          <Link href="/my-entries" style={styles.link}>My entries</Link>
           <button type="button" onClick={handleLogout} disabled={busy} style={styles.button}>
             {busy ? "Logging out…" : "Log out"}
           </button>
