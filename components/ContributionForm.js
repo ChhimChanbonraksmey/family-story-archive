@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { inspectPhoto, validateEntryFields } from "../lib/entryValidation.js";
@@ -17,10 +16,10 @@ const initialValues = {
 };
 
 export default function ContributionForm() {
-  const router = useRouter();
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [busy, setBusy] = useState(false);
   const [checkingPhoto, setCheckingPhoto] = useState(false);
 
@@ -64,6 +63,7 @@ export default function ContributionForm() {
     const photo = new FormData(form).get("photo");
     setBusy(true);
     setFeedback("");
+    setSubmitted(false);
 
     try {
       const checked = validateEntryFields(values);
@@ -108,13 +108,19 @@ export default function ContributionForm() {
           setFeedback(result.message || "The story could not be saved. Please try again. មិនអាចរក្សាទុករឿងរ៉ាវបានទេ។ សូមព្យាយាមម្ដងទៀត។");
           return;
         }
-      if (!result.id) {
-        console.error("Entry creation returned no entry ID");
-        setFeedback("This story could not be saved. Please try again.");
-        return;
-      }
-      router.push(`/entries/${result.id}`);
-        router.refresh();
+        if (!result.id) {
+          console.error("Entry creation returned no entry ID");
+          await removeUpload(supabase, storagePath);
+          setFeedback("This story could not be saved. Please try again.");
+          return;
+        }
+        setValues(initialValues);
+        setErrors({});
+        form.reset();
+        setSubmitted(true);
+        setFeedback(
+          "Your story is saved and awaiting review. It is not visible in the public archive yet. រឿងរបស់អ្នកត្រូវបានរក្សាទុក ហើយកំពុងរង់ចាំការពិនិត្យ។ វាមិនទាន់បង្ហាញជាសាធារណៈក្នុងបណ្ណសារនៅឡើយទេ។",
+        );
       } catch (error) {
         console.error("Entry request failed", error);
         await removeUpload(supabase, storagePath);
@@ -138,7 +144,14 @@ export default function ContributionForm() {
         onClear={handleClear}
         onPhotoChange={handlePhotoChange}
       />
-      {feedback ? <p role="alert" style={styles.feedback}>{feedback}</p> : null}
+      {feedback ? (
+        <p
+          role={submitted ? "status" : "alert"}
+          style={submitted ? { ...styles.feedback, color: "#C7D5B1" } : styles.feedback}
+        >
+          {feedback}
+        </p>
+      ) : null}
       <button type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
         style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
         {busy ? "Saving story…" : "Add story to the archive"}
