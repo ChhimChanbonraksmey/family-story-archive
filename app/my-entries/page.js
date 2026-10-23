@@ -10,6 +10,7 @@ const statusLabels = {
 const styles = {
   main: { maxWidth: 840, margin: "0 auto", padding: "72px 24px 80px" },
   back: { color: "#D49A56", textDecoration: "none", fontSize: 14 },
+  bottomBack: { display: "inline-block", marginTop: 36 },
   kicker: { color: "#D49A56", fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: "40px 0 0" },
   title: { color: "#F1DFC2", fontFamily: "Georgia, serif", fontSize: "clamp(36px, 7vw, 56px)", margin: "14px 0" },
   intro: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 32px" },
@@ -78,6 +79,9 @@ export default async function MyEntriesPage() {
           })}
         </div>
       )}
+      <Link href="/" style={{ ...styles.back, ...styles.bottomBack }}>
+        Return to the family archive →
+      </Link>
     </main>
   );
 }
