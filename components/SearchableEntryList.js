@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import EntryCard from "./EntryCard.js";
+import filterStyles from "./SearchableEntryList.module.css";
 
 const styles = {
   controls: {
@@ -38,8 +39,7 @@ const styles = {
     display: "block",
     boxSizing: "border-box",
     width: "100%",
-    marginTop: 10,
-    padding: "14px 16px",
+    padding: "14px 48px 14px 16px",
     color: "#F1DFC2",
     backgroundColor: "#211C18",
     border: "1px solid #5C4938",
@@ -178,18 +178,22 @@ export default function SearchableEntryList({
 
         <label style={styles.search}>
           FILTER BY PROVINCE
-          <select
-            value={selectedPlace}
-            onChange={(event) => setSelectedPlace(event.target.value)}
-            style={styles.select}
-          >
-            <option value="">All provinces</option>
-            {places.map((place) => (
-              <option key={place} value={place}>
-                {place}
-              </option>
-            ))}
-          </select>
+          <span className={filterStyles.selectWrap}>
+            <select
+              className={filterStyles.select}
+              value={selectedPlace}
+              onChange={(event) => setSelectedPlace(event.target.value)}
+              style={styles.select}
+            >
+              <option value="">All provinces</option>
+              {places.map((place) => (
+                <option key={place} value={place}>
+                  {place}
+                </option>
+              ))}
+            </select>
+            <span className={filterStyles.arrow} aria-hidden="true" />
+          </span>
         </label>
       </div>
 

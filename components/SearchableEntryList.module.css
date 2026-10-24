@@ -1,0 +1,32 @@
+.selectWrap {
+  display: block;
+  position: relative;
+  margin-top: 10px;
+}
+
+.select {
+  appearance: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #d49a56;
+  border-bottom: 2px solid #d49a56;
+  pointer-events: none;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 150ms ease;
+}
+
+.select:open + .arrow {
+  transform: translateY(-30%) rotate(225deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    transition: none;
+  }
+}
