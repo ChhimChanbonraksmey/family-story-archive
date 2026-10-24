@@ -3,7 +3,7 @@ import { createClient } from "../../lib/supabase/server.js";
 import pageStyles from "./myEntries.module.css";
 
 const statusLabels = {
-  pending: { english: "Awaiting review", khmer: "កំពុងរង់ចាំការពិនិត្យ", color: "#E7B86A", tint: "rgba(231, 184, 106, 0.1)" },
+  pending: { english: "Awaiting review", khmer: "កំពុងរង់ចាំការពិនិត្យ", color: "#9DB7C9", tint: "rgba(157, 183, 201, 0.1)" },
   published: { english: "Published", khmer: "បានបោះពុម្ពផ្សាយ", color: "#C7D5B1", tint: "rgba(199, 213, 177, 0.1)" },
   returned: { english: "Changes requested", khmer: "ត្រូវការកែសម្រួល", color: "#F2A69A", tint: "rgba(242, 166, 154, 0.1)" },
 };
