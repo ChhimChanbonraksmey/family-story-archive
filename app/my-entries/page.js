@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/server.js";
+import pageStyles from "./myEntries.module.css";
 
 const statusLabels = {
-  pending: { english: "Awaiting review", khmer: "កំពុងរង់ចាំការពិនិត្យ", color: "#E7B86A" },
-  published: { english: "Published", khmer: "បានបោះពុម្ពផ្សាយ", color: "#C7D5B1" },
-  returned: { english: "Changes requested", khmer: "ត្រូវការកែសម្រួល", color: "#F2A69A" },
+  pending: { english: "Awaiting review", khmer: "កំពុងរង់ចាំការពិនិត្យ", color: "#E7B86A", tint: "rgba(231, 184, 106, 0.1)" },
+  published: { english: "Published", khmer: "បានបោះពុម្ពផ្សាយ", color: "#C7D5B1", tint: "rgba(199, 213, 177, 0.1)" },
+  returned: { english: "Changes requested", khmer: "ត្រូវការកែសម្រួល", color: "#F2A69A", tint: "rgba(242, 166, 154, 0.1)" },
 };
 
 const styles = {
@@ -16,7 +17,7 @@ const styles = {
   intro: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 32px" },
   list: { display: "grid", gap: 18 },
   card: { display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none", backgroundColor: "#211C18", border: "1px solid #493A2D", borderRadius: 12 },
-  status: { margin: "0 0 10px", fontSize: 12, fontWeight: 700, letterSpacing: 1 },
+  status: { display: "inline-block", margin: "0 0 12px", padding: "7px 10px", borderRadius: 7, fontSize: 12, fontWeight: 700, letterSpacing: 1 },
   khmer: { display: "block", marginTop: 4, fontWeight: 400, letterSpacing: 0 },
   entryTitle: { color: "#E7B86A", fontFamily: "Georgia, serif", fontSize: 26, margin: "0 0 10px" },
   place: { color: "#BFB2A1", margin: 0 },
@@ -67,8 +68,13 @@ export default async function MyEntriesPage() {
           {entries.map((entry) => {
             const label = statusLabels[entry.status] || statusLabels.pending;
             return (
-              <Link key={entry.id} href={`/entries/${entry.id}`} style={styles.card}>
-                <p style={{ ...styles.status, color: label.color }}>
+              <Link
+                key={entry.id}
+                href={`/entries/${entry.id}`}
+                className={pageStyles.card}
+                style={{ ...styles.card, borderLeft: `4px solid ${label.color}` }}
+              >
+                <p style={{ ...styles.status, color: label.color, backgroundColor: label.tint }}>
                   {label.english}
                   <span lang="km" style={styles.khmer}>{label.khmer}</span>
                 </p>
