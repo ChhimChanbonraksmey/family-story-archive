@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
+import interactive from "./interactive.module.css";
 
 const styles = {
   wrap: {
@@ -50,8 +51,12 @@ export default function ContributeCallToAction() {
         </p>
       </div>
       <div style={styles.actions}>
-        <Link href={href} style={styles.link}>Contribute a story</Link>
-        {user ? <Link href="/my-entries" style={styles.secondaryLink}>My entries</Link> : null}
+        <Link href={href} className={interactive.primary} style={styles.link}>Contribute a story</Link>
+        {user ? (
+          <Link href="/my-entries" className={interactive.secondary} style={styles.secondaryLink}>
+            My entries
+          </Link>
+        ) : null}
       </div>
     </aside>
   );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
+import interactive from "./interactive.module.css";
 
 export default function AuthForm({ mode, confirmationFailed = false, redirectTo = "/" }) {
   const isSignup = mode === "signup";
@@ -107,7 +108,7 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
               {feedback.text}
             </p>
           )}
-          <button type="submit" disabled={busy} style={styles.button}>
+          <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
             {busy ? "Please wait…" : isSignup ? "Sign up" : "Log in"}
           </button>
         </form>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/server.js";
+import interactive from "../../components/interactive.module.css";
 import pageStyles from "./myEntries.module.css";
 
 const statusLabels = {
@@ -57,7 +58,7 @@ export default async function MyEntriesPage() {
       ) : !user ? (
         <div>
           <p style={styles.notice}>Log in to see the stories you have contributed.</p>
-          <Link href="/login" style={styles.login}>Log in</Link>
+          <Link href="/login" className={interactive.primary} style={styles.login}>Log in</Link>
         </div>
       ) : entryError ? (
         <p role="alert" style={styles.notice}>Your entries could not be retrieved right now. Please try again.</p>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { deleteOwnedEntry } from "../lib/entryMutations.js";
+import interactive from "./interactive.module.css";
 
 const styles = {
   wrap: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12, marginTop: 32, paddingTop: 24, borderTop: "1px solid #493A2D" },
@@ -40,8 +41,8 @@ export default function OwnerEntryActions({ entryId, photoUrl }) {
 
   return (
     <div style={styles.wrap} aria-label="Owner actions">
-      <Link href={`/entries/${entryId}/edit`} style={styles.edit}>Edit story</Link>
-      <button type="button" onClick={remove} disabled={busy} style={styles.remove}>
+      <Link href={`/entries/${entryId}/edit`} className={interactive.primary} style={styles.edit}>Edit story</Link>
+      <button className={interactive.danger} type="button" onClick={remove} disabled={busy} style={styles.remove}>
         {busy ? "Deleting…" : "Delete story"}
       </button>
       {error ? <p role="alert" style={styles.error}>{error}</p> : null}

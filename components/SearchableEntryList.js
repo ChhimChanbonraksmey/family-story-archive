@@ -6,6 +6,7 @@ import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import EntryCard from "./EntryCard.js";
 import filterStyles from "./SearchableEntryList.module.css";
+import interactive from "./interactive.module.css";
 
 const styles = {
   controls: {
@@ -215,6 +216,7 @@ export default function SearchableEntryList({
             key={entry.id}
             href={`/entries/${entry.id}`}
             aria-label={`View ${entry.title}`}
+            className={interactive.cardLink}
             style={styles.entryLink}
           >
             {/* Highlight display values without changing the original entry data. */}

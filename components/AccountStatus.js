@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "../lib/supabase/client.js";
+import interactive from "./interactive.module.css";
 
 const styles = {
   nav: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 18, marginBottom: 32 },
@@ -67,14 +68,14 @@ export default function AccountStatus() {
       ) : user ? (
         <>
           <span style={styles.email}>{user.email}</span>
-          <button type="button" onClick={handleLogout} disabled={busy} style={styles.button}>
+          <button className={interactive.quiet} type="button" onClick={handleLogout} disabled={busy} style={styles.button}>
             {busy ? "Logging out…" : "Log out"}
           </button>
         </>
       ) : (
         <>
           <Link href="/login" style={styles.link}>Log in</Link>
-          <Link href="/signup" style={styles.signup}>Sign up</Link>
+          <Link href="/signup" className={interactive.primary} style={styles.signup}>Sign up</Link>
         </>
       )}
       {error && <span role="alert" style={styles.error}>{error}</span>}

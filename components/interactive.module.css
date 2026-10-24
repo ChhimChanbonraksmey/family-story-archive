@@ -1,0 +1,59 @@
+.primary,
+.secondary,
+.quiet,
+.danger,
+.cardLink > article {
+  transition: filter 160ms ease, background-color 160ms ease, border-color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease;
+}
+
+.primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: #3a4938 !important;
+  transform: translateY(-1px);
+}
+
+.quiet:hover:not(:disabled) {
+  background-color: rgba(142, 66, 47, 0.25) !important;
+  border-color: #b8876e !important;
+}
+
+.danger:hover:not(:disabled) {
+  background-color: rgba(139, 81, 72, 0.18) !important;
+  border-color: #c47669 !important;
+}
+
+.primary:focus-visible,
+.secondary:focus-visible,
+.quiet:focus-visible,
+.danger:focus-visible,
+.cardLink:focus-visible {
+  outline: 2px solid #e7b86a;
+  outline-offset: 3px;
+}
+
+.cardLink:hover > article {
+  filter: brightness(1.04);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.32) !important;
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .secondary,
+  .quiet,
+  .danger,
+  .cardLink > article {
+    transition: none;
+  }
+
+  .primary:hover:not(:disabled),
+  .secondary:hover:not(:disabled),
+  .cardLink:hover > article {
+    transform: none;
+  }
+}

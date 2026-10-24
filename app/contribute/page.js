@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ContributionForm from "../../components/ContributionForm.js";
+import interactive from "../../components/interactive.module.css";
 import styles from "../../components/contributeStyles.js";
 import { createClient } from "../../lib/supabase/server.js";
 
@@ -28,7 +29,7 @@ export default async function ContributePage() {
                 អាចនៅតែសកម្ម។ សូមសាកល្បងម្តងទៀតបន្តិចទៀត។
               </span>
             </p>
-            <a href="/contribute" style={styles.login}>Try again</a>
+            <a href="/contribute" className={interactive.primary} style={styles.login}>Try again</a>
           </>
         ) : user ? (
           <>
@@ -50,7 +51,7 @@ export default async function ContributePage() {
                 សូមចូលគណនី មុននឹងបន្ថែមរឿងរ៉ាវគ្រួសារ។
               </span>
             </p>
-            <Link href="/login" style={styles.login}>Log in to contribute</Link>
+            <Link href="/login" className={interactive.primary} style={styles.login}>Log in to contribute</Link>
           </>
         )}
       </section>

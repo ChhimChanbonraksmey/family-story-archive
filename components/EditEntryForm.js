@@ -7,6 +7,7 @@ import { updateOwnedEntry } from "../lib/entryMutations.js";
 import { inspectPhoto, validateEntryFields } from "../lib/entryValidation.js";
 import EntryFormFields from "./EntryFormFields.js";
 import styles from "./contributeStyles.js";
+import interactive from "./interactive.module.css";
 
 export default function EditEntryForm({ entry }) {
   const router = useRouter();
@@ -87,7 +88,7 @@ export default function EditEntryForm({ entry }) {
         onChange={change} onClear={clear} photoRequired={false}
         onPhotoChange={changePhoto} />
       {feedback ? <p role="alert" style={styles.feedback}>{feedback}</p> : null}
-      <button type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
+      <button className={interactive.primary} type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
         style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
         {busy ? "Saving changes…" : "Save changes"}
       </button>

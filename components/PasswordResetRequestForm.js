@@ -5,6 +5,7 @@ import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
+import interactive from "./interactive.module.css";
 
 export default function PasswordResetRequestForm({ recoveryFailed = false }) {
   const [email, setEmail] = useState("");
@@ -60,7 +61,7 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
             onClear={() => setEmail("")} clearLabel="Clear email" style={styles.input} />
           {feedback ? <p role={feedback.kind === "error" ? "alert" : "status"}
             style={feedback.kind === "error" ? styles.error : styles.success}>{feedback.text}</p> : null}
-          <button type="submit" disabled={busy} style={styles.button}>
+          <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
             {busy ? "Sending…" : "Send reset link"}
           </button>
         </form>

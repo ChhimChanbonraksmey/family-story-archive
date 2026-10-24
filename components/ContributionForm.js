@@ -5,6 +5,7 @@ import { createClient } from "../lib/supabase/client.js";
 import { inspectPhoto, validateEntryFields } from "../lib/entryValidation.js";
 import EntryFormFields from "./EntryFormFields.js";
 import styles from "./contributeStyles.js";
+import interactive from "./interactive.module.css";
 
 const initialValues = {
   title: "",
@@ -152,7 +153,7 @@ export default function ContributionForm() {
           {feedback}
         </p>
       ) : null}
-      <button type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
+      <button className={interactive.primary} type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
         style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
         {busy ? "Saving story…" : "Add story to the archive"}
       </button>

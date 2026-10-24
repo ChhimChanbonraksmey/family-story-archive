@@ -5,6 +5,7 @@ import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
+import interactive from "./interactive.module.css";
 
 export default function UpdatePasswordForm() {
   const [password, setPassword] = useState("");
@@ -63,7 +64,7 @@ export default function UpdatePasswordForm() {
             value={confirmation} onChange={(event) => setConfirmation(event.target.value)}
             onClear={() => setConfirmation("")} clearLabel="Clear confirmation password" style={styles.input} />
           {feedback ? <p role="alert" style={styles.error}>{feedback}</p> : null}
-          <button type="submit" disabled={busy} style={styles.button}>
+          <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
             {busy ? "Updating…" : "Update password"}
           </button>
         </form>
