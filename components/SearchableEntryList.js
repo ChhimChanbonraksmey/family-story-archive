@@ -136,8 +136,12 @@ export default function SearchableEntryList({
 
   const normalizedQuery = normalizeSearchQuery(query);
 
-  // Generate filter options from the data so new provinces appear automatically.
-  const places = [...new Set(entries.map((entry) => entry.place))].sort();
+  // Generate filter options and counts from the published entries already loaded.
+  const placeCounts = entries.reduce((counts, entry) => {
+    counts.set(entry.place, (counts.get(entry.place) || 0) + 1);
+    return counts;
+  }, new Map());
+  const places = [...placeCounts.keys()].sort();
 
   // An entry remains visible only when it matches both active controls.
   const filteredEntries = entries.filter((entry) => {
@@ -188,7 +192,7 @@ export default function SearchableEntryList({
               <option value="">All provinces</option>
               {places.map((place) => (
                 <option key={place} value={place}>
-                  {place}
+                  {place} ({placeCounts.get(place)})
                 </option>
               ))}
             </select>
