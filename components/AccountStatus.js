@@ -32,17 +32,39 @@ const styles = {
 
 export default function AccountStatus() {
   const [user, setUser] = useState(undefined);
+  const [reviewer, setReviewer] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     let active = true;
-    createClient().auth.getUser()
-      .then(({ data }) => {
-        if (active) setUser(data.user ?? null);
+    const supabase = createClient();
+
+    supabase.auth.getUser()
+      .then(async ({ data, error: userError }) => {
+        if (!active) return;
+
+        const nextUser = userError ? null : data.user ?? null;
+        setUser(nextUser);
+        if (!nextUser) {
+          setReviewer(false);
+          return;
+        }
+
+        const { data: reviewerFlag, error: reviewerError } =
+          await supabase.rpc("is_reviewer");
+        if (!active) return;
+
+        if (reviewerError) {
+          console.error("Reviewer link check failed", reviewerError);
+        }
+        setReviewer(!reviewerError && reviewerFlag === true);
       })
       .catch(() => {
-        if (active) setUser(null);
+        if (active) {
+          setUser(null);
+          setReviewer(false);
+        }
       });
     return () => { active = false; };
   }, []);
@@ -53,7 +75,10 @@ export default function AccountStatus() {
     try {
       const { error: signOutError } = await createClient().auth.signOut({ scope: "local" });
       if (signOutError) setError("Could not log out. Please try again.");
-      else setUser(null);
+      else {
+        setUser(null);
+        setReviewer(false);
+      }
     } catch {
       setError("Could not log out. Please try again.");
     } finally {
@@ -67,6 +92,11 @@ export default function AccountStatus() {
         <span style={styles.email}>Checking account…</span>
       ) : user ? (
         <>
+          {reviewer ? (
+            <Link href="/review" style={styles.link}>
+              Review queue
+            </Link>
+          ) : null}
           <span style={styles.email}>{user.email}</span>
           <button className={interactive.quiet} type="button" onClick={handleLogout} disabled={busy} style={styles.button}>
             {busy ? "Logging out…" : "Log out"}
