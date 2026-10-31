@@ -16,6 +16,20 @@ const styles = {
     fontSize: 14, fontWeight: 700, borderRadius: 8,
     display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 16px",
   },
+  reviewLink: {
+    color: "#EAF2F6",
+    backgroundColor: "#263640",
+    border: "1px solid #9DB7C9",
+    borderRadius: 8,
+    padding: "0 18px",
+    textDecoration: "none",
+    fontSize: 14,
+    fontWeight: 700,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: 44,
+  },
   email: { color: "#F1DFC2", fontSize: 14, overflowWrap: "anywhere" },
   button: {
     color: "#D9B89C",
@@ -92,15 +106,19 @@ export default function AccountStatus() {
         <span style={styles.email}>Checking account…</span>
       ) : user ? (
         <>
-          {reviewer ? (
-            <Link href="/review" style={styles.link}>
-              Review queue
-            </Link>
-          ) : null}
           <span style={styles.email}>{user.email}</span>
           <button className={interactive.quiet} type="button" onClick={handleLogout} disabled={busy} style={styles.button}>
             {busy ? "Logging out…" : "Log out"}
           </button>
+          {reviewer ? (
+            <Link
+              href="/review"
+              className={interactive.reviewQueue}
+              style={styles.reviewLink}
+            >
+              Review queue
+            </Link>
+          ) : null}
         </>
       ) : (
         <>

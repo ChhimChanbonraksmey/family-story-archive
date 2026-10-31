@@ -1,5 +1,6 @@
 .primary,
 .secondary,
+.reviewQueue,
 .quiet,
 .danger,
 .cardLink > article {
@@ -17,6 +18,32 @@
   transform: translateY(-1px);
 }
 
+.reviewQueue:hover {
+  background-color: #314752 !important;
+  border-color: #c1d6e2 !important;
+  transform: translateY(-1px);
+}
+
+.reviewAction {
+  transition: filter 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.reviewAction:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28) !important;
+  transform: translateY(-2px);
+}
+
+.reviewAction:active:not(:disabled) {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(0);
+}
+
+.reviewAction:focus-visible {
+  outline: 2px solid #e7b86a;
+  outline-offset: 3px;
+}
+
 .quiet:hover:not(:disabled) {
   background-color: rgba(142, 66, 47, 0.25) !important;
   border-color: #b8876e !important;
@@ -29,6 +56,7 @@
 
 .primary:focus-visible,
 .secondary:focus-visible,
+.reviewQueue:focus-visible,
 .quiet:focus-visible,
 .danger:focus-visible,
 .cardLink:focus-visible {
@@ -42,9 +70,29 @@
   transform: translateY(-3px);
 }
 
+.reviewQueue {
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .reviewQueue {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .reviewAction {
+    transition: none;
+  }
+
+  .reviewAction:hover:not(:disabled) {
+    transform: none;
+  }
+
   .primary,
   .secondary,
+  .reviewQueue,
   .quiet,
   .danger,
   .cardLink > article {
@@ -53,6 +101,7 @@
 
   .primary:hover:not(:disabled),
   .secondary:hover:not(:disabled),
+  .reviewQueue:hover,
   .cardLink:hover > article {
     transform: none;
   }

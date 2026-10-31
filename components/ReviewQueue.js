@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { PHOTO_TYPE_LABELS } from "../lib/entryValidation.js";
 import styles from "./reviewStyles.js";
+import interactive from "./interactive.module.css";
 
 export default function ReviewQueue({ initialEntries }) {
   const [entries, setEntries] = useState(initialEntries);
@@ -79,11 +80,11 @@ export default function ReviewQueue({ initialEntries }) {
             </p>
             <p style={styles.value}>{entry.submittedLabel}</p>
             <div style={styles.actions}>
-              <button type="button" disabled={busy} onClick={() => decide(entry.id, "published")}
+              <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => decide(entry.id, "published")}
                 style={{ ...styles.button, ...styles.publish, ...(busy ? styles.disabled : {}) }}>
                 Publish / <span lang="km">បោះពុម្ពផ្សាយ</span>
               </button>
-              <button type="button" disabled={busy} onClick={() => decide(entry.id, "returned")}
+              <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => decide(entry.id, "returned")}
                 style={{ ...styles.button, ...styles.return, ...(busy ? styles.disabled : {}) }}>
                 Return for changes / <span lang="km">ផ្ញើត្រឡប់ឱ្យកែសម្រួល</span>
               </button>
