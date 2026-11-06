@@ -23,6 +23,9 @@ const styles = {
   entryTitle: { color: "#E7B86A", fontFamily: "Georgia, serif", fontSize: 26, margin: "0 0 10px" },
   place: { color: "#BFB2A1", margin: 0 },
   notice: { color: "#BFB2A1", lineHeight: 1.7, padding: "24px 0" },
+  reviewNote: { marginTop: 16, padding: "14px 16px", color: "#D8CCBC", backgroundColor: "rgba(242, 166, 154, 0.08)", border: "1px solid rgba(242, 166, 154, 0.35)", borderRadius: 8, lineHeight: 1.7 },
+  reviewNoteLabel: { display: "block", color: "#F2A69A", fontSize: 13, fontWeight: 700, marginBottom: 5 },
+  reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif", marginTop: 2 },
   login: { display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 16px", color: "#171411", backgroundColor: "#E7B86A", borderRadius: 8, textDecoration: "none", fontWeight: 700 },
 };
 
@@ -36,7 +39,7 @@ export default async function MyEntriesPage() {
 
   if (user) {
     const result = await supabase.from("entries")
-      .select("id, title, place, status, created_at")
+      .select("id, title, place, status, created_at, review_note")
       .eq("owner", user.id)
       .order("created_at", { ascending: false });
     entries = result.data || [];
@@ -81,6 +84,15 @@ export default async function MyEntriesPage() {
                 </p>
                 <h2 style={styles.entryTitle}>{entry.title}</h2>
                 <p style={styles.place}>{entry.place}</p>
+                {entry.status === "returned" && entry.review_note ? (
+                  <div style={styles.reviewNote}>
+                    <span style={styles.reviewNoteLabel}>
+                      Reviewer’s note
+                      <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                    </span>
+                    {entry.review_note}
+                  </div>
+                ) : null}
               </Link>
             );
           })}

@@ -10,8 +10,11 @@ export default function ReviewQueue({ initialEntries }) {
   const [entries, setEntries] = useState(initialEntries);
   const [busyId, setBusyId] = useState("");
   const [failedId, setFailedId] = useState("");
+  const [returningId, setReturningId] = useState("");
+  const [noteDrafts, setNoteDrafts] = useState({});
+  const [noteErrorId, setNoteErrorId] = useState("");
 
-  async function decide(entryId, decision) {
+  async function decide(entryId, decision, note = null) {
     setBusyId(entryId);
     setFailedId("");
 
@@ -19,6 +22,7 @@ export default function ReviewQueue({ initialEntries }) {
       const { data, error } = await createClient().rpc("review_entry", {
         entry_id: entryId,
         decision,
+        note: decision === "returned" ? note : null,
       });
 
       if (error || data !== true) {
@@ -28,12 +32,43 @@ export default function ReviewQueue({ initialEntries }) {
       }
 
       setEntries((current) => current.filter((entry) => entry.id !== entryId));
+      setReturningId("");
+      setNoteDrafts((current) => {
+        const next = { ...current };
+        delete next[entryId];
+        return next;
+      });
     } catch (error) {
       console.error("Review decision request failed", { entryId, decision, error });
       setFailedId(entryId);
     } finally {
       setBusyId("");
     }
+  }
+
+  function openReturnForm(entryId) {
+    setReturningId(entryId);
+    setNoteErrorId("");
+    setFailedId("");
+  }
+
+  function cancelReturn() {
+    setReturningId("");
+    setNoteErrorId("");
+  }
+
+  function changeNote(entryId, value) {
+    setNoteDrafts((current) => ({ ...current, [entryId]: value }));
+    if (noteErrorId === entryId) setNoteErrorId("");
+  }
+
+  function confirmReturn(entryId) {
+    const note = (noteDrafts[entryId] || "").trim();
+    if (!note) {
+      setNoteErrorId(entryId);
+      return;
+    }
+    decide(entryId, "returned", note);
   }
 
   if (entries.length === 0) {
@@ -84,11 +119,63 @@ export default function ReviewQueue({ initialEntries }) {
                 style={{ ...styles.button, ...styles.publish, ...(busy ? styles.disabled : {}) }}>
                 Publish / <span lang="km">បោះពុម្ពផ្សាយ</span>
               </button>
-              <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => decide(entry.id, "returned")}
+              <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => openReturnForm(entry.id)}
                 style={{ ...styles.button, ...styles.return, ...(busy ? styles.disabled : {}) }}>
                 Return for changes / <span lang="km">ផ្ញើត្រឡប់ឱ្យកែសម្រួល</span>
               </button>
             </div>
+            {returningId === entry.id ? (
+              <div style={styles.notePanel}>
+                <label htmlFor={`review-note-${entry.id}`} style={styles.noteLabel}>
+                  Reviewer’s note / <span lang="km" style={styles.noteLabelKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                </label>
+                <p style={styles.noteHelp}>
+                  Explain what the contributor should change before resubmitting.
+                  <span lang="km" style={styles.noteHelpKhmer}>
+                    សូមពន្យល់អ្វីដែលអ្នករួមចំណែកត្រូវកែសម្រួល មុនពេលដាក់ស្នើម្តងទៀត។
+                  </span>
+                </p>
+                <textarea
+                  id={`review-note-${entry.id}`}
+                  value={noteDrafts[entry.id] || ""}
+                  onChange={(event) => changeNote(entry.id, event.target.value)}
+                  maxLength={1000}
+                  rows={5}
+                  disabled={busy}
+                  aria-describedby={`review-note-count-${entry.id}`}
+                  style={styles.noteInput}
+                />
+                <p id={`review-note-count-${entry.id}`} style={styles.noteCount}>
+                  {(noteDrafts[entry.id] || "").length}/1000
+                </p>
+                {noteErrorId === entry.id ? (
+                  <p role="alert" style={styles.noteError}>
+                    Please write a note before returning this entry.<br />
+                    <span lang="km">សូមសរសេរកំណត់សម្គាល់ មុនពេលផ្ញើរឿងនេះត្រឡប់។</span>
+                  </p>
+                ) : null}
+                <div style={styles.noteActions}>
+                  <button
+                    className={interactive.reviewAction}
+                    type="button"
+                    disabled={busy}
+                    onClick={() => confirmReturn(entry.id)}
+                    style={{ ...styles.button, ...styles.return, ...(busy ? styles.disabled : {}) }}
+                  >
+                    Confirm return / <span lang="km">បញ្ជាក់ការផ្ញើត្រឡប់</span>
+                  </button>
+                  <button
+                    className={interactive.reviewAction}
+                    type="button"
+                    disabled={busy}
+                    onClick={cancelReturn}
+                    style={{ ...styles.button, ...styles.cancel, ...(busy ? styles.disabled : {}) }}
+                  >
+                    Cancel / <span lang="km">បោះបង់</span>
+                  </button>
+                </div>
+              </div>
+            ) : null}
             {failedId === entry.id ? (
               <p role="alert" style={styles.error}>
                 We could not save that review decision. Please try again.<br />

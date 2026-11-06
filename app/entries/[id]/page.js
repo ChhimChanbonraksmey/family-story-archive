@@ -77,6 +77,18 @@ const styles = {
     overflowWrap: "anywhere",
     whiteSpace: "pre-line",
   },
+  reviewNote: {
+    marginTop: 28,
+    padding: "18px 20px",
+    color: "#D8CCBC",
+    backgroundColor: "rgba(242, 166, 154, 0.08)",
+    border: "1px solid rgba(242, 166, 154, 0.35)",
+    borderRadius: 10,
+    lineHeight: 1.7,
+    whiteSpace: "pre-wrap",
+  },
+  reviewNoteLabel: { display: "block", color: "#F2A69A", fontSize: 14, fontWeight: 700, marginBottom: 8 },
+  reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif", marginTop: 3 },
   returnLink: {
     display: "inline-block",
     color: "#D49A56",
@@ -161,6 +173,15 @@ export default async function EntryPage({ params }) {
           </div>
           {entry.description ? (
             <p style={styles.description}>{entry.description}</p>
+          ) : null}
+          {userData.user?.id === entry.owner && entry.status === "returned" && entry.review_note ? (
+            <div style={styles.reviewNote}>
+              <span style={styles.reviewNoteLabel}>
+                Reviewer’s note
+                <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+              </span>
+              {entry.review_note}
+            </div>
           ) : null}
           {userData.user?.id === entry.owner ? (
             <OwnerEntryActions entryId={entry.id} photoUrl={entry.photo_url} />
