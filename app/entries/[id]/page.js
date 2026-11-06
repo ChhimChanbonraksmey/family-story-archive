@@ -167,7 +167,7 @@ export default async function EntryPage({ params }) {
           <h1 style={styles.title}>{entry.title}</h1>
           <div style={styles.details}>
             <span style={styles.contributor}>
-              CONTRIBUTED BY · {entry.contributor_name}
+              STORY SOURCE · {entry.contributor_name}
             </span>
             <span style={styles.place}>PLACE · {entry.place}</span>
           </div>

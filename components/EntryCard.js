@@ -68,7 +68,7 @@ export default function EntryCard({
         <h2 style={styles.title}>{title}</h2>
         {description ? <p style={styles.description}>{description}</p> : null}
         <div style={styles.details}>
-          <span style={styles.contributor}>CONTRIBUTED BY · {contributor}</span>
+          <span style={styles.contributor}>STORY SOURCE · {contributor}</span>
           <span style={styles.place}>PLACE · {place}</span>
         </div>
       </div>
