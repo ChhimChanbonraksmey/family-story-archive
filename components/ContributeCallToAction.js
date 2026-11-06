@@ -35,10 +35,20 @@ export default function ContributeCallToAction() {
 
   useEffect(() => {
     let active = true;
-    createClient().auth.getUser()
+    const supabase = createClient();
+
+    supabase.auth.getUser()
       .then(({ data }) => { if (active) setUser(data.user ?? null); })
       .catch(() => { if (active) setUser(null); });
-    return () => { active = false; };
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (active) setUser(session?.user ?? null);
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const href = user === null ? "/login?next=/contribute" : "/contribute";
