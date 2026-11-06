@@ -161,7 +161,7 @@ export default function ReviewQueue({ initialEntries }) {
                     type="button"
                     disabled={busy}
                     onClick={() => confirmReturn(entry.id)}
-                    style={{ ...styles.button, ...styles.return, ...(busy ? styles.disabled : {}) }}
+                    style={{ ...styles.button, ...styles.confirmReturn, ...(busy ? styles.disabled : {}) }}
                   >
                     Confirm return / <span lang="km">បញ្ជាក់ការផ្ញើត្រឡប់</span>
                   </button>
