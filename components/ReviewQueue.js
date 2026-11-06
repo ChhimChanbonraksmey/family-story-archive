@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { PHOTO_TYPE_LABELS } from "../lib/entryValidation.js";
+import ClearableInput from "./ClearableInput.js";
 import styles from "./reviewStyles.js";
 import interactive from "./interactive.module.css";
 
@@ -131,14 +132,14 @@ export default function ReviewQueue({ initialEntries }) {
                 </label>
                 <p style={styles.noteHelp}>
                   Explain what the contributor should change before resubmitting.
-                  <span lang="km" style={styles.noteHelpKhmer}>
-                    សូមពន្យល់អ្វីដែលអ្នករួមចំណែកត្រូវកែសម្រួល មុនពេលដាក់ស្នើម្តងទៀត។
-                  </span>
                 </p>
-                <textarea
+                <ClearableInput
+                  as="textarea"
                   id={`review-note-${entry.id}`}
                   value={noteDrafts[entry.id] || ""}
                   onChange={(event) => changeNote(entry.id, event.target.value)}
+                  onClear={() => changeNote(entry.id, "")}
+                  clearLabel="Clear reviewer note / លុបកំណត់សម្គាល់របស់អ្នកពិនិត្យ"
                   maxLength={1000}
                   rows={5}
                   disabled={busy}
