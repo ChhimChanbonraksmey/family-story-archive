@@ -25,7 +25,6 @@ const reviewStyles = {
   noteLabel: { display: "block", color: "#E7B86A", fontSize: 15, fontWeight: 700, lineHeight: 1.6 },
   noteLabelKhmer: { fontFamily: "system-ui, sans-serif", fontWeight: 700 },
   noteHelp: { color: "#BFB2A1", lineHeight: 1.6, margin: "8px 0 12px" },
-  noteHelpKhmer: { display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.8, marginTop: 4 },
   noteInput: { boxSizing: "border-box", width: "100%", minHeight: 124, padding: 12, color: "#F1DFC2", backgroundColor: "#171411", border: "1px solid #80624C", borderRadius: 7, font: "inherit", lineHeight: 1.6, resize: "vertical" },
   noteCount: { color: "#9E9182", fontSize: 12, margin: "6px 0 0", textAlign: "right" },
   noteError: { color: "#F2A69A", lineHeight: 1.7, margin: "10px 0 0" },
