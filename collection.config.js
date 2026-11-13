@@ -8,7 +8,7 @@
 
 const collection = {
   // What does your archive collect? e.g. "Khmer Proverbs"
-  name: "Personal family Khmer Rouge/Post Khmer Rouge memorable stories preservation.",
+  name: "Family Oral Histories from the Khmer Rouge and Post-Khmer Rouge Eras",
 
   // One sentence: what is this archive, and why does it matter?
   description: "Collecting family's personal oral history from during and after Khmer Rouge era to preserve what they had witnessed and their memorable moments of those times, ensuring it will not be forgotten.",
