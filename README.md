@@ -8,7 +8,7 @@ This is a public oral-history archive preserving personal stories that my parent
 
 ## 2. Who it is for
 
-The archive is intended for Cambodian families, younger generations, researchers, and other visitors who want to learn from personal memories that may not appear in formal historical records. It accepts and displays Khmer text without transliteration, and important contributor, status, validation, and review messages are presented in Khmer and English. The responsive layout was tested on an iPhone 15 Pro Max using Chrome on mobile data. Images are limited to 5 MB, and every image requires alternative text and a label identifying whether it is an original photograph, an archival image, or an AI-generated illustration. Public entries use the label "Story source" so visitors can distinguish the relative who provided the memory from the account that uploaded it.
+The archive is intended for Cambodian families, younger generations, researchers, and other visitors who want to learn from personal memories that may not appear in formal historical records. It accepts and displays Khmer text without transliteration, and important contributor, status, validation, and review messages are presented in Khmer and English. To make the archive practical on phones and slower connections, I used a responsive layout, avoided extra interface packages, limited uploads to 5 MB, and tested the live site on an iPhone 15 Pro Max using Chrome on mobile data. Every image also requires alternative text and a label identifying whether it is an original photograph, an archival image, or an AI-generated illustration. Public entries use the label "Story source" so visitors can distinguish the relative who provided the memory from the account that uploaded it.
 
 ## 3. How it works
 
@@ -52,7 +52,7 @@ AI assisted with the project, but its output was reviewed rather than accepted a
 | --- | --- | --- | --- |
 | ChatGPT, exact early model not recorded | Early technical explanations, planning, wording, and process-log support | I rewrote answers to match what I actually built and removed claims that were not supported by my tests | Compared the answers with my code, lab results, and personal experience |
 | Ox Alpha through Cline | An early version of the entry-card component | I kept the component structure but revised its layout, styling, and presentation | Inspected the diff and tested the cards in the browser |
-| GPT-5.6 Sol through Codex | Search and filtering, Supabase authentication, contribution and editing flows, validation, password recovery, review statuses, My Entries, the review queue, reviewer notes, responsive styling, and cleanup | I reviewed proposed diffs before accepting them and requested changes to wording, bilingual messages, colors, navigation, error handling, and workflow behavior | Ran local builds, manually tested the live and local sites, used two accounts, tested invalid uploads, tested on mobile data, and ran browser-console attacks |
+| GPT-5.6 Sol through Codex | Search and filtering, Supabase authentication, contribution and editing flows, validation, password recovery, review statuses, My Entries, the review queue, reviewer notes, responsive styling, and cleanup | I kept the tested Supabase client structure, owner filters, validation structure, status queries, and review RPC workflow. I rewrote the failed-upload control flow, bilingual wording, navigation, colors, status presentation, and reviewer-note interaction when the first version did not behave correctly or fit the archive's users | Ran local builds, manually tested the live and local sites, used two accounts, tested invalid uploads, tested on mobile data, and ran browser-console attacks |
 | GPT-5.6 Sol with OpenAI's image-generation tool | AI-generated illustrations for the archive entries | I selected the illustrations, identified them publicly as AI-generated, and added descriptive alternative text | Reviewed each illustration against its story before using it |
 
 One important correction happened when an oversized upload displayed an error but the AI-written control flow continued to `/entries/undefined`. A classmate exposed the problem by uploading an image larger than 5 MB. I changed the flow to stop after validation fails, validate files when selected, verify them again before insertion, and refuse navigation when no entry ID exists.
@@ -88,7 +88,7 @@ NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 ```
 
-Do not commit their values. The Supabase publishable key is designed for browser use, while Row Level Security protects the data. No service-role key is used by the application.
+Do not commit their values. The Supabase publishable key is public by design and is safe to expose to the browser because Row Level Security protects the data. This project still keeps its value in `.env.local` and Vercel environment variables rather than committing it. No service-role key is used by the application.
 
 Start the development server:
 
