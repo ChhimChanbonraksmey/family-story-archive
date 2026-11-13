@@ -1,6 +1,6 @@
-# Personal Family Khmer Rouge and Post-Khmer Rouge Oral History Archive
+# Family Oral Histories from the Khmer Rouge and Post-Khmer Rouge Eras
 
-Live archive: [family-story-archive.vercel.app](https://family-story-archive.vercel.app)
+Live archive URL: [https://family-story-archive.vercel.app](https://family-story-archive.vercel.app)
 
 ## 1. What this is
 
