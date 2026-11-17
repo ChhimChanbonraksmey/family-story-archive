@@ -48,6 +48,28 @@ const styles = {
     lineHeight: 1.12,
     margin: "0 0 24px",
   },
+  languageLabel: {
+    color: "#B7623D",
+    fontFamily: "'Courier New', monospace",
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: 1.4,
+    margin: "0 0 10px",
+  },
+  titleKh: {
+    color: "#E7B86A",
+    fontFamily: "system-ui, sans-serif",
+    fontSize: "clamp(36px, 6vw, 64px)",
+    lineHeight: 1.35,
+    margin: "0 0 12px",
+  },
+  titleEn: {
+    color: "#D2C7B8",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontSize: "clamp(24px, 4vw, 36px)",
+    lineHeight: 1.3,
+    margin: "0 0 24px",
+  },
   details: {
     display: "flex",
     flexWrap: "wrap",
@@ -76,6 +98,19 @@ const styles = {
     lineHeight: 1.9,
     overflowWrap: "anywhere",
     whiteSpace: "pre-line",
+  },
+  descriptionKh: {
+    color: "#E1D6C7",
+    fontFamily: "system-ui, sans-serif",
+    fontSize: 20,
+    lineHeight: 2,
+    overflowWrap: "anywhere",
+    whiteSpace: "pre-line",
+  },
+  englishStory: {
+    marginTop: 32,
+    paddingTop: 28,
+    borderTop: "1px solid #493A2D",
   },
   reviewNote: {
     marginTop: 28,
@@ -164,15 +199,32 @@ export default async function EntryPage({ params }) {
         ) : null}
         <div style={styles.story}>
           <p style={styles.number}>ARCHIVE ENTRY {entryNumber}</p>
-          <h1 style={styles.title}>{entry.title}</h1>
+          {entry.title_kh ? (
+            <>
+              <p lang="km" style={styles.languageLabel}>ខ្មែរ</p>
+              <h1 lang="km" style={styles.titleKh}>{entry.title_kh}</h1>
+              <p style={styles.titleEn}>{entry.title}</p>
+            </>
+          ) : (
+            <h1 style={styles.title}>{entry.title}</h1>
+          )}
           <div style={styles.details}>
             <span style={styles.contributor}>
               STORY SOURCE · {entry.contributor_name}
             </span>
             <span style={styles.place}>PLACE · {entry.place}</span>
           </div>
+          {entry.description_kh ? (
+            <div lang="km">
+              <p style={styles.languageLabel}>ខ្មែរ</p>
+              <p style={styles.descriptionKh}>{entry.description_kh}</p>
+            </div>
+          ) : null}
           {entry.description ? (
-            <p style={styles.description}>{entry.description}</p>
+            <div style={entry.description_kh ? styles.englishStory : undefined}>
+              {entry.description_kh ? <p style={styles.languageLabel}>ENGLISH</p> : null}
+              <p style={styles.description}>{entry.description}</p>
+            </div>
           ) : null}
           {userData.user?.id === entry.owner && entry.status === "returned" && entry.review_note ? (
             <div style={styles.reviewNote}>

@@ -61,6 +61,10 @@ const styles = {
 };
 
 function highlightMatch(text, query) {
+  if (!text) {
+    return text;
+  }
+
   // One-letter highlights create too much visual noise in longer stories.
   if (query.length < 2) {
     return text;
@@ -149,10 +153,12 @@ export default function SearchableEntryList({
     // A match in any searchable field is enough to pass the text search.
     const matchesQuery = [
       entry.title,
+      entry.titleKh,
       entry.description,
+      entry.descriptionKh,
       entry.contributor,
       entry.place,
-    ].some(
+    ].filter(Boolean).some(
       (value) => value.toLocaleLowerCase().includes(normalizedQuery),
     );
     const matchesPlace =
@@ -215,14 +221,16 @@ export default function SearchableEntryList({
           <Link
             key={entry.id}
             href={`/entries/${entry.id}`}
-            aria-label={`View ${entry.title}`}
+            aria-label={`View ${entry.titleKh || entry.title}`}
             className={interactive.cardLink}
             style={styles.entryLink}
           >
             {/* Highlight display values without changing the original entry data. */}
             <EntryCard
               {...entry}
+              titleKh={highlightMatch(entry.titleKh, normalizedQuery)}
               title={highlightMatch(entry.title, normalizedQuery)}
+              descriptionKh={highlightMatch(entry.descriptionKh, normalizedQuery)}
               description={highlightMatch(entry.description, normalizedQuery)}
               contributor={highlightMatch(entry.contributor, normalizedQuery)}
               place={highlightMatch(entry.place, normalizedQuery)}

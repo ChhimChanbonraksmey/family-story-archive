@@ -120,7 +120,9 @@ export default function Home() {
                 // Visible numbers describe the current shelf, not deleted rows.
                 number: data.length - index,
                 title: entry.title,
+                titleKh: entry.title_kh || "",
                 description: entry.description,
+                descriptionKh: entry.description_kh || "",
                 contributor: entry.contributor_name,
                 place: entry.place,
                 image: entry.photo_url,
