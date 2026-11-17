@@ -9,7 +9,9 @@ import interactive from "./interactive.module.css";
 
 const initialValues = {
   title: "",
+  title_kh: "",
   description: "",
+  description_kh: "",
   contributor_name: "",
   place: "",
   photo_alt: "",

@@ -78,7 +78,9 @@ export async function POST(request) {
   const { data: entry, error: insertError } = await supabase.from("entries").insert({
     owner: userData.user.id,
     title: checked.values.title,
+    title_kh: checked.values.title_kh,
     description: checked.values.description,
+    description_kh: checked.values.description_kh,
     contributor_name: checked.values.contributor_name,
     place: checked.values.place,
     photo_url: publicData.publicUrl,

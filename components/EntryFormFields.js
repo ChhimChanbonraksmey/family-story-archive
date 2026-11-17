@@ -32,20 +32,40 @@ export default function EntryFormFields({
 
   return (
     <>
+      <label htmlFor="title_kh" style={styles.label}>
+        Khmer story title / <span lang="km">ចំណងជើងរឿងជាភាសាខ្មែរ</span>
+      </label>
+      <ClearableInput id="title_kh" name="title_kh" value={values.title_kh} onChange={onChange}
+        onClear={() => onClear("title_kh")} clearLabel="Clear Khmer story title / លុបចំណងជើងរឿងជាភាសាខ្មែរ"
+        disabled={disabled} lang="km" style={styles.input} {...accessibility("title_kh")} />
+      {counter("title_kh")}
+      {error("title_kh")}
+
       <label htmlFor="title" style={styles.label}>
-        Story title / <span lang="km">ចំណងជើងរឿង</span>
+        English story title / <span lang="km">ចំណងជើងរឿងជាភាសាអង់គ្លេស</span>
       </label>
       <ClearableInput id="title" name="title" value={values.title} onChange={onChange}
-        onClear={() => onClear("title")} clearLabel="Clear story title / លុបចំណងជើងរឿង"
+        onClear={() => onClear("title")} clearLabel="Clear English story title / លុបចំណងជើងរឿងជាភាសាអង់គ្លេស"
         disabled={disabled} style={styles.input} {...accessibility("title")} />
       {counter("title")}
       {error("title")}
 
+      <label htmlFor="description_kh" style={styles.label}>
+        Khmer oral-history story / <span lang="km">រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ</span>
+      </label>
+      <ClearableInput as="textarea" id="description_kh" name="description_kh" value={values.description_kh}
+        onClear={() => onClear("description_kh")} clearLabel="Clear Khmer oral-history story / លុបរឿងរ៉ាវជាភាសាខ្មែរ"
+        onChange={onChange} disabled={disabled} lang="km"
+        style={{ ...styles.input, ...styles.textarea, ...styles.story }}
+        {...accessibility("description_kh")} />
+      {counter("description_kh")}
+      {error("description_kh")}
+
       <label htmlFor="description" style={styles.label}>
-        Oral-history story / <span lang="km">រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់</span>
+        English oral-history story / <span lang="km">រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាអង់គ្លេស</span>
       </label>
       <ClearableInput as="textarea" id="description" name="description" value={values.description}
-        onClear={() => onClear("description")} clearLabel="Clear oral-history story / លុបរឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់"
+        onClear={() => onClear("description")} clearLabel="Clear English oral-history story / លុបរឿងរ៉ាវជាភាសាអង់គ្លេស"
         onChange={onChange} disabled={disabled} style={{ ...styles.input, ...styles.textarea, ...styles.story }}
         {...accessibility("description")} />
       {counter("description")}

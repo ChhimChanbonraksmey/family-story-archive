@@ -12,7 +12,8 @@ import interactive from "./interactive.module.css";
 export default function EditEntryForm({ entry }) {
   const router = useRouter();
   const [values, setValues] = useState({
-    title: entry.title, description: entry.description,
+    title: entry.title, title_kh: entry.title_kh || "",
+    description: entry.description, description_kh: entry.description_kh || "",
     contributor_name: entry.contributor_name, place: entry.place,
     photo_alt: entry.photo_alt || "", photo_type: entry.photo_type || "",
   });
