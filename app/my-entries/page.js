@@ -16,7 +16,7 @@ const styles = {
   header: {
     margin: "28px 0 32px", padding: "24px clamp(22px, 4vw, 32px)",
     backgroundColor: "rgba(48, 39, 32, 0.78)",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 12px)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.04) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.03) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.04) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.03) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938", borderLeft: "4px solid #B7623D", borderRadius: 12,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05)",
   },
@@ -27,7 +27,7 @@ const styles = {
   card: {
     display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none",
     backgroundColor: "#211C18",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 45%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 10px)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 45%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938", borderTop: "2px solid #6A4634", borderRadius: 12,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04), 0 12px 30px rgba(0, 0, 0, 0.16)",
   },

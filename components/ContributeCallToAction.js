@@ -10,7 +10,7 @@ const styles = {
     display: "flex", alignItems: "center", justifyContent: "space-between",
     flexWrap: "wrap", gap: 20, marginTop: 32, padding: "22px 24px",
     backgroundColor: "rgba(74, 48, 37, 0.62)",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.036) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.028) 11px 12px, transparent 12px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.036) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.028) 11px 12px, transparent 12px 22px)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.038) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.028) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.038) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.028) 11px 13px, transparent 13px 22px)",
     border: "1px solid #6A5140", borderTop: "3px solid #B7623D", borderRadius: 12,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 14px 34px rgba(0, 0, 0, 0.16)",
   },

@@ -3,7 +3,7 @@ const reviewStyles = {
   empty: {
     padding: "28px 24px",
     backgroundColor: "#171411",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 45%)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 45%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938",
     borderRadius: 10,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04)",
@@ -12,7 +12,7 @@ const reviewStyles = {
   emptyKhmer: { color: "#BFB2A1", lineHeight: 1.8, margin: 0 },
   entry: {
     padding: 24, backgroundColor: "#171411",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 40%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 10px)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 40%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938", borderTop: "3px solid #6A4634", borderRadius: 10,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04), 0 14px 34px rgba(0, 0, 0, 0.18)",
   },

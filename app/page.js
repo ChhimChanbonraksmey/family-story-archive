@@ -18,7 +18,7 @@ const styles = {
     overflow: "hidden",
     padding: "clamp(28px, 5vw, 48px)",
     backgroundColor: "rgba(42, 33, 27, 0.9)",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.06), transparent 42%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.04) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.032) 11px 12px, transparent 12px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.04) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.032) 11px 12px, transparent 12px 22px)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.06), transparent 42%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.045) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.034) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.045) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.034) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938",
     borderLeft: "5px solid #B7623D",
     borderRadius: 16,
@@ -75,7 +75,7 @@ const styles = {
   card: {
     padding: "20px 22px",
     backgroundColor: "rgba(48, 39, 32, 0.82)",
-    backgroundImage: "linear-gradient(120deg, rgba(231, 184, 106, 0.05), transparent 48%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.036) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.028) 11px 12px, transparent 12px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.036) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.028) 11px 12px, transparent 12px 22px)",
+    backgroundImage: "linear-gradient(120deg, rgba(231, 184, 106, 0.05), transparent 48%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.038) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.028) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.038) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.028) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938",
     borderTop: "3px solid #B7623D",
     borderRadius: 12,

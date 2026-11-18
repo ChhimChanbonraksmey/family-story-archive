@@ -40,7 +40,7 @@ const styles = {
     margin: "44px auto 0",
     padding: "clamp(24px, 5vw, 44px)",
     backgroundColor: "rgba(33, 28, 24, 0.78)",
-    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 38%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.032) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.024) 11px 12px, transparent 12px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.032) 0 1px, transparent 1px 11px, rgba(183, 98, 61, 0.024) 11px 12px, transparent 12px 22px)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 38%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.036) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.026) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.036) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.026) 11px 13px, transparent 13px 22px)",
     border: "1px solid #5C4938",
     borderTop: "4px solid #B7623D",
     borderRadius: 14,
