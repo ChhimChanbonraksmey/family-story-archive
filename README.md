@@ -8,7 +8,7 @@ This is a public oral-history archive preserving personal stories that my parent
 
 ## 2. Who it is for
 
-The archive is intended for Cambodian families, younger generations, researchers, and other visitors who want to learn from personal memories that may not appear in formal historical records. It accepts and displays Khmer text without transliteration, and important contributor, status, validation, and review messages are presented in Khmer and English. To make the archive practical on phones and slower connections, I used a responsive layout, avoided extra interface packages, limited uploads to 5 MB, and tested the live site on an iPhone 15 Pro Max using Chrome on mobile data. Every image also requires alternative text and a label identifying whether it is an original photograph, an archival image, or an AI-generated illustration. Public entries use the label "Story source" so visitors can distinguish the relative who provided the memory from the account that uploaded it.
+The archive is intended for Cambodian families, younger generations, researchers, and other visitors who want to learn from personal memories that may not appear in formal historical records. Every story requires a complete Khmer and English title and narrative, and the archive presents Khmer first with English beneath it rather than transliterating Khmer words. Important contributor, status, validation, and review messages are also presented in Khmer and English. To make the archive practical on phones and slower connections, I used a responsive layout, avoided extra interface packages, limited uploads to 5 MB, and tested the live site on an iPhone 15 Pro Max using Chrome on mobile data. Every image also requires alternative text and a label identifying whether it is an original photograph, an archival image, or an AI-generated illustration. Public entries use the label "Story source" so visitors can distinguish the relative who provided the memory from the account that uploaded it.
 
 ## 3. How it works
 
@@ -16,7 +16,8 @@ The application uses Next.js 15 and React 19 and is deployed on Vercel. Supabase
 
 The main data and workflow are:
 
-- `entries` stores each story, its owner, title, description, story source, place, photo information, creation date, review note, and status.
+- `entries` stores each story, its owner, English `title` and `description`, Khmer `title_kh` and `description_kh`, story source, place, photo information, creation date, review note, and status.
+- Khmer titles and narratives are required by both the application validation and PostgreSQL constraints. The database rejects missing, empty, or whitespace-only Khmer content, including submissions made directly through the API or browser console.
 - `reviewers` stores the user IDs that are permitted to review submissions. Row-level security prevents ordinary API users from reading or changing this list.
 - Entry statuses are `pending`, `published`, and `returned`.
 - New contributions receive the database default status of `pending`.
@@ -111,7 +112,7 @@ npm start
 - Contributors can edit and delete only their own entries: **yes**, enforced by the `entries` Row Level Security policies and ownership checks
 - No secrets anywhere in the repository history: **yes**, checked by searching the working tree and Git history on November 10, 2026
 - At least eight real entries, each with a credited source: **yes**, nine published entries with a Story source field
-- Khmer renders on every screen a user meets, including the queue: **yes**, visible in form labels, validation messages, status labels, and review actions
+- Khmer renders on every screen a user meets, including the queue: **yes**, complete Khmer titles and narratives appear on public pages, contribution and editing forms, My Entries, and the review queue, alongside bilingual validation, status, and review messages
 - Works at phone width: **yes**, tested on an iPhone 15 Pro Max using Chrome on mobile data
 - No test entries, lorem ipsum, or TODO comments in shipped pages: **yes**, checked in the repository, Supabase data, and published entry list on November 13, 2026
 - No console errors on the main pages: **yes**, checked on November 13, 2026
