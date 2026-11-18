@@ -17,7 +17,7 @@ The application uses Next.js 15 and React 19 and is deployed on Vercel. Supabase
 The main data and workflow are:
 
 - `entries` stores each story, its owner, English `title` and `description`, Khmer `title_kh` and `description_kh`, story source, place, photo information, creation date, review note, and status.
-- Khmer titles and narratives are required by both the application validation and PostgreSQL constraints. The database rejects missing, empty, or whitespace-only Khmer content, including submissions made directly through the API or browser console.
+- Khmer titles and narratives are required by both the application validation and PostgreSQL constraints. The database rejects missing, empty, whitespace-only, or entirely non-Khmer values in those fields, including submissions made directly through the API or browser console.
 - `reviewers` stores the user IDs that are permitted to review submissions. Row-level security prevents ordinary API users from reading or changing this list.
 - Entry statuses are `pending`, `published`, and `returned`.
 - New contributions receive the database default status of `pending`.
