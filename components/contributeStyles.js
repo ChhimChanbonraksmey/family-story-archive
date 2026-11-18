@@ -3,8 +3,10 @@ const styles = {
   back: { color: "#D49A56", textDecoration: "none", fontSize: 14 },
   panel: {
     marginTop: 28, padding: "clamp(24px, 5vw, 40px)",
-    backgroundColor: "rgba(48, 39, 32, 0.72)", border: "1px solid #493A2D",
-    borderTop: "4px solid #B7623D", borderRadius: 12,
+    backgroundColor: "rgba(48, 39, 32, 0.86)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 12px)",
+    border: "1px solid #5C4938", borderTop: "4px solid #B7623D", borderRadius: 14,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.06), 0 24px 60px rgba(0, 0, 0, 0.22)",
   },
   kicker: {
     color: "#D49A56", fontFamily: "'Courier New', monospace",
@@ -18,8 +20,9 @@ const styles = {
   label: { display: "block", color: "#F1DFC2", fontWeight: 700, margin: "22px 0 8px" },
   input: {
     boxSizing: "border-box", width: "100%", padding: 12, color: "#F1DFC2",
-    backgroundColor: "#211C18", border: "1px solid #5C4938",
+    backgroundColor: "rgba(33, 28, 24, 0.96)", border: "1px solid #6A5140",
     borderRadius: 8, fontSize: 16, fontFamily: "inherit",
+    boxShadow: "inset 0 1px 8px rgba(0, 0, 0, 0.2)",
   },
   textarea: { minHeight: 130, resize: "vertical", lineHeight: 1.6 },
   story: { minHeight: 260 },

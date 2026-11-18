@@ -13,11 +13,24 @@ const styles = {
   main: { maxWidth: 840, margin: "0 auto", padding: "72px 24px 80px" },
   back: { color: "#D49A56", textDecoration: "none", fontSize: 14 },
   bottomBack: { display: "inline-block", marginTop: 36 },
-  kicker: { color: "#D49A56", fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: "40px 0 0" },
+  header: {
+    margin: "28px 0 32px", padding: "24px clamp(22px, 4vw, 32px)",
+    backgroundColor: "rgba(48, 39, 32, 0.78)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 12px)",
+    border: "1px solid #5C4938", borderLeft: "4px solid #B7623D", borderRadius: 12,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05)",
+  },
+  kicker: { color: "#D49A56", fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: 0 },
   title: { color: "#F1DFC2", fontFamily: "Georgia, serif", fontSize: "clamp(36px, 7vw, 56px)", margin: "14px 0" },
-  intro: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 32px" },
+  intro: { color: "#BFB2A1", lineHeight: 1.7, margin: 0 },
   list: { display: "grid", gap: 18 },
-  card: { display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none", backgroundColor: "#211C18", border: "1px solid #493A2D", borderRadius: 12 },
+  card: {
+    display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none",
+    backgroundColor: "#211C18",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 45%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 10px)",
+    border: "1px solid #5C4938", borderTop: "2px solid #6A4634", borderRadius: 12,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04), 0 12px 30px rgba(0, 0, 0, 0.16)",
+  },
   status: { display: "inline-block", margin: "0 0 12px", padding: "7px 10px", borderRadius: 7, fontSize: 12, fontWeight: 700, letterSpacing: 1 },
   khmer: { display: "block", marginTop: 4, fontWeight: 400, letterSpacing: 0 },
   languageLabel: { color: "#B7623D", fontFamily: "'Courier New', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.2, margin: "0 0 6px" },
@@ -54,9 +67,11 @@ export default async function MyEntriesPage() {
   return (
     <main style={styles.main}>
       <Link href="/" style={styles.back}>← Back to archive</Link>
-      <p style={styles.kicker}>CONTRIBUTOR SHELF</p>
-      <h1 style={styles.title}>My entries</h1>
-      <p style={styles.intro}>Follow each family story from submission to publication.</p>
+      <section style={styles.header}>
+        <p style={styles.kicker}>CONTRIBUTOR SHELF</p>
+        <h1 style={styles.title}>My entries</h1>
+        <p style={styles.intro}>Follow each family story from submission to publication.</p>
+      </section>
 
       {unavailable ? (
         <p role="alert" style={styles.notice}>We could not check your account right now. Please try again shortly.</p>

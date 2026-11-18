@@ -9,7 +9,10 @@ const styles = {
   wrap: {
     display: "flex", alignItems: "center", justifyContent: "space-between",
     flexWrap: "wrap", gap: 20, marginTop: 32, padding: "22px 24px",
-    backgroundColor: "rgba(74, 48, 37, 0.55)", border: "1px solid #6A4634", borderRadius: 12,
+    backgroundColor: "rgba(74, 48, 37, 0.62)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 12px)",
+    border: "1px solid #6A5140", borderTop: "3px solid #B7623D", borderRadius: 12,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 14px 34px rgba(0, 0, 0, 0.16)",
   },
   kicker: {
     color: "#D49A56", fontFamily: "'Courier New', monospace",

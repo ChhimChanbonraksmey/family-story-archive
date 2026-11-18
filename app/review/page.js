@@ -20,9 +20,10 @@ const styles = {
   },
   panel: {
     padding: "28px 30px",
-    backgroundColor: "#211C18",
-    border: "1px solid #493A2D",
-    borderRadius: 12,
+    backgroundColor: "rgba(33, 28, 24, 0.94)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.05), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 12px)",
+    border: "1px solid #5C4938", borderTop: "4px solid #B7623D", borderRadius: 14,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 24px 60px rgba(0, 0, 0, 0.22)",
   },
   title: {
     color: "#F1DFC2",

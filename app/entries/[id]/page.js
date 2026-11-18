@@ -21,9 +21,14 @@ const styles = {
     width: "100%",
     maxHeight: 560,
     objectFit: "cover",
-    borderRadius: 18,
+    borderRadius: 13,
   },
-  media: { position: "relative" },
+  media: {
+    position: "relative", padding: 8, backgroundColor: "#211C18",
+    backgroundImage: "linear-gradient(135deg, rgba(231, 184, 106, 0.06), transparent 45%)",
+    border: "1px solid #6A5140", borderRadius: 20,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 22px 55px rgba(0, 0, 0, 0.26)",
+  },
   imageLabel: {
     position: "absolute", left: 18, bottom: 18, maxWidth: "calc(100% - 68px)",
     padding: "8px 11px", color: "#F1DFC2",
@@ -33,6 +38,13 @@ const styles = {
   story: {
     maxWidth: 760,
     margin: "44px auto 0",
+    padding: "clamp(24px, 5vw, 44px)",
+    backgroundColor: "rgba(33, 28, 24, 0.78)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 38%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 10px)",
+    border: "1px solid #5C4938",
+    borderTop: "4px solid #B7623D",
+    borderRadius: 14,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 20px 50px rgba(0, 0, 0, 0.18)",
   },
   number: {
     color: "#B7623D",

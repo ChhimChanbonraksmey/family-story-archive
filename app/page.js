@@ -14,9 +14,35 @@ const styles = {
     padding: "96px 24px 64px",
   },
   hero: {
-    maxWidth: 820,
-    paddingLeft: 24,
-    borderLeft: "4px solid #B7623D",
+    position: "relative",
+    overflow: "hidden",
+    padding: "clamp(28px, 5vw, 48px)",
+    backgroundColor: "rgba(42, 33, 27, 0.9)",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.06), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 12px)",
+    border: "1px solid #5C4938",
+    borderLeft: "5px solid #B7623D",
+    borderRadius: 16,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.08), 0 26px 70px rgba(0, 0, 0, 0.24)",
+  },
+  heroCorner: {
+    position: "absolute",
+    top: -22,
+    right: -22,
+    width: 120,
+    height: 120,
+    opacity: 0.18,
+    transform: "rotate(45deg)",
+    backgroundImage: "repeating-linear-gradient(45deg, #E7B86A 0 1px, transparent 1px 12px), repeating-linear-gradient(-45deg, #B7623D 0 1px, transparent 1px 12px)",
+    pointerEvents: "none",
+  },
+  heroContent: { position: "relative", zIndex: 1, maxWidth: 820 },
+  kickerKh: {
+    display: "block",
+    color: "#E7B86A",
+    fontFamily: "system-ui, sans-serif",
+    fontSize: 16,
+    letterSpacing: 0,
+    marginBottom: 5,
   },
   kicker: {
     fontFamily: "'Courier New', monospace",
@@ -32,6 +58,7 @@ const styles = {
     fontWeight: 700,
     margin: "18px 0 20px",
     lineHeight: 1.05,
+    textShadow: "0 3px 24px rgba(0, 0, 0, 0.28)",
   },
   description: {
     fontSize: 19,
@@ -47,9 +74,12 @@ const styles = {
   },
   card: {
     padding: "20px 22px",
-    backgroundColor: "rgba(48, 39, 32, 0.72)",
-    border: "1px solid #493A2D",
+    backgroundColor: "rgba(48, 39, 32, 0.82)",
+    backgroundImage: "linear-gradient(120deg, rgba(231, 184, 106, 0.05), transparent 48%)",
+    border: "1px solid #5C4938",
+    borderTop: "3px solid #B7623D",
     borderRadius: 12,
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04)",
   },
   cardLabel: {
     fontFamily: "'Courier New', monospace",
@@ -66,11 +96,43 @@ const styles = {
   browse: {
     marginTop: 64,
   },
+  browseHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: 18,
+    marginBottom: 8,
+  },
+  browseHeadingGroup: { flexShrink: 0 },
+  browseTitleKh: {
+    display: "block",
+    color: "#E7B86A",
+    fontFamily: "system-ui, sans-serif",
+    fontSize: 27,
+    lineHeight: 1.5,
+  },
   browseTitle: {
-    color: "#F1DFC2",
+    color: "#D8CCBC",
     fontFamily: "Georgia, 'Times New Roman', serif",
-    fontSize: 32,
-    margin: "0 0 8px",
+    fontSize: 19,
+    fontWeight: 400,
+    margin: 0,
+  },
+  ornament: {
+    display: "flex",
+    alignItems: "center",
+    flex: 1,
+    gap: 10,
+  },
+  ornamentLine: {
+    height: 1,
+    flex: 1,
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.12))",
+  },
+  ornamentDiamond: {
+    width: 9,
+    height: 9,
+    border: "1px solid #D49A56",
+    transform: "rotate(45deg)",
   },
   count: {
     fontFamily: "'Courier New', monospace",
@@ -147,10 +209,16 @@ export default function Home() {
   return (
     <main style={styles.wrap}>
       <header style={styles.hero}>
-        <AccountStatus />
-        <p style={styles.kicker}>KHMER LIVING ARCHIVE</p>
-        <h1 style={styles.title}>{collection.name}</h1>
-        <p style={styles.description}>{collection.description}</p>
+        <span aria-hidden="true" style={styles.heroCorner} />
+        <div style={styles.heroContent}>
+          <AccountStatus />
+          <p style={styles.kicker}>
+            <span lang="km" style={styles.kickerKh}>បណ្ណសារប្រវត្តិផ្ទាល់មាត់គ្រួសារ</span>
+            KHMER LIVING ARCHIVE
+          </p>
+          <h1 style={styles.title}>{collection.name}</h1>
+          <p style={styles.description}>{collection.description}</p>
+        </div>
       </header>
 
       <div style={styles.archiveInfo}>
@@ -167,9 +235,18 @@ export default function Home() {
       <ContributeCallToAction />
 
       <section style={styles.browse} aria-labelledby="browse-heading">
-        <h2 id="browse-heading" style={styles.browseTitle}>
-          Browse the archive
-        </h2>
+        <div style={styles.browseHeader}>
+          <div style={styles.browseHeadingGroup}>
+            <h2 id="browse-heading" style={styles.browseTitle}>
+              <span lang="km" style={styles.browseTitleKh}>ស្វែងរកក្នុងបណ្ណសារ</span>
+              Browse the archive
+            </h2>
+          </div>
+          <span aria-hidden="true" style={styles.ornament}>
+            <span style={styles.ornamentDiamond} />
+            <span style={styles.ornamentLine} />
+          </span>
+        </div>
         <p style={styles.count}>
           {loading ? (
             "Loading entries..."

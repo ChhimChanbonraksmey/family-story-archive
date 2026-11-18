@@ -4,10 +4,11 @@ const styles = {
   card: {
     overflow: "hidden",
     backgroundColor: "#211C18",
-    border: "1px solid #493A2D",
-    borderTop: "3px solid #B7623D",
+    backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 42%), repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 9px)",
+    border: "1px solid #6A5140",
+    borderTop: "4px solid #B7623D",
     borderRadius: 16,
-    boxShadow: "0 18px 45px rgba(0, 0, 0, 0.24)",
+    boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 18px 45px rgba(0, 0, 0, 0.24)",
   },
   image: {
     display: "block",
@@ -15,7 +16,7 @@ const styles = {
     height: 300,
     objectFit: "cover",
   },
-  imageWrap: { position: "relative" },
+  imageWrap: { position: "relative", borderBottom: "1px solid #6A5140" },
   imageLabel: {
     position: "absolute", left: 16, bottom: 16, padding: "7px 10px",
     color: "#F1DFC2", backgroundColor: "rgba(23, 20, 17, 0.9)",
@@ -25,7 +26,10 @@ const styles = {
   body: {
     padding: "28px 30px 30px",
   },
-  number: { color: "#B7623D", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: "0 0 10px" },
+  numberRow: { display: "flex", alignItems: "center", gap: 10, margin: "0 0 12px" },
+  number: { flexShrink: 0, color: "#B7623D", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: 0 },
+  numberDiamond: { width: 7, height: 7, border: "1px solid #D49A56", transform: "rotate(45deg)" },
+  numberLine: { height: 1, flex: 1, background: "linear-gradient(90deg, #6A4634, transparent)" },
   languageLabel: {
     color: "#B7623D",
     fontFamily: "'Courier New', monospace",
@@ -94,7 +98,11 @@ export default function EntryCard({
         </div>
       ) : null}
       <div style={styles.body}>
-        <p style={styles.number}>ARCHIVE ENTRY {number}</p>
+        <div style={styles.numberRow}>
+          <p style={styles.number}>ARCHIVE ENTRY {number}</p>
+          <span aria-hidden="true" style={styles.numberDiamond} />
+          <span aria-hidden="true" style={styles.numberLine} />
+        </div>
         <div style={styles.textBlock}>
           {hasKhmer ? (
             <div lang="km">
