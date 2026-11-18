@@ -91,7 +91,7 @@ export default function ReviewQueue({ initialEntries }) {
           <article key={entry.id} style={styles.entry}>
             <p style={styles.languageLabel}>ខ្មែរ</p>
             <h2 lang="km" style={styles.titleKh}>{entry.title_kh}</h2>
-            <p style={styles.languageLabel}>ENGLISH</p>
+            <p style={{ ...styles.languageLabel, ...styles.englishDivider }}>ENGLISH</p>
             <p style={styles.titleEn}>{entry.title}</p>
             <img src={entry.photo_url} alt={entry.photo_alt} style={styles.photo} />
             <p style={styles.label}>
@@ -106,7 +106,7 @@ export default function ReviewQueue({ initialEntries }) {
               Khmer oral-history story / <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ</span>
             </p>
             <p lang="km" style={styles.story}>{entry.description_kh}</p>
-            <p style={styles.label}>
+            <p style={{ ...styles.label, ...styles.storyDivider }}>
               English oral-history story / <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាអង់គ្លេស</span>
             </p>
             <p style={styles.story}>{entry.description}</p>

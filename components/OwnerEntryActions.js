@@ -8,7 +8,7 @@ import { deleteOwnedEntry } from "../lib/entryMutations.js";
 import interactive from "./interactive.module.css";
 
 const styles = {
-  wrap: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12, marginTop: 32, paddingTop: 24, borderTop: "1px solid #493A2D" },
+  wrap: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12, marginTop: 32, paddingTop: 24, borderTop: "2px solid #6A5140" },
   edit: { padding: "10px 16px", color: "#171411", backgroundColor: "#E7B86A", borderRadius: 8, fontWeight: 700, textDecoration: "none" },
   remove: { padding: "10px 16px", color: "#F2A69A", backgroundColor: "transparent", border: "1px solid #8B5148", borderRadius: 8, fontWeight: 700, cursor: "pointer" },
   error: { flexBasis: "100%", color: "#F2A69A", margin: "4px 0 0" },

@@ -122,7 +122,7 @@ const styles = {
   englishStory: {
     marginTop: 32,
     paddingTop: 28,
-    borderTop: "1px solid #493A2D",
+    borderTop: "2px solid #80624C",
   },
   reviewNote: {
     marginTop: 28,

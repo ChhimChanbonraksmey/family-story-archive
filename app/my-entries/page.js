@@ -28,13 +28,14 @@ const styles = {
     display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none",
     backgroundColor: "#211C18",
     backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 45%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px)",
-    border: "1px solid #5C4938", borderTop: "2px solid #6A4634", borderRadius: 12,
+    border: "1px solid #5C4938", borderTop: "3px solid #80624C", borderRadius: 12,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04), 0 12px 30px rgba(0, 0, 0, 0.16)",
   },
   status: { display: "inline-block", margin: "0 0 12px", padding: "7px 10px", borderRadius: 7, fontSize: 12, fontWeight: 700, letterSpacing: 1 },
   khmer: { display: "block", marginTop: 4, fontWeight: 400, letterSpacing: 0 },
   languageLabel: { color: "#B7623D", fontFamily: "'Courier New', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.2, margin: "0 0 6px" },
   entryTitleKh: { color: "#E7B86A", fontFamily: "system-ui, sans-serif", fontSize: 26, lineHeight: 1.5, margin: "0 0 8px" },
+  englishLabel: { marginTop: 14, paddingTop: 14, borderTop: "2px solid #6A5140" },
   entryTitleEn: { color: "#D8CCBC", fontFamily: "Georgia, serif", fontSize: 20, lineHeight: 1.4, margin: "0 0 10px" },
   place: { color: "#BFB2A1", margin: 0 },
   notice: { color: "#BFB2A1", lineHeight: 1.7, padding: "24px 0" },
@@ -101,7 +102,7 @@ export default async function MyEntriesPage() {
                 </p>
                 <p style={styles.languageLabel}>ខ្មែរ</p>
                 <h2 lang="km" style={styles.entryTitleKh}>{entry.title_kh}</h2>
-                <p style={styles.languageLabel}>ENGLISH</p>
+                <p style={{ ...styles.languageLabel, ...styles.englishLabel }}>ENGLISH</p>
                 <p style={styles.entryTitleEn}>{entry.title}</p>
                 <p style={styles.place}>{entry.place}</p>
                 {entry.status === "returned" && entry.review_note ? (
