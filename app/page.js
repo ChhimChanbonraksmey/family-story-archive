@@ -62,11 +62,20 @@ const styles = {
     textShadow: "0 3px 24px rgba(0, 0, 0, 0.28)",
   },
   description: {
-    fontSize: 19,
+    fontSize: 16,
     color: "#BFB2A1",
-    lineHeight: 1.7,
+    lineHeight: 1.65,
     margin: 0,
   },
+  descriptionKh: {
+    display: "block", color: "#D8CCBC", fontFamily: "system-ui, sans-serif",
+    fontSize: 18, lineHeight: 1.85, marginBottom: 5,
+  },
+  descriptionDivider: {
+    display: "block", width: 48, height: 1, margin: "9px 0",
+    background: "linear-gradient(90deg, #B7623D, rgba(183, 98, 61, 0.18))",
+  },
+  descriptionEn: { display: "block" },
   archiveInfo: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -220,7 +229,11 @@ export default function Home() {
             KHMER LIVING ARCHIVE
           </p>
           <h1 style={styles.title}>{collection.name}</h1>
-          <p style={styles.description}>{collection.description}</p>
+          <p style={styles.description}>
+            <span lang="km" style={styles.descriptionKh}>{collection.descriptionKh}</span>
+            <span aria-hidden="true" style={styles.descriptionDivider} />
+            <span style={styles.descriptionEn}>{collection.description}</span>
+          </p>
         </div>
       </header>
 

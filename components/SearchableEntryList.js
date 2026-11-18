@@ -24,6 +24,16 @@ const styles = {
     fontWeight: 700,
     letterSpacing: 1,
   },
+  labelHeading: {
+    display: "flex", alignItems: "center", gap: 9, minHeight: 38,
+  },
+  labelIcon: { flexShrink: 0, width: 17, height: 17, color: "#E7B86A" },
+  labelText: { display: "block" },
+  labelKh: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 15, fontWeight: 700, letterSpacing: 0, lineHeight: 1.45,
+  },
+  labelEn: { display: "block", marginTop: 1, color: "#BFB2A1", fontSize: 12 },
   input: {
     display: "block",
     boxSizing: "border-box",
@@ -47,7 +57,9 @@ const styles = {
     borderRadius: 10,
     fontSize: 16,
   },
-  feedback: { color: "#BFB2A1", fontSize: 14, margin: "12px 0 0" },
+  feedback: { color: "#BFB2A1", fontSize: 14, lineHeight: 1.65, margin: "12px 0 0" },
+  feedbackKh: { display: "block", color: "#D8CCBC", fontFamily: "system-ui, sans-serif" },
+  feedbackEn: { display: "block" },
   entries: { display: "grid", gap: 28, marginTop: 28 },
   entryLink: { color: "inherit", display: "block", textDecoration: "none" },
   highlight: {
@@ -58,7 +70,26 @@ const styles = {
   },
   empty: { color: "#BFB2A1", padding: "32px 0", textAlign: "center" },
   khmer: { display: "block", marginTop: 8 },
+  messageKh: { display: "block", color: "#D8CCBC", fontFamily: "system-ui, sans-serif", lineHeight: 1.8 },
+  messageEn: { display: "block", marginTop: 5 },
 };
+
+function SearchIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" style={styles.labelIcon}>
+      <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" strokeWidth="2" />
+      <path d="m15.5 15.5 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function FilterIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" style={styles.labelIcon}>
+      <path d="M4 5h16l-6.2 7.1v5.2L10.2 19v-6.9L4 5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 function highlightMatch(text, query) {
   if (!text) {
@@ -120,13 +151,21 @@ export default function SearchableEntryList({
   const [selectedPlace, setSelectedPlace] = useState("");
 
   if (loading) {
-    return <p role="status" style={styles.empty}>Gathering the family stories...</p>;
+    return (
+      <p role="status" style={styles.empty}>
+        <span lang="km" style={styles.messageKh}>កំពុងទាញយករឿងរ៉ាវគ្រួសារ…</span>
+        <span style={styles.messageEn}>Gathering the family stories...</span>
+      </p>
+    );
   }
 
   if (loadError) {
     return (
       <p role="alert" style={styles.empty}>
-        The family stories could not be retrieved right now. Please try again.
+        <span lang="km" style={styles.messageKh}>
+          មិនអាចទាញយករឿងរ៉ាវគ្រួសារបាននៅពេលនេះទេ។ សូមព្យាយាមម្តងទៀត។
+        </span>
+        <span style={styles.messageEn}>The family stories could not be retrieved right now. Please try again.</span>
       </p>
     );
   }
@@ -134,7 +173,10 @@ export default function SearchableEntryList({
   if (entries.length === 0) {
     return (
       <p style={styles.empty}>
-        The archive shelf is ready, but no family stories have been added yet.
+        <span lang="km" style={styles.messageKh}>
+          ធ្នើបណ្ណសាររួចរាល់ហើយ ប៉ុន្តែមិនទាន់មានរឿងរ៉ាវគ្រួសារត្រូវបានបន្ថែមនៅឡើយទេ។
+        </span>
+        <span style={styles.messageEn}>The archive shelf is ready, but no family stories have been added yet.</span>
       </p>
     );
   }
@@ -171,7 +213,13 @@ export default function SearchableEntryList({
     <div>
       <div style={styles.controls}>
         <label style={styles.search}>
-          SEARCH THE ARCHIVE
+          <span style={styles.labelHeading}>
+            <SearchIcon />
+            <span style={styles.labelText}>
+              <span lang="km" style={styles.labelKh}>ស្វែងរកក្នុងបណ្ណសារ</span>
+              <span style={styles.labelEn}>SEARCH THE ARCHIVE</span>
+            </span>
+          </span>
           <ClearableInput
             type="text"
             inputMode="search"
@@ -180,15 +228,21 @@ export default function SearchableEntryList({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onClear={() => setQuery("")}
-            clearLabel="Clear search"
-            placeholder="Try a title, story, contributor, or place"
+            clearLabel="Clear search / លុបការស្វែងរក"
+            placeholder="ស្វែងរកចំណងជើង រឿង ឬទីកន្លែង"
             style={styles.input}
             wrapperStyle={styles.inputWrap}
           />
         </label>
 
         <label style={styles.search}>
-          FILTER BY PROVINCE
+          <span style={styles.labelHeading}>
+            <FilterIcon />
+            <span style={styles.labelText}>
+              <span lang="km" style={styles.labelKh}>ត្រងតាមខេត្ត</span>
+              <span style={styles.labelEn}>FILTER BY PROVINCE</span>
+            </span>
+          </span>
           <span className={filterStyles.selectWrap}>
             <select
               className={filterStyles.select}
@@ -196,7 +250,7 @@ export default function SearchableEntryList({
               onChange={(event) => setSelectedPlace(event.target.value)}
               style={styles.select}
             >
-              <option value="">All provinces</option>
+              <option value="">ខេត្តទាំងអស់ / All provinces</option>
               {places.map((place) => (
                 <option key={place} value={place}>
                   {place} ({placeCounts.get(place)})
@@ -211,8 +265,13 @@ export default function SearchableEntryList({
       {/* Announce changing result counts to visitors using screen readers. */}
       {normalizedQuery || selectedPlace ? (
         <p style={styles.feedback} aria-live="polite">
-          {filteredEntries.length} matching{" "}
-          {filteredEntries.length === 1 ? "entry" : "entries"}
+          <span lang="km" style={styles.feedbackKh}>
+            រកឃើញរឿងដែលត្រូវគ្នាចំនួន {filteredEntries.length}
+          </span>
+          <span style={styles.feedbackEn}>
+            {filteredEntries.length} matching{" "}
+            {filteredEntries.length === 1 ? "entry" : "entries"}
+          </span>
         </p>
       ) : null}
 
