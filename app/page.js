@@ -36,6 +36,13 @@ const styles = {
     filter: "drop-shadow(0 0 8px rgba(231, 184, 106, 0.14))",
     pointerEvents: "none",
   },
+  heroCornerSmall: {
+    position: "absolute", top: 81, right: 102, width: 36, height: 36,
+    transform: "rotate(45deg)", opacity: 0.34,
+    backgroundImage: "repeating-linear-gradient(45deg, #E7B86A 0 2px, transparent 2px 12px), repeating-linear-gradient(-45deg, #B7623D 0 2px, transparent 2px 12px)",
+    filter: "drop-shadow(0 0 8px rgba(231, 184, 106, 0.14))",
+    pointerEvents: "none",
+  },
   heroContent: { position: "relative", zIndex: 1, maxWidth: 820 },
   kickerKh: {
     display: "block",
@@ -57,7 +64,7 @@ const styles = {
     fontFamily: "Georgia, 'Times New Roman', serif",
     fontSize: "clamp(40px, 7vw, 68px)",
     fontWeight: 700,
-    margin: "18px 0 20px",
+    margin: "18px 0 32px",
     lineHeight: 1.05,
     textShadow: "0 3px 24px rgba(0, 0, 0, 0.28)",
   },
@@ -68,14 +75,13 @@ const styles = {
     margin: 0,
   },
   descriptionKh: {
-    display: "block", color: "#D8CCBC", fontFamily: "system-ui, sans-serif",
+    display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
     fontSize: 18, lineHeight: 1.85, marginBottom: 5,
   },
-  descriptionDivider: {
-    display: "block", width: 48, height: 1, margin: "9px 0",
-    background: "linear-gradient(90deg, #B7623D, rgba(183, 98, 61, 0.18))",
+  descriptionEn: {
+    display: "block", marginTop: 12, paddingTop: 12,
+    borderTop: "1px solid #6A5140",
   },
-  descriptionEn: { display: "block" },
   archiveInfo: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -222,6 +228,7 @@ export default function Home() {
     <main style={styles.wrap}>
       <header style={styles.hero}>
         <span aria-hidden="true" style={styles.heroCorner} />
+        <span aria-hidden="true" style={styles.heroCornerSmall} />
         <div style={styles.heroContent}>
           <AccountStatus />
           <p style={styles.kicker}>
@@ -231,7 +238,6 @@ export default function Home() {
           <h1 style={styles.title}>{collection.name}</h1>
           <p style={styles.description}>
             <span lang="km" style={styles.descriptionKh}>{collection.descriptionKh}</span>
-            <span aria-hidden="true" style={styles.descriptionDivider} />
             <span style={styles.descriptionEn}>{collection.description}</span>
           </p>
         </div>

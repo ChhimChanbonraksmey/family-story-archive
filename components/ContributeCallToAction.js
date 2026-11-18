@@ -20,7 +20,10 @@ const styles = {
   },
   text: { color: "#D2C7B8", lineHeight: 1.55, margin: "6px 0 0" },
   textKh: { display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.8 },
-  textEn: { display: "block", marginTop: 3, color: "#BFB2A1", fontSize: 14 },
+  textEn: {
+    display: "block", marginTop: 9, paddingTop: 9,
+    color: "#BFB2A1", borderTop: "1px solid #80624C", fontSize: 14,
+  },
   actions: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12 },
   link: {
     display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 18px",
