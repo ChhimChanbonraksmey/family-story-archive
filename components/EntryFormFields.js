@@ -40,8 +40,8 @@ export default function EntryFormFields({
         disabled={disabled} lang="km" style={styles.input} {...accessibility("title_kh")} />
       {counter("title_kh")}
       <p style={styles.help}>
-        Include Khmer script; names, dates, and other terms may remain in their original form.
-        <span lang="km" style={styles.khmer}>សូមបញ្ចូលអក្សរខ្មែរ។ ឈ្មោះ កាលបរិច្ឆេទ និងពាក្យផ្សេងទៀតអាចរក្សាទម្រង់ដើមបាន។</span>
+        Write this in Khmer. Names, dates, and specific terms can stay in their original form.
+        <span lang="km" style={styles.khmer}>សូមសរសេរជាភាសាខ្មែរ។ ឈ្មោះ កាលបរិច្ឆេទ និងពាក្យជាក់លាក់អាចរក្សាទម្រង់ដើមបាន។</span>
       </p>
       {error("title_kh")}
 
@@ -64,8 +64,8 @@ export default function EntryFormFields({
         {...accessibility("description_kh")} />
       {counter("description_kh")}
       <p style={styles.help}>
-        Include Khmer script; names, dates, and other terms may remain in their original form.
-        <span lang="km" style={styles.khmer}>សូមបញ្ចូលអក្សរខ្មែរ។ ឈ្មោះ កាលបរិច្ឆេទ និងពាក្យផ្សេងទៀតអាចរក្សាទម្រង់ដើមបាន។</span>
+        Write this in Khmer. Names, dates, and specific terms can stay in their original form.
+        <span lang="km" style={styles.khmer}>សូមសរសេរជាភាសាខ្មែរ។ ឈ្មោះ កាលបរិច្ឆេទ និងពាក្យជាក់លាក់អាចរក្សាទម្រង់ដើមបាន។</span>
       </p>
       {error("description_kh")}
 
