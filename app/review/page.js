@@ -60,7 +60,7 @@ export default async function ReviewPage() {
   }
 
   const { data, error: queueError } = await supabase.from("entries")
-    .select("id, title, description, contributor_name, place, created_at, photo_url, photo_alt, photo_type")
+    .select("id, title, title_kh, description, description_kh, contributor_name, place, created_at, photo_url, photo_alt, photo_type")
     .eq("status", "pending")
     .order("created_at", { ascending: true });
   const entries = queueError ? [] : (data || []).map((entry) => ({

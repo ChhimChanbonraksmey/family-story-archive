@@ -20,7 +20,9 @@ const styles = {
   card: { display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none", backgroundColor: "#211C18", border: "1px solid #493A2D", borderRadius: 12 },
   status: { display: "inline-block", margin: "0 0 12px", padding: "7px 10px", borderRadius: 7, fontSize: 12, fontWeight: 700, letterSpacing: 1 },
   khmer: { display: "block", marginTop: 4, fontWeight: 400, letterSpacing: 0 },
-  entryTitle: { color: "#E7B86A", fontFamily: "Georgia, serif", fontSize: 26, margin: "0 0 10px" },
+  languageLabel: { color: "#B7623D", fontFamily: "'Courier New', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.2, margin: "0 0 6px" },
+  entryTitleKh: { color: "#E7B86A", fontFamily: "system-ui, sans-serif", fontSize: 26, lineHeight: 1.5, margin: "0 0 8px" },
+  entryTitleEn: { color: "#D8CCBC", fontFamily: "Georgia, serif", fontSize: 20, lineHeight: 1.4, margin: "0 0 10px" },
   place: { color: "#BFB2A1", margin: 0 },
   notice: { color: "#BFB2A1", lineHeight: 1.7, padding: "24px 0" },
   reviewNote: { marginTop: 16, padding: "14px 16px", color: "#D8CCBC", backgroundColor: "rgba(242, 166, 154, 0.08)", border: "1px solid rgba(242, 166, 154, 0.35)", borderRadius: 8, lineHeight: 1.7 },
@@ -39,7 +41,7 @@ export default async function MyEntriesPage() {
 
   if (user) {
     const result = await supabase.from("entries")
-      .select("id, title, place, status, created_at, review_note")
+      .select("id, title, title_kh, place, status, created_at, review_note")
       .eq("owner", user.id)
       .order("created_at", { ascending: false });
     entries = result.data || [];
@@ -82,7 +84,10 @@ export default async function MyEntriesPage() {
                   {label.english}
                   <span lang="km" style={styles.khmer}>{label.khmer}</span>
                 </p>
-                <h2 style={styles.entryTitle}>{entry.title}</h2>
+                <p style={styles.languageLabel}>ខ្មែរ</p>
+                <h2 lang="km" style={styles.entryTitleKh}>{entry.title_kh}</h2>
+                <p style={styles.languageLabel}>ENGLISH</p>
+                <p style={styles.entryTitleEn}>{entry.title}</p>
                 <p style={styles.place}>{entry.place}</p>
                 {entry.status === "returned" && entry.review_note ? (
                   <div style={styles.reviewNote}>
