@@ -17,11 +17,11 @@ export default function UpdatePasswordForm() {
     event.preventDefault();
     setFeedback("");
     if (password.length < 8) {
-      setFeedback("Use at least 8 characters for the new password.");
+      setFeedback("Use at least 8 characters for the new password.\nសូមប្រើយ៉ាងតិច ៨ តួអក្សរ សម្រាប់ពាក្យសម្ងាត់ថ្មី។");
       return;
     }
     if (password !== confirmation) {
-      setFeedback("The two passwords do not match.");
+      setFeedback("The two passwords do not match.\nពាក្យសម្ងាត់ទាំងពីរមិនដូចគ្នាទេ។");
       return;
     }
 
@@ -30,13 +30,13 @@ export default function UpdatePasswordForm() {
       const { error } = await createClient().auth.updateUser({ password });
       if (error) {
         console.error("Password update failed", error);
-        setFeedback("The password could not be changed. Request a new recovery link and try again.");
+        setFeedback("The password could not be changed. Request a new recovery link and try again.\nមិនអាចប្តូរពាក្យសម្ងាត់បានទេ។ សូមស្នើសុំតំណសង្គ្រោះថ្មី ហើយសាកល្បងម្តងទៀត។");
       } else {
         window.location.assign("/");
       }
     } catch (error) {
       console.error("Password update request failed", error);
-      setFeedback("The password could not be changed. Request a new recovery link and try again.");
+      setFeedback("The password could not be changed. Request a new recovery link and try again.\nមិនអាចប្តូរពាក្យសម្ងាត់បានទេ។ សូមស្នើសុំតំណសង្គ្រោះថ្មី ហើយសាកល្បងម្តងទៀត។");
     } finally {
       setBusy(false);
     }

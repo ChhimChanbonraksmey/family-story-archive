@@ -46,8 +46,8 @@ const styles = {
     fontWeight: 700,
     cursor: "pointer",
   },
-  error: { color: "#F2A69A", lineHeight: 1.5 },
-  success: { color: "#C7D5B1", lineHeight: 1.5 },
+  error: { color: "#F2A69A", lineHeight: 1.7, whiteSpace: "pre-line" },
+  success: { color: "#C7D5B1", lineHeight: 1.7, whiteSpace: "pre-line" },
   switch: { color: "#BFB2A1", marginTop: 24 },
   link: { color: "#D49A56" },
 };

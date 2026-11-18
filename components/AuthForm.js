@@ -13,7 +13,7 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
   const [password, setPassword] = useState("");
   const [feedback, setFeedback] = useState(
     confirmationFailed
-      ? { kind: "error", text: "That confirmation link could not be verified. Please try again." }
+      ? { kind: "error", text: "That confirmation link could not be verified. Please try again.\nតំណបញ្ជាក់នោះមិនអាចផ្ទៀងផ្ទាត់បានទេ។ សូមសាកល្បងម្តងទៀត។" }
       : null,
   );
   const [busy, setBusy] = useState(false);
@@ -24,8 +24,8 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
     const email = String(form.get("email") || "").trim();
     const password = String(form.get("password") || "");
     const failureText = isSignup
-      ? "Unable to sign up. Please check your details and try again."
-      : "Invalid email or password";
+      ? "Unable to sign up. Please check your details and try again.\nមិនអាចបង្កើតគណនីបានទេ។ សូមពិនិត្យព័ត៌មានរបស់អ្នក ហើយសាកល្បងម្តងទៀត។"
+      : "Invalid email or password.\nអ៊ីមែល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។";
 
     setFeedback(null);
     if (!email || !password) {
@@ -44,7 +44,10 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
         });
         if (error) setFeedback({ kind: "error", text: failureText });
         else if (data.session) window.location.assign(redirectTo);
-        else setFeedback({ kind: "success", text: "Check your email to confirm your account." });
+        else setFeedback({
+          kind: "success",
+          text: "Check your email to confirm your account.\nសូមពិនិត្យអ៊ីមែលរបស់អ្នក ដើម្បីបញ្ជាក់គណនី។",
+        });
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) setFeedback({ kind: "error", text: failureText });

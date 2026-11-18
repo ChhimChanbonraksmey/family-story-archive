@@ -41,7 +41,7 @@ const styles = {
     fontWeight: 700,
     cursor: "pointer",
   },
-  error: { color: "#F2A69A", fontSize: 14 },
+  error: { color: "#F2A69A", fontSize: 14, lineHeight: 1.7, whiteSpace: "pre-line" },
 };
 
 export default function AccountStatus() {
@@ -88,13 +88,13 @@ export default function AccountStatus() {
     setError("");
     try {
       const { error: signOutError } = await createClient().auth.signOut({ scope: "local" });
-      if (signOutError) setError("Could not log out. Please try again.");
+      if (signOutError) setError("Could not log out. Please try again.\nមិនអាចចាកចេញពីគណនីបានទេ។ សូមសាកល្បងម្តងទៀត។");
       else {
         setUser(null);
         setReviewer(false);
       }
     } catch {
-      setError("Could not log out. Please try again.");
+      setError("Could not log out. Please try again.\nមិនអាចចាកចេញពីគណនីបានទេ។ សូមសាកល្បងម្តងទៀត។");
     } finally {
       setBusy(false);
     }
