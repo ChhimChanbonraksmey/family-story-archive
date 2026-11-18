@@ -45,6 +45,8 @@ The workflow decisions I made include:
 
 The Lab 10 attacks confirmed that a stranger could not insert an already-published entry, promote their pending entry, add themselves as a reviewer, or use `review_entry` successfully. A logged-out request for unpublished entries returned an empty array. Lab 11 also confirmed that a non-reviewer saw only their own pending entry and received `data: false` when attempting to publish it through the review function. After reviewer notes were added, the non-reviewer publish and return attacks were repeated on November 13, 2026. Both returned `data: false`, and the entry remained pending without a review note.
 
+After bilingual story requirements and Khmer-script database constraints were added, I ran focused regression tests on November 18, 2026. Row Level Security still refused a bilingual entry that tried to insert itself as published, PostgreSQL rejected English-only values in the Khmer fields, `review_entry` returned `data: false` for a non-reviewer, and a logged-out query for unpublished entries returned an empty array. None of these tests created a surviving test entry.
+
 ## 5. AI use
 
 AI assisted with the project, but its output was reviewed rather than accepted automatically.
@@ -107,8 +109,8 @@ npm start
 ## 8. Submission checklist
 
 - Live URL loads logged out and shows published entries only: **yes**, [live archive](https://family-story-archive.vercel.app)
-- A stranger cannot publish their own entry through the page or the console: **yes**, tested during Lab 10 on October 24, 2026, and retested after the reviewer-note change on November 13, 2026
-- Logged out, the API returns nothing pending or returned: **yes**, tested during Lab 10 on October 24, 2026
+- A stranger cannot publish their own entry through the page or the console: **yes**, tested during Lab 10 on October 24, 2026, after the reviewer-note change on November 13, 2026, and after the bilingual constraints on November 18, 2026
+- Logged out, the API returns nothing pending or returned: **yes**, tested during Lab 10 on October 24, 2026, and retested on November 18, 2026
 - Contributors can edit and delete only their own entries: **yes**, enforced by the `entries` Row Level Security policies and ownership checks
 - No secrets anywhere in the repository history: **yes**, checked by searching the working tree and Git history on November 10, 2026
 - At least eight real entries, each with a credited source: **yes**, nine published entries with a Story source field
