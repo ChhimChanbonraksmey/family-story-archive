@@ -27,7 +27,7 @@ const styles = {
     padding: "28px 30px 30px",
   },
   numberRow: { display: "flex", alignItems: "center", gap: 10, margin: "0 0 12px" },
-  number: { flexShrink: 0, color: "#B7623D", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: 0 },
+  number: { flexShrink: 0, color: "#D49A56", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: 0 },
   numberDiamond: {
     width: 8, height: 8, border: "2px solid #E7B86A", transform: "rotate(45deg)",
     backgroundColor: "rgba(183, 98, 61, 0.16)", boxShadow: "0 0 7px rgba(231, 184, 106, 0.18)",

@@ -51,7 +51,7 @@ const styles = {
   },
   number: {
     flexShrink: 0,
-    color: "#B7623D",
+    color: "#D49A56",
     fontSize: 13,
     fontWeight: 700,
     letterSpacing: 1.5,

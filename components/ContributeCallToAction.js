@@ -19,6 +19,8 @@ const styles = {
     fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: 0,
   },
   text: { color: "#D2C7B8", lineHeight: 1.55, margin: "6px 0 0" },
+  textKh: { display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.8 },
+  textEn: { display: "block", marginTop: 3, color: "#BFB2A1", fontSize: 14 },
   actions: { display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12 },
   link: {
     display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 18px",
@@ -60,7 +62,12 @@ export default function ContributeCallToAction() {
       <div>
         <p style={styles.kicker}>SHARE A FAMILY STORY</p>
         <p style={styles.text}>
-          Contribute a new oral-history entry or follow the stories you have already submitted.
+          <span lang="km" style={styles.textKh}>
+            ចូលរួមបន្ថែមរឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ថ្មី ឬតាមដានរឿងរ៉ាវដែលអ្នកបានដាក់ស្នើរួច។
+          </span>
+          <span style={styles.textEn}>
+            Contribute a new oral-history entry or follow the stories you have already submitted.
+          </span>
         </p>
       </div>
       <div style={styles.actions}>
