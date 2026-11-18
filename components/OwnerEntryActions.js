@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { deleteOwnedEntry } from "../lib/entryMutations.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import interactive from "./interactive.module.css";
 
 const styles = {
@@ -41,9 +42,15 @@ export default function OwnerEntryActions({ entryId, photoUrl }) {
 
   return (
     <div style={styles.wrap} aria-label="Owner actions">
-      <Link href={`/entries/${entryId}/edit`} className={interactive.primary} style={styles.edit}>Edit story</Link>
+      <Link href={`/entries/${entryId}/edit`} className={interactive.primary} style={styles.edit}>
+        <BilingualActionLabel english="Edit story" khmer="កែសម្រួលរឿង" />
+      </Link>
       <button className={interactive.danger} type="button" onClick={remove} disabled={busy} style={styles.remove}>
-        {busy ? "Deleting…" : "Delete story"}
+        {busy ? (
+          <BilingualActionLabel english="Deleting…" khmer="កំពុងលុប…" />
+        ) : (
+          <BilingualActionLabel english="Delete story" khmer="លុបរឿង" />
+        )}
       </button>
       {error ? <p role="alert" style={styles.error}>{error}</p> : null}
     </div>

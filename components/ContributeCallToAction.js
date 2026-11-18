@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import interactive from "./interactive.module.css";
 
 const styles = {
@@ -74,10 +75,12 @@ export default function ContributeCallToAction() {
         </p>
       </div>
       <div style={styles.actions}>
-        <Link href={href} className={interactive.primary} style={styles.link}>Contribute a story</Link>
+        <Link href={href} className={interactive.primary} style={styles.link}>
+          <BilingualActionLabel english="Contribute a story" khmer="ចូលរួមរឿងរ៉ាវ" />
+        </Link>
         {user ? (
           <Link href="/my-entries" className={interactive.secondary} style={styles.secondaryLink}>
-            My entries
+            <BilingualActionLabel english="My entries" khmer="រឿងរបស់ខ្ញុំ" />
           </Link>
         ) : null}
       </div>

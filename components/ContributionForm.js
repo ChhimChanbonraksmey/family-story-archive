@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { inspectPhoto, validateEntryFields } from "../lib/entryValidation.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import EntryFormFields from "./EntryFormFields.js";
 import styles from "./contributeStyles.js";
 import interactive from "./interactive.module.css";
@@ -157,7 +158,11 @@ export default function ContributionForm() {
       ) : null}
       <button className={interactive.primary} type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
         style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
-        {busy ? "Saving story…" : "Add story to the archive"}
+        {busy ? (
+          <BilingualActionLabel english="Saving story…" khmer="កំពុងរក្សាទុករឿង…" />
+        ) : (
+          <BilingualActionLabel english="Add story to the archive" khmer="បន្ថែមរឿងទៅបណ្ណសារ" />
+        )}
       </button>
     </form>
   );

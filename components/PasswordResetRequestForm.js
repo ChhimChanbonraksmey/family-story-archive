@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 import interactive from "./interactive.module.css";
@@ -74,7 +75,11 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
           {feedback ? <p role={feedback.kind === "error" ? "alert" : "status"}
             style={feedback.kind === "error" ? styles.error : styles.success}>{feedback.text}</p> : null}
           <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
-            {busy ? "Sending…" : "Send reset link"}
+            {busy ? (
+              <BilingualActionLabel english="Sending…" khmer="កំពុងផ្ញើ…" />
+            ) : (
+              <BilingualActionLabel english="Send reset link" khmer="ផ្ញើតំណសង្គ្រោះ" />
+            )}
           </button>
         </form>
       </section>

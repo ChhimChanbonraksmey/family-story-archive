@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BilingualActionLabel from "../../components/BilingualActionLabel.js";
 import ContributionForm from "../../components/ContributionForm.js";
 import interactive from "../../components/interactive.module.css";
 import styles from "../../components/contributeStyles.js";
@@ -51,7 +52,9 @@ export default async function ContributePage() {
                 សូមចូលគណនី មុននឹងបន្ថែមរឿងរ៉ាវគ្រួសារ។
               </span>
             </p>
-            <Link href="/login" className={interactive.primary} style={styles.login}>Log in to contribute</Link>
+            <Link href="/login" className={interactive.primary} style={styles.login}>
+              <BilingualActionLabel english="Log in to contribute" khmer="ចូលគណនីដើម្បីចូលរួម" />
+            </Link>
           </>
         )}
       </section>

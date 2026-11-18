@@ -37,7 +37,7 @@ const styles = {
     pointerEvents: "none",
   },
   heroCornerSmall: {
-    position: "absolute", top: 81, right: 102, width: 36, height: 36,
+    position: "absolute", top: 92, right: 102, width: 36, height: 36,
     transform: "rotate(45deg)", opacity: 0.34,
     backgroundImage: "repeating-linear-gradient(45deg, #E7B86A 0 2px, transparent 2px 12px), repeating-linear-gradient(-45deg, #B7623D 0 2px, transparent 2px 12px)",
     filter: "drop-shadow(0 0 8px rgba(231, 184, 106, 0.14))",

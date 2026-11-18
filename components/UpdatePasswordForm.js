@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 import interactive from "./interactive.module.css";
@@ -65,7 +66,11 @@ export default function UpdatePasswordForm() {
             onClear={() => setConfirmation("")} clearLabel="Clear confirmation password" style={styles.input} />
           {feedback ? <p role="alert" style={styles.error}>{feedback}</p> : null}
           <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
-            {busy ? "Updating…" : "Update password"}
+            {busy ? (
+              <BilingualActionLabel english="Updating…" khmer="កំពុងកែប្រែ…" />
+            ) : (
+              <BilingualActionLabel english="Update password" khmer="កែប្រែពាក្យសម្ងាត់" />
+            )}
           </button>
         </form>
       </section>

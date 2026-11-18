@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 import interactive from "./interactive.module.css";
@@ -112,7 +113,13 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
             </p>
           )}
           <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
-            {busy ? "Please wait…" : isSignup ? "Sign up" : "Log in"}
+            {busy ? (
+              <BilingualActionLabel english="Please wait…" khmer="សូមរង់ចាំ…" />
+            ) : isSignup ? (
+              <BilingualActionLabel english="Sign up" khmer="បង្កើតគណនី" />
+            ) : (
+              <BilingualActionLabel english="Log in" khmer="ចូលគណនី" />
+            )}
           </button>
         </form>
         {!isSignup ? (

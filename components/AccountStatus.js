@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "../lib/supabase/client.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import interactive from "./interactive.module.css";
 
 const styles = {
@@ -108,7 +109,11 @@ export default function AccountStatus() {
         <>
           <span style={styles.email}>{user.email}</span>
           <button className={interactive.quiet} type="button" onClick={handleLogout} disabled={busy} style={styles.button}>
-            {busy ? "Logging out…" : "Log out"}
+            {busy ? (
+              <BilingualActionLabel english="Logging out…" khmer="កំពុងចាកចេញ…" />
+            ) : (
+              <BilingualActionLabel english="Log out" khmer="ចាកចេញ" />
+            )}
           </button>
           {reviewer ? (
             <Link
@@ -122,8 +127,12 @@ export default function AccountStatus() {
         </>
       ) : (
         <>
-          <Link href="/login" style={styles.link}>Log in</Link>
-          <Link href="/signup" className={interactive.primary} style={styles.signup}>Sign up</Link>
+          <Link href="/login" style={styles.link}>
+            <BilingualActionLabel english="Log in" khmer="ចូលគណនី" />
+          </Link>
+          <Link href="/signup" className={interactive.primary} style={styles.signup}>
+            <BilingualActionLabel english="Sign up" khmer="បង្កើតគណនី" />
+          </Link>
         </>
       )}
       {error && <span role="alert" style={styles.error}>{error}</span>}
