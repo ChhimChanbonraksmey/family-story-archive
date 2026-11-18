@@ -39,6 +39,10 @@ export default function EntryFormFields({
         onClear={() => onClear("title_kh")} clearLabel="Clear Khmer story title / លុបចំណងជើងរឿងជាភាសាខ្មែរ"
         disabled={disabled} lang="km" style={styles.input} {...accessibility("title_kh")} />
       {counter("title_kh")}
+      <p style={styles.help}>
+        Include Khmer script; names, dates, and other terms may remain in their original form.
+        <span lang="km" style={styles.khmer}>សូមបញ្ចូលអក្សរខ្មែរ។ ឈ្មោះ កាលបរិច្ឆេទ និងពាក្យផ្សេងទៀតអាចរក្សាទម្រង់ដើមបាន។</span>
+      </p>
       {error("title_kh")}
 
       <label htmlFor="title" style={styles.label}>
@@ -59,6 +63,10 @@ export default function EntryFormFields({
         style={{ ...styles.input, ...styles.textarea, ...styles.story }}
         {...accessibility("description_kh")} />
       {counter("description_kh")}
+      <p style={styles.help}>
+        Include Khmer script; names, dates, and other terms may remain in their original form.
+        <span lang="km" style={styles.khmer}>សូមបញ្ចូលអក្សរខ្មែរ។ ឈ្មោះ កាលបរិច្ឆេទ និងពាក្យផ្សេងទៀតអាចរក្សាទម្រង់ដើមបាន។</span>
+      </p>
       {error("description_kh")}
 
       <label htmlFor="description" style={styles.label}>
