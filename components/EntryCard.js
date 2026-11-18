@@ -28,8 +28,11 @@ const styles = {
   },
   numberRow: { display: "flex", alignItems: "center", gap: 10, margin: "0 0 12px" },
   number: { flexShrink: 0, color: "#B7623D", fontSize: 12, fontWeight: 700, letterSpacing: 1.5, margin: 0 },
-  numberDiamond: { width: 7, height: 7, border: "1px solid #D49A56", transform: "rotate(45deg)" },
-  numberLine: { height: 1, flex: 1, background: "linear-gradient(90deg, #6A4634, transparent)" },
+  numberDiamond: {
+    width: 8, height: 8, border: "2px solid #E7B86A", transform: "rotate(45deg)",
+    backgroundColor: "rgba(183, 98, 61, 0.16)", boxShadow: "0 0 7px rgba(231, 184, 106, 0.18)",
+  },
+  numberLine: { height: 2, flex: 1, background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.08), transparent)" },
   languageLabel: {
     color: "#B7623D",
     fontFamily: "'Courier New', monospace",
@@ -55,7 +58,7 @@ const styles = {
   englishSection: {
     marginTop: 22,
     paddingTop: 18,
-    borderTop: "1px solid #493A2D",
+    borderTop: "2px solid #6A5140",
   },
   titleEn: {
     color: "#E7B86A",

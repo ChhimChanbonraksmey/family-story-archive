@@ -19,7 +19,7 @@ const reviewStyles = {
   languageLabel: { color: "#B7623D", fontFamily: "'Courier New', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.2, margin: "0 0 6px" },
   englishDivider: { marginTop: 16, paddingTop: 16, borderTop: "2px solid #80624C" },
   titleKh: { color: "#E7B86A", fontFamily: "system-ui, sans-serif", fontSize: 28, lineHeight: 1.5, margin: "0 0 8px" },
-  titleEn: { color: "#D8CCBC", fontFamily: "Georgia, serif", fontSize: 22, lineHeight: 1.4, margin: "0 0 16px" },
+  titleEn: { color: "#E7B86A", fontFamily: "Georgia, serif", fontSize: 22, lineHeight: 1.4, margin: "0 0 16px" },
   photo: { display: "block", boxSizing: "border-box", width: "100%", maxHeight: 520, objectFit: "contain", padding: 6, backgroundColor: "#0F0D0B", border: "1px solid #6A5140", borderRadius: 9 },
   label: { color: "#D49A56", fontFamily: "'Courier New', monospace", fontSize: 14, fontWeight: 700, lineHeight: 1.6, letterSpacing: 0.7, margin: "22px 0 6px", textTransform: "uppercase" },
   storyDivider: { marginTop: 28, paddingTop: 20, borderTop: "2px solid #80624C" },

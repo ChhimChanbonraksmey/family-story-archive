@@ -46,12 +46,24 @@ const styles = {
     borderRadius: 14,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05), 0 20px 50px rgba(0, 0, 0, 0.18)",
   },
+  numberRow: {
+    display: "flex", alignItems: "center", gap: 11, margin: "0 0 18px",
+  },
   number: {
+    flexShrink: 0,
     color: "#B7623D",
     fontSize: 13,
     fontWeight: 700,
     letterSpacing: 1.5,
-    margin: "0 0 14px",
+    margin: 0,
+  },
+  numberDiamond: {
+    width: 9, height: 9, border: "2px solid #E7B86A", transform: "rotate(45deg)",
+    backgroundColor: "rgba(183, 98, 61, 0.16)", boxShadow: "0 0 7px rgba(231, 184, 106, 0.18)",
+  },
+  numberLine: {
+    height: 2, flex: 1,
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.18), transparent)",
   },
   title: {
     color: "#E7B86A",
@@ -76,7 +88,7 @@ const styles = {
     margin: "0 0 12px",
   },
   titleEn: {
-    color: "#D2C7B8",
+    color: "#E7B86A",
     fontFamily: "Georgia, 'Times New Roman', serif",
     fontSize: "clamp(24px, 4vw, 36px)",
     lineHeight: 1.3,
@@ -210,10 +222,13 @@ export default async function EntryPage({ params }) {
           </div>
         ) : null}
         <div style={styles.story}>
-          <p style={styles.number}>ARCHIVE ENTRY {entryNumber}</p>
+          <div style={styles.numberRow}>
+            <p style={styles.number}>ARCHIVE ENTRY {entryNumber}</p>
+            <span aria-hidden="true" style={styles.numberDiamond} />
+            <span aria-hidden="true" style={styles.numberLine} />
+          </div>
           {entry.title_kh ? (
             <>
-              <p lang="km" style={styles.languageLabel}>ខ្មែរ</p>
               <h1 lang="km" style={styles.titleKh}>{entry.title_kh}</h1>
               <p style={styles.titleEn}>{entry.title}</p>
             </>

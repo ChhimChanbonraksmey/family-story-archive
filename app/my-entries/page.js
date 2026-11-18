@@ -36,7 +36,7 @@ const styles = {
   languageLabel: { color: "#B7623D", fontFamily: "'Courier New', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.2, margin: "0 0 6px" },
   entryTitleKh: { color: "#E7B86A", fontFamily: "system-ui, sans-serif", fontSize: 26, lineHeight: 1.5, margin: "0 0 8px" },
   englishLabel: { marginTop: 14, paddingTop: 14, borderTop: "2px solid #6A5140" },
-  entryTitleEn: { color: "#D8CCBC", fontFamily: "Georgia, serif", fontSize: 20, lineHeight: 1.4, margin: "0 0 10px" },
+  entryTitleEn: { color: "#E7B86A", fontFamily: "Georgia, serif", fontSize: 20, lineHeight: 1.4, margin: "0 0 10px" },
   place: { color: "#BFB2A1", margin: 0 },
   notice: { color: "#BFB2A1", lineHeight: 1.7, padding: "24px 0" },
   reviewNote: { marginTop: 16, padding: "14px 16px", color: "#D8CCBC", backgroundColor: "rgba(242, 166, 154, 0.08)", border: "1px solid rgba(242, 166, 154, 0.35)", borderRadius: 8, lineHeight: 1.7 },

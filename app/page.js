@@ -127,12 +127,14 @@ const styles = {
   ornamentLine: {
     height: 2,
     flex: 1,
-    background: "linear-gradient(90deg, #D17A50, rgba(231, 184, 106, 0.24))",
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.18), transparent)",
   },
   ornamentDiamond: {
-    width: 9,
-    height: 9,
-    border: "1px solid #D49A56",
+    width: 10,
+    height: 10,
+    border: "2px solid #E7B86A",
+    backgroundColor: "rgba(183, 98, 61, 0.16)",
+    boxShadow: "0 0 7px rgba(231, 184, 106, 0.18)",
     transform: "rotate(45deg)",
   },
   count: {
