@@ -12,11 +12,20 @@
 }
 
 .arrow {
-  color: #f2c879;
-  font-family: "Times New Roman", serif;
-  font-size: 23px;
-  font-weight: 500;
-  line-height: 1;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid #f2c879;
+  border-right: 2px solid #f2c879;
+  flex: 0 0 auto;
+}
+
+.arrowLeft {
+  transform: rotate(-135deg);
+}
+
+.arrowRight {
+  transform: rotate(45deg);
 }
 
 .arrow:first-child {
