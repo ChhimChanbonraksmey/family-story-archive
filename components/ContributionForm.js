@@ -159,9 +159,9 @@ export default function ContributionForm() {
       <button className={interactive.primary} type="submit" disabled={busy || checkingPhoto || Boolean(errors.photo)}
         style={{ ...styles.button, ...((busy || checkingPhoto || errors.photo) ? styles.buttonDisabled : {}) }}>
         {busy ? (
-          <BilingualActionLabel english="Saving story…" khmer="កំពុងរក្សាទុករឿង…" />
+          <BilingualActionLabel english="Saving story…" khmer="កំពុងរក្សាទុករឿង…" khmerStyle={styles.submitKhmer} />
         ) : (
-          <BilingualActionLabel english="Add story to the archive" khmer="បន្ថែមរឿងទៅបណ្ណសារ" />
+          <BilingualActionLabel english="Add story to the archive" khmer="បន្ថែមរឿងទៅបណ្ណសារ" khmerStyle={styles.submitKhmer} />
         )}
       </button>
     </form>

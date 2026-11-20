@@ -70,6 +70,7 @@ const styles = {
     fontSize: 16, fontWeight: 700, cursor: "pointer",
   },
   buttonDisabled: { cursor: "wait", opacity: 0.65 },
+  submitKhmer: { color: "#211C18", fontSize: 16, fontWeight: 700, lineHeight: 1.5 },
   login: {
     display: "inline-flex", alignItems: "center", minHeight: 44,
     marginTop: 12, padding: "0 16px", color: "#171411",

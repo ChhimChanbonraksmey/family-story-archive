@@ -3,6 +3,7 @@ import {
 } from "../lib/entryValidation.js";
 import ClearableInput from "./ClearableInput.js";
 import styles from "./contributeStyles.js";
+import fieldStyles from "./EntryFormFields.module.css";
 
 function FieldLabel({ khmer, english }) {
   return (
@@ -117,12 +118,15 @@ export default function EntryFormFields({
       <label htmlFor="photo_type" style={styles.label}>
         <FieldLabel khmer="ប្រភេទរូបភាព" english="Kind of image" />
       </label>
-      <select id="photo_type" name="photo_type" value={values.photo_type}
-        onChange={onChange} disabled={disabled} style={styles.input}
-        {...accessibility("photo_type")}>
-        <option value="">ជ្រើសរើសប្រភេទរូបភាព / Choose an image type</option>
-        {PHOTO_TYPES.map((type) => <option key={type} value={type}>{PHOTO_TYPE_LABELS[type]}</option>)}
-      </select>
+      <span className={fieldStyles.selectWrap}>
+        <select id="photo_type" name="photo_type" value={values.photo_type}
+          onChange={onChange} disabled={disabled} style={styles.input}
+          className={fieldStyles.select} {...accessibility("photo_type")}>
+          <option value="" disabled hidden>ជ្រើសរើសប្រភេទរូបភាព / Choose an image type</option>
+          {PHOTO_TYPES.map((type) => <option key={type} value={type}>{PHOTO_TYPE_LABELS[type]}</option>)}
+        </select>
+        <span className={fieldStyles.arrow} aria-hidden="true" />
+      </span>
       <p style={styles.help}>
         <span lang="km" style={{ ...styles.khmer, marginTop: 0 }}>
           រូបភាព និងរូបគំនូរដែលបង្កើតដោយ AI នឹងត្រូវបានដាក់ស្លាកឱ្យច្បាស់នៅក្នុងបណ្ណសារ។
