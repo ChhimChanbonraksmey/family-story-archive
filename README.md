@@ -118,9 +118,9 @@ npm start
 - Works at phone width: **yes**, tested on an iPhone 15 Pro Max using Chrome on mobile data
 - No test entries, lorem ipsum, or TODO comments in shipped pages: **yes**, checked in the repository, Supabase data, and published entry list on November 13, 2026
 - No console errors on the main pages: **yes**, checked on November 13, 2026
-- `jessicaonoff` is a collaborator on this repository: **yes**
-- Supabase project restored and awake on November 13, 2026: **yes**
-- Demo video link opens in a private window: **not completed yet**
-- Reflection pasted in the Canvas submission: **not completed yet**
+- `jesseorndorff` is a collaborator on this repository: **yes**
+- Supabase project restored and awake on November 20, 2026: **yes**
+- Demo video link opens in a private window: **yes**, included with the final submission
+- Reflection pasted in the Canvas submission: **yes**
 - Posted in the Show Your Archive discussion: **yes**
-- Q&A slot booked: **not completed yet**
+- Q&A slot booked: **yes**, December 1, 2026, from 9:40–9:45 AM (Phnom Penh time)
