@@ -33,7 +33,8 @@ const styles = {
     position: "absolute", left: 18, bottom: 18, maxWidth: "calc(100% - 68px)",
     padding: "8px 11px", color: "#F1DFC2",
     backgroundColor: "rgba(23, 20, 17, 0.92)", border: "1px solid #6A5140",
-    borderRadius: 6, fontSize: 12, fontWeight: 700,
+    borderRadius: 6, fontFamily: "system-ui, sans-serif",
+    fontSize: 13, fontWeight: 700, lineHeight: 1.6, letterSpacing: 0.1,
   },
   story: {
     maxWidth: 760,

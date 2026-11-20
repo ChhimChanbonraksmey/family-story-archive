@@ -100,11 +100,16 @@ const styles = {
   cardLabel: {
     fontFamily: "'Courier New', monospace",
     fontSize: 12,
-    color: "#B7623D",
+    color: "#E7B86A",
     fontWeight: 700,
     letterSpacing: 1.5,
     margin: 0,
   },
+  cardLabelKhmer: {
+    color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 14, fontWeight: 700, letterSpacing: 0,
+  },
+  cardLabelEnglish: { fontSize: 12, letterSpacing: 1.2 },
   cardValue: {
     fontSize: 16,
     margin: "6px 0 0",
@@ -245,11 +250,17 @@ export default function Home() {
 
       <div style={styles.archiveInfo}>
         <div style={styles.card}>
-          <p style={styles.cardLabel}><span lang="km">រៀបចំដោយ</span> / CURATED BY:</p>
+          <p style={styles.cardLabel}>
+            <span lang="km" style={styles.cardLabelKhmer}>រៀបចំដោយ</span>
+            <span style={styles.cardLabelEnglish}> / CURATED BY:</span>
+          </p>
           <p style={styles.cardValue}>{collection.curator}</p>
         </div>
         <div style={styles.card}>
-          <p style={styles.cardLabel}><span lang="km">ប្រភព</span> / SOURCE:</p>
+          <p style={styles.cardLabel}>
+            <span lang="km" style={styles.cardLabelKhmer}>ប្រភព</span>
+            <span style={styles.cardLabelEnglish}> / SOURCE:</span>
+          </p>
           <p style={styles.cardValue}>{collection.source}</p>
         </div>
       </div>

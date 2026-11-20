@@ -18,10 +18,11 @@ const styles = {
   },
   imageWrap: { position: "relative", borderBottom: "1px solid #6A5140" },
   imageLabel: {
-    position: "absolute", left: 16, bottom: 16, padding: "7px 10px",
+    position: "absolute", left: 16, bottom: 16, maxWidth: "calc(100% - 52px)", padding: "8px 11px",
     color: "#F1DFC2", backgroundColor: "rgba(23, 20, 17, 0.9)",
     border: "1px solid #6A5140", borderRadius: 6,
-    fontSize: 11, fontWeight: 700, letterSpacing: 0.8,
+    fontFamily: "system-ui, sans-serif", fontSize: 12, fontWeight: 700,
+    lineHeight: 1.55, letterSpacing: 0.1,
   },
   body: {
     padding: "28px 30px 30px",
