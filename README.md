@@ -120,7 +120,7 @@ npm start
 - No console errors on the main pages: **yes**, checked on November 13, 2026
 - `jesseorndorff` is a collaborator on this repository: **yes**
 - Supabase project restored and awake on November 20, 2026: **yes**
-- Demo video link opens in a private window: **yes**, included with the final submission
+- Demo video link opens in a private window: **yes**, [watch the demo video](https://drive.google.com/file/d/1EugPgnC1-XlgXJ21Z_iMXsWBegWaaI2q/view?usp=sharing)
 - Reflection pasted in the Canvas submission: **yes**
 - Posted in the Show Your Archive discussion: **yes**
 - Q&A slot booked: **yes**, December 1, 2026, from 9:40–9:45 AM (Phnom Penh time)
