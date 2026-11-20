@@ -300,11 +300,13 @@ export default function SearchableEntryList({
 
       {filteredEntries.length === 0 ? (
         <p style={styles.empty}>
-          We couldn’t find a family story among these choices. Try another
-          title, place, contributor, or province.
-          <span lang="km" style={styles.khmer}>
+          <span lang="km" style={{ ...styles.khmer, marginTop: 0 }}>
             យើងរកមិនឃើញរឿងរ៉ាវគ្រួសារតាមជម្រើសទាំងនេះទេ។ សូមសាកល្បងចំណងជើង
             ទីកន្លែង អ្នកផ្តល់រឿង ឬខេត្តផ្សេងទៀត។
+          </span>
+          <span style={styles.messageEn}>
+            We couldn’t find a family story among these choices. Try another
+            title, place, contributor, or province.
           </span>
         </p>
       ) : null}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
 import { PHOTO_TYPE_LABELS } from "../lib/entryValidation.js";
 import ClearableInput from "./ClearableInput.js";
+import BilingualActionLabel from "./BilingualActionLabel.js";
 import styles from "./reviewStyles.js";
 import interactive from "./interactive.module.css";
 
@@ -95,47 +96,55 @@ export default function ReviewQueue({ initialEntries }) {
             <p style={styles.titleEn}>{entry.title}</p>
             <img src={entry.photo_url} alt={entry.photo_alt} style={styles.photo} />
             <p style={styles.label}>
-              Image type / <span lang="km" style={styles.labelKhmer}>ប្រភេទរូបភាព</span>
+              <span lang="km" style={styles.labelKhmer}>ប្រភេទរូបភាព</span>
+              <span style={styles.labelEnglish}>IMAGE TYPE</span>
             </p>
             <p style={styles.value}>{PHOTO_TYPE_LABELS[entry.photo_type] || entry.photo_type}</p>
             <p style={styles.label}>
-              Image description / <span lang="km" style={styles.labelKhmer}>ការពិពណ៌នារូបភាព</span>
+              <span lang="km" style={styles.labelKhmer}>ការពិពណ៌នារូបភាព</span>
+              <span style={styles.labelEnglish}>IMAGE DESCRIPTION</span>
             </p>
             <p style={styles.value}>{entry.photo_alt}</p>
             <p style={styles.label}>
-              Khmer oral-history story / <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ</span>
+              <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ</span>
+              <span style={styles.labelEnglish}>KHMER ORAL-HISTORY STORY</span>
             </p>
             <p lang="km" style={styles.story}>{entry.description_kh}</p>
             <p style={{ ...styles.label, ...styles.storyDivider }}>
-              English oral-history story / <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាអង់គ្លេស</span>
+              <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាអង់គ្លេស</span>
+              <span style={styles.labelEnglish}>ENGLISH ORAL-HISTORY STORY</span>
             </p>
             <p style={styles.story}>{entry.description}</p>
             <p style={styles.label}>
-              Story source / <span lang="km" style={styles.labelKhmer}>ប្រភពរឿងរ៉ាវ</span>
+              <span lang="km" style={styles.labelKhmer}>ប្រភពរឿងរ៉ាវ</span>
+              <span style={styles.labelEnglish}>STORY SOURCE</span>
             </p>
             <p style={styles.value}>{entry.contributor_name}</p>
             <p style={styles.label}>
-              Place / <span lang="km" style={styles.labelKhmer}>ទីកន្លែង</span>
+              <span lang="km" style={styles.labelKhmer}>ទីកន្លែង</span>
+              <span style={styles.labelEnglish}>PLACE</span>
             </p>
             <p style={styles.value}>{entry.place}</p>
             <p style={styles.label}>
-              Submitted / <span lang="km" style={styles.labelKhmer}>បានដាក់ស្នើ</span>
+              <span lang="km" style={styles.labelKhmer}>បានដាក់ស្នើ</span>
+              <span style={styles.labelEnglish}>SUBMITTED</span>
             </p>
             <p style={styles.value}>{entry.submittedLabel}</p>
             <div style={styles.actions}>
               <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => decide(entry.id, "published")}
                 style={{ ...styles.button, ...styles.publish, ...(busy ? styles.disabled : {}) }}>
-                Publish / <span lang="km">បោះពុម្ពផ្សាយ</span>
+                <BilingualActionLabel english="Publish" khmer="បោះពុម្ពផ្សាយ" />
               </button>
               <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => openReturnForm(entry.id)}
                 style={{ ...styles.button, ...styles.return, ...(busy ? styles.disabled : {}) }}>
-                Return for changes / <span lang="km">ផ្ញើត្រឡប់ឱ្យកែសម្រួល</span>
+                <BilingualActionLabel english="Return for changes" khmer="ផ្ញើត្រឡប់ឱ្យកែសម្រួល" />
               </button>
             </div>
             {returningId === entry.id ? (
               <div style={styles.notePanel}>
                 <label htmlFor={`review-note-${entry.id}`} style={styles.noteLabel}>
-                  Reviewer’s note / <span lang="km" style={styles.noteLabelKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                  <span lang="km" style={styles.noteLabelKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                  <span style={styles.noteLabelEnglish}>Reviewer’s note</span>
                 </label>
                 <p style={styles.noteHelp}>
                   Explain what the contributor should change before resubmitting.
@@ -170,7 +179,7 @@ export default function ReviewQueue({ initialEntries }) {
                     onClick={() => confirmReturn(entry.id)}
                     style={{ ...styles.button, ...styles.confirmReturn, ...(busy ? styles.disabled : {}) }}
                   >
-                    Confirm return / <span lang="km">បញ្ជាក់ការផ្ញើត្រឡប់</span>
+                    <BilingualActionLabel english="Confirm return" khmer="បញ្ជាក់ការផ្ញើត្រឡប់" />
                   </button>
                   <button
                     className={interactive.reviewAction}
@@ -179,7 +188,7 @@ export default function ReviewQueue({ initialEntries }) {
                     onClick={cancelReturn}
                     style={{ ...styles.button, ...styles.cancel, ...(busy ? styles.disabled : {}) }}
                   >
-                    Cancel / <span lang="km">បោះបង់</span>
+                    <BilingualActionLabel english="Cancel" khmer="បោះបង់" />
                   </button>
                 </div>
               </div>

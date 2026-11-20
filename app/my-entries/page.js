@@ -33,7 +33,8 @@ const styles = {
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04), 0 12px 30px rgba(0, 0, 0, 0.16)",
   },
   status: { display: "inline-block", margin: "0 0 12px", padding: "7px 10px", borderRadius: 7, fontSize: 12, fontWeight: 700, letterSpacing: 1 },
-  khmer: { display: "block", marginTop: 4, fontWeight: 400, letterSpacing: 0 },
+  khmer: { display: "block", fontWeight: 700, letterSpacing: 0 },
+  statusEnglish: { display: "block", marginTop: 4, fontSize: 11 },
   languageLabel: { color: "#B7623D", fontFamily: "'Courier New', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1.2, margin: "0 0 6px" },
   entryTitleKh: { color: "#E7B86A", fontFamily: "system-ui, sans-serif", fontSize: 26, lineHeight: 1.5, margin: "0 0 8px" },
   englishLabel: { marginTop: 14, paddingTop: 14, borderTop: "2px solid #6A5140" },
@@ -42,7 +43,8 @@ const styles = {
   notice: { color: "#BFB2A1", lineHeight: 1.7, padding: "24px 0" },
   reviewNote: { marginTop: 16, padding: "14px 16px", color: "#D8CCBC", backgroundColor: "rgba(242, 166, 154, 0.08)", border: "1px solid rgba(242, 166, 154, 0.35)", borderRadius: 8, lineHeight: 1.7 },
   reviewNoteLabel: { display: "block", color: "#F2A69A", fontSize: 13, fontWeight: 700, marginBottom: 5 },
-  reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif", marginTop: 2 },
+  reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif" },
+  reviewNoteEnglish: { display: "block", marginTop: 3, fontSize: 12 },
   login: { display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 16px", color: "#171411", backgroundColor: "#E7B86A", borderRadius: 8, textDecoration: "none", fontWeight: 700 },
 };
 
@@ -100,8 +102,8 @@ export default async function MyEntriesPage() {
                 style={{ ...styles.card, borderLeft: `4px solid ${label.color}` }}
               >
                 <p style={{ ...styles.status, color: label.color, backgroundColor: label.tint }}>
-                  {label.english}
                   <span lang="km" style={styles.khmer}>{label.khmer}</span>
+                  <span style={styles.statusEnglish}>{label.english}</span>
                 </p>
                 <p style={styles.languageLabel}>ខ្មែរ</p>
                 <h2 lang="km" style={styles.entryTitleKh}>{entry.title_kh}</h2>
@@ -111,8 +113,8 @@ export default async function MyEntriesPage() {
                 {entry.status === "returned" && entry.review_note ? (
                   <div style={styles.reviewNote}>
                     <span style={styles.reviewNoteLabel}>
-                      Reviewer’s note
                       <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                      <span style={styles.reviewNoteEnglish}>Reviewer’s note</span>
                     </span>
                     {entry.review_note}
                   </div>

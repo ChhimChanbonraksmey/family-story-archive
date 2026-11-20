@@ -121,7 +121,7 @@ export default function AccountStatus() {
               className={interactive.reviewQueue}
               style={styles.reviewLink}
             >
-              Review queue
+              <BilingualActionLabel english="Review queue" khmer="ជួររង់ចាំពិនិត្យ" />
             </Link>
           ) : null}
         </>

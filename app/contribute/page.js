@@ -23,34 +23,36 @@ export default async function ContributePage() {
         {accountUnavailable ? (
           <>
             <p role="alert" style={styles.intro}>
-              We could not check your account right now. Your session may still be active.
-              Please try again shortly.
               <span lang="km" style={styles.khmer}>
                 យើងមិនអាចពិនិត្យគណនីរបស់អ្នកបាននៅពេលនេះទេ។ សម័យចូលគណនីរបស់អ្នក
                 អាចនៅតែសកម្ម។ សូមសាកល្បងម្តងទៀតបន្តិចទៀត។
               </span>
+              We could not check your account right now. Your session may still be active.
+              Please try again shortly.
             </p>
-            <a href="/contribute" className={interactive.primary} style={styles.login}>Try again</a>
+            <a href="/contribute" className={interactive.primary} style={styles.login}>
+              <BilingualActionLabel english="Try again" khmer="ព្យាយាមម្តងទៀត" />
+            </a>
           </>
         ) : user ? (
           <>
             <p style={styles.intro}>
-              Preserve an oral-history entry in both Khmer and English. Every field is reviewed
-              before the story and its image are saved.
               <span lang="km" style={styles.khmer}>
                 អ្នកអាចរក្សាទុករឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ និងភាសាអង់គ្លេស។
                 ព័ត៌មាននីមួយៗ និងរូបភាពនឹងត្រូវបានពិនិត្យមុនពេលរក្សាទុក។
               </span>
+              Preserve an oral-history entry in both Khmer and English. Every field is reviewed
+              before the story and its image are saved.
             </p>
             <ContributionForm />
           </>
         ) : (
           <>
             <p style={styles.intro}>
-              Please log in before contributing a family story.
               <span lang="km" style={{ display: "block" }}>
                 សូមចូលគណនី មុននឹងបន្ថែមរឿងរ៉ាវគ្រួសារ។
               </span>
+              Please log in before contributing a family story.
             </p>
             <Link href="/login" className={interactive.primary} style={styles.login}>
               <BilingualActionLabel english="Log in to contribute" khmer="ចូលគណនីដើម្បីចូលរួម" />

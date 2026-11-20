@@ -18,6 +18,8 @@ const styles = {
   },
   intro: { color: "#BFB2A1", lineHeight: 1.7, marginBottom: 30 },
   label: { display: "block", color: "#F1DFC2", fontWeight: 700, margin: "22px 0 8px" },
+  labelKhmer: { display: "block", fontFamily: "system-ui, sans-serif", fontSize: 15, lineHeight: 1.55 },
+  labelEnglish: { display: "block", marginTop: 2, color: "#BFB2A1", fontSize: 13, lineHeight: 1.45 },
   input: {
     boxSizing: "border-box", width: "100%", padding: 12, color: "#F1DFC2",
     backgroundColor: "rgba(33, 28, 24, 0.96)", border: "1px solid #6A5140",
@@ -28,6 +30,7 @@ const styles = {
   story: { minHeight: 260 },
   help: { color: "#9F9182", fontSize: 13, lineHeight: 1.5, margin: "7px 0 0" },
   khmer: { display: "block", marginTop: 4, color: "#BFB2A1", fontSize: 14, fontWeight: 400, lineHeight: 1.6 },
+  helpEnglish: { display: "block", marginTop: 4 },
   count: { color: "#9F9182", fontSize: 12, textAlign: "right", margin: "6px 0 0" },
   countError: { color: "#F2A69A", fontWeight: 700 },
   error: { color: "#F2A69A", fontSize: 14, lineHeight: 1.5, margin: "7px 0 0" },

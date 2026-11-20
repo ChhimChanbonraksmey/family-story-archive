@@ -4,15 +4,16 @@ const styles = {
     justifyContent: "center", lineHeight: 1.25,
   },
   khmer: {
-    fontFamily: "system-ui, sans-serif", fontSize: 12, fontWeight: 700,
+    fontFamily: "system-ui, sans-serif", fontSize: 14, fontWeight: 700,
   },
+  english: { marginTop: 2, fontSize: 13, fontWeight: 700 },
 };
 
 export default function BilingualActionLabel({ english, khmer }) {
   return (
     <span style={styles.wrap}>
-      <span>{english}</span>
       <span lang="km" style={styles.khmer}>{khmer}</span>
+      <span style={styles.english}>{english}</span>
     </span>
   );
 }

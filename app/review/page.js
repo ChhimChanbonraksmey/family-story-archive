@@ -31,6 +31,8 @@ const styles = {
     fontSize: "clamp(34px, 6vw, 52px)",
     margin: "0 0 18px",
   },
+  titleKhmer: { display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.45 },
+  titleEnglish: { display: "block", marginTop: 3, color: "#D8CCBC", fontSize: "0.62em" },
   intro: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 28px" },
   message: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 8px" },
   khmer: { color: "#BFB2A1", lineHeight: 1.8, margin: "0 0 24px" },
@@ -47,12 +49,15 @@ export default async function ReviewPage() {
     return (
       <main style={styles.main}>
         <section style={styles.panel} aria-labelledby="review-access-heading">
-          <h1 id="review-access-heading" style={styles.title}>Review access only</h1>
-          <p style={styles.message}>
-            This page is available only to authorized reviewers.
-          </p>
-          <p lang="km" style={styles.khmer}>
+          <h1 id="review-access-heading" style={styles.title}>
+            <span lang="km" style={styles.titleKhmer}>សម្រាប់អ្នកពិនិត្យតែប៉ុណ្ណោះ</span>
+            <span style={styles.titleEnglish}>Review access only</span>
+          </h1>
+          <p lang="km" style={{ ...styles.khmer, margin: "0 0 8px" }}>
             សម្រាប់អ្នកពិនិត្យតែប៉ុណ្ណោះ។ ទំព័រនេះអាចប្រើបានសម្រាប់តែអ្នកពិនិត្យដែលបានអនុញ្ញាតប៉ុណ្ណោះ។
+          </p>
+          <p style={{ ...styles.message, margin: "0 0 24px" }}>
+            This page is available only to authorized reviewers.
           </p>
           <Link href="/" style={styles.link}>Return to the family archive →</Link>
         </section>
@@ -80,8 +85,16 @@ export default async function ReviewPage() {
         ← Back to archive
       </Link>
       <section style={styles.panel}>
-        <h1 style={styles.title}>Review queue</h1>
-        <p style={styles.intro}>Pending family stories are shown oldest first.</p>
+        <h1 style={styles.title}>
+          <span lang="km" style={styles.titleKhmer}>ជួររង់ចាំពិនិត្យ</span>
+          <span style={styles.titleEnglish}>Review queue</span>
+        </h1>
+        <p style={styles.intro}>
+          <span lang="km" style={{ display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.8 }}>
+            រឿងរ៉ាវគ្រួសារដែលកំពុងរង់ចាំការពិនិត្យ ត្រូវបានបង្ហាញពីរឿងចាស់បំផុតមុន។
+          </span>
+          <span style={{ display: "block", marginTop: 4 }}>Pending family stories are shown oldest first.</span>
+        </p>
         <ReviewQueue initialEntries={entries} />
         <Link href="/" style={styles.returnLink}>
           Return to the family archive →
