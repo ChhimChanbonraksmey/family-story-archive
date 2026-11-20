@@ -33,8 +33,22 @@ const styles = {
     fontSize: 14, lineHeight: 1.7,
   },
   label: { display: "block", color: "#F1DFC2", fontWeight: 700, margin: "22px 0 8px" },
-  labelKhmer: { display: "block", fontFamily: "system-ui, sans-serif", fontSize: 15, lineHeight: 1.55 },
-  labelEnglish: { display: "block", marginTop: 2, color: "#BFB2A1", fontSize: 13, lineHeight: 1.45 },
+  labelKhmerRow: { display: "flex", alignItems: "center", gap: 12 },
+  labelKhmer: {
+    color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 15, fontWeight: 700, lineHeight: 1.55,
+  },
+  labelOrnament: { display: "flex", alignItems: "center", flex: 1, gap: 8, minWidth: 40 },
+  labelDiamond: {
+    width: 7, height: 7, flex: "0 0 auto",
+    border: "1.5px solid #E7B86A", backgroundColor: "rgba(183, 98, 61, 0.14)",
+    transform: "rotate(45deg)",
+  },
+  labelLine: {
+    height: 1, flex: 1,
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.18), transparent)",
+  },
+  labelEnglish: { display: "block", marginTop: 4, color: "#BFB2A1", fontSize: 13, lineHeight: 1.45 },
   input: {
     boxSizing: "border-box", width: "100%", padding: 12, color: "#F1DFC2",
     backgroundColor: "rgba(33, 28, 24, 0.96)", border: "1px solid #6A5140",
