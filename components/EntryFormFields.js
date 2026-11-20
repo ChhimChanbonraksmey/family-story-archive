@@ -114,10 +114,15 @@ export default function EntryFormFields({
       <select id="photo_type" name="photo_type" value={values.photo_type}
         onChange={onChange} disabled={disabled} style={styles.input}
         {...accessibility("photo_type")}>
-        <option value="">Choose an image type</option>
+        <option value="">ជ្រើសរើសប្រភេទរូបភាព / Choose an image type</option>
         {PHOTO_TYPES.map((type) => <option key={type} value={type}>{PHOTO_TYPE_LABELS[type]}</option>)}
       </select>
-      <p style={styles.help}>AI-generated images and illustrations will be clearly labeled in the archive.</p>
+      <p style={styles.help}>
+        <span lang="km" style={{ ...styles.khmer, marginTop: 0 }}>
+          រូបភាព និងរូបគំនូរដែលបង្កើតដោយ AI នឹងត្រូវបានដាក់ស្លាកឱ្យច្បាស់នៅក្នុងបណ្ណសារ។
+        </span>
+        <span style={styles.helpEnglish}>AI-generated images and illustrations will be clearly labeled in the archive.</span>
+      </p>
       {error("photo_type")}
 
       <label htmlFor="photo" style={styles.label}>
