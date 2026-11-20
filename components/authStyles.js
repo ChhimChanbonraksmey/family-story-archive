@@ -68,6 +68,7 @@ const styles = {
   error: { color: "#F2A69A", lineHeight: 1.7, whiteSpace: "pre-line" },
   success: { color: "#C7D5B1", lineHeight: 1.7, whiteSpace: "pre-line" },
   switch: { color: "#BFB2A1", marginTop: 24 },
+  switchKhmer: { fontFamily: "system-ui, sans-serif", fontSize: 15 },
   link: { color: "#D49A56" },
 };
 

@@ -132,15 +132,27 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
         </form>
         {!isSignup ? (
           <p style={styles.switch}>
-            <Link href="/forgot-password" style={styles.link}>
-              Forgot your password? / <span lang="km">ភ្លេចពាក្យសម្ងាត់?</span>
+            <Link href="/forgot-password" className={interactive.textHighlight} style={styles.link}>
+              <span lang="km" style={styles.switchKhmer}>ភ្លេចពាក្យសម្ងាត់?</span>
+              <span aria-hidden="true"> / </span>
+              <span>Forgot your password?</span>
             </Link>
           </p>
         ) : null}
         <p style={styles.switch}>
-          {isSignup ? "Already have an account? " : "New to the archive? "}
-          <Link href={isSignup ? "/login" : "/signup"} style={styles.link}>
-            {isSignup ? "Log in" : "Sign up"}
+          <span lang="km" style={styles.switchKhmer}>
+            {isSignup ? "មានគណនីរួចហើយ?" : "ថ្មីសម្រាប់បណ្ណសារនេះ?"}
+          </span>
+          <span aria-hidden="true"> / </span>
+          <span>{isSignup ? "Already have an account?" : "New to the archive?"} </span>
+          <Link
+            href={isSignup ? "/login" : "/signup"}
+            className={interactive.textHighlight}
+            style={styles.link}
+          >
+            <span lang="km" style={styles.switchKhmer}>{isSignup ? "ចូលគណនី" : "បង្កើតគណនី"}</span>
+            <span aria-hidden="true"> / </span>
+            <span>{isSignup ? "Log in" : "Sign up"}</span>
           </Link>
         </p>
       </section>
