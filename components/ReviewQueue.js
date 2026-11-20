@@ -127,11 +127,11 @@ export default function ReviewQueue({ initialEntries }) {
             <div style={styles.actions}>
               <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => decide(entry.id, "published")}
                 style={{ ...styles.button, ...styles.publish, ...(busy ? styles.disabled : {}) }}>
-                <BilingualActionLabel english="Publish" khmer="បោះពុម្ពផ្សាយ" />
+                <BilingualActionLabel english="Publish" khmer="បោះពុម្ពផ្សាយ" khmerStyle={styles.actionKhmer} />
               </button>
               <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => openReturnForm(entry.id)}
                 style={{ ...styles.button, ...styles.return, ...(busy ? styles.disabled : {}) }}>
-                <BilingualActionLabel english="Return for changes" khmer="ផ្ញើត្រឡប់ឱ្យកែសម្រួល" />
+                <BilingualActionLabel english="Return for changes" khmer="ផ្ញើត្រឡប់ឱ្យកែសម្រួល" khmerStyle={styles.actionKhmer} />
               </button>
             </div>
             {returningId === entry.id ? (

@@ -42,6 +42,7 @@ const reviewStyles = {
   story: { color: "#D8CCBC", lineHeight: 1.8, margin: 0, whiteSpace: "pre-wrap" },
   actions: { display: "flex", flexWrap: "wrap", gap: 12, marginTop: 24 },
   button: { display: "inline-flex", alignItems: "center", justifyContent: "center", flex: "1 1 210px", minHeight: 48, padding: "0 20px", border: "1px solid rgba(255, 255, 255, 0.18)", borderRadius: 9, boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)", fontWeight: 700, cursor: "pointer" },
+  actionKhmer: { color: "#171411", fontSize: 16, fontWeight: 700, lineHeight: 1.5 },
   publish: { color: "#171411", backgroundColor: "#C7D5B1" },
   return: { color: "#171411", backgroundColor: "#F2A69A" },
   confirmReturn: { color: "#FFF4EC", backgroundColor: "#B7623D", borderColor: "#D98B70" },
