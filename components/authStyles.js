@@ -31,6 +31,15 @@ const styles = {
     fontSize: "clamp(36px, 6vw, 52px)",
     margin: "14px 0",
   },
+  titleKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: "clamp(28px, 5vw, 40px)", lineHeight: 1.55,
+  },
+  titleEnglish: {
+    display: "block", marginTop: 6, color: "#F1DFC2",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    fontSize: "clamp(32px, 5.5vw, 46px)", lineHeight: 1.12,
+  },
   intro: { color: "#BFB2A1", lineHeight: 1.7, marginBottom: 28 },
   introKhmer: {
     display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",

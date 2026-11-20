@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
-import { updateOwnedEntry } from "../lib/entryMutations.js";
+import { CHANGE_NOT_SAVED, updateOwnedEntry } from "../lib/entryMutations.js";
 import { inspectPhoto, validateEntryFields } from "../lib/entryValidation.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
 import EntryFormFields from "./EntryFormFields.js";
@@ -71,14 +71,14 @@ export default function EditEntryForm({ entry }) {
       }
       if (!result.id) {
         console.error("Entry update returned no entry ID", { entryId: entry.id });
-        setFeedback("That change wasn't saved");
+        setFeedback(CHANGE_NOT_SAVED);
         return;
       }
       router.push(`/entries/${result.id}`);
       router.refresh();
     } catch (error) {
       console.error("Entry update request failed", error);
-      setFeedback("That change wasn't saved");
+      setFeedback(CHANGE_NOT_SAVED);
     } finally {
       setBusy(false);
     }

@@ -200,8 +200,8 @@ export default function ReviewQueue({ initialEntries }) {
             ) : null}
             {failedId === entry.id ? (
               <p role="alert" style={styles.error}>
-                We could not save that review decision. Please try again.<br />
-                <span lang="km">មិនអាចរក្សាទុកការសម្រេចចិត្តពិនិត្យនេះបានទេ។ សូមព្យាយាមម្តងទៀត។</span>
+                <span lang="km">មិនអាចរក្សាទុកការសម្រេចចិត្តពិនិត្យនេះបានទេ។ សូមព្យាយាមម្តងទៀត។</span><br />
+                We could not save that review decision. Please try again.
               </p>
             ) : null}
           </article>

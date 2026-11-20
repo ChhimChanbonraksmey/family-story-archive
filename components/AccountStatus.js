@@ -89,13 +89,13 @@ export default function AccountStatus() {
     setError("");
     try {
       const { error: signOutError } = await createClient().auth.signOut({ scope: "local" });
-      if (signOutError) setError("Could not log out. Please try again.\nមិនអាចចាកចេញពីគណនីបានទេ។ សូមសាកល្បងម្តងទៀត។");
+      if (signOutError) setError("មិនអាចចាកចេញពីគណនីបានទេ។ សូមសាកល្បងម្តងទៀត។\nCould not log out. Please try again.");
       else {
         setUser(null);
         setReviewer(false);
       }
     } catch {
-      setError("Could not log out. Please try again.\nមិនអាចចាកចេញពីគណនីបានទេ។ សូមសាកល្បងម្តងទៀត។");
+      setError("មិនអាចចាកចេញពីគណនីបានទេ។ សូមសាកល្បងម្តងទៀត។\nCould not log out. Please try again.");
     } finally {
       setBusy(false);
     }

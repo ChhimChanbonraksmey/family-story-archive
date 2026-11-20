@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client.js";
-import { deleteOwnedEntry } from "../lib/entryMutations.js";
+import { CHANGE_NOT_SAVED, deleteOwnedEntry } from "../lib/entryMutations.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
 import interactive from "./interactive.module.css";
 
@@ -88,7 +88,7 @@ export default function OwnerEntryActions({ entryId, photoUrl }) {
       router.refresh();
     } catch (deleteError) {
       console.error("Entry delete request failed", deleteError);
-      setError("That change wasn't saved");
+      setError(CHANGE_NOT_SAVED);
     } finally {
       setBusy(false);
     }

@@ -14,7 +14,7 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState(recoveryFailed
-    ? { kind: "error", text: "That recovery link is invalid or expired. Request a new one.\nតំណសង្គ្រោះគណនីមិនត្រឹមត្រូវ ឬផុតកំណត់។ សូមស្នើសុំតំណថ្មី។" }
+    ? { kind: "error", text: "តំណសង្គ្រោះគណនីមិនត្រឹមត្រូវ ឬផុតកំណត់។ សូមស្នើសុំតំណថ្មី។\nThat recovery link is invalid or expired. Request a new one." }
     : null);
 
   async function submit(event) {
@@ -24,7 +24,7 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
     if (!cleanEmail) {
       setFeedback({
         kind: "error",
-        text: "Enter the email used for your archive account.\nសូមបញ្ចូលអ៊ីមែលដែលប្រើសម្រាប់គណនីបណ្ណសាររបស់អ្នក។",
+        text: "សូមបញ្ចូលអ៊ីមែលដែលប្រើសម្រាប់គណនីបណ្ណសាររបស់អ្នក។\nEnter the email used for your archive account.",
       });
       return;
     }
@@ -38,19 +38,19 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
         console.error("Password reset email failed", error);
         setFeedback({
           kind: "error",
-          text: "The reset email could not be sent. Please wait and try again.\nមិនអាចផ្ញើអ៊ីមែលកំណត់ពាក្យសម្ងាត់ថ្មីបានទេ។ សូមរង់ចាំ ហើយសាកល្បងម្តងទៀត។",
+          text: "មិនអាចផ្ញើអ៊ីមែលកំណត់ពាក្យសម្ងាត់ថ្មីបានទេ។ សូមរង់ចាំ ហើយសាកល្បងម្តងទៀត។\nThe reset email could not be sent. Please wait and try again.",
         });
       } else {
         setFeedback({
           kind: "success",
-          text: "If an account exists for that email, a reset link is on its way. Check your inbox and spam folder.\nប្រសិនបើមានគណនីសម្រាប់អ៊ីមែលនេះ តំណកំណត់ពាក្យសម្ងាត់ថ្មីកំពុងត្រូវបានផ្ញើ។ សូមពិនិត្យប្រអប់សារ និងសារឥតបានការ។",
+          text: "ប្រសិនបើមានគណនីសម្រាប់អ៊ីមែលនេះ តំណកំណត់ពាក្យសម្ងាត់ថ្មីកំពុងត្រូវបានផ្ញើ។ សូមពិនិត្យប្រអប់សារ និងសារឥតបានការ។\nIf an account exists for that email, a reset link is on its way. Check your inbox and spam folder.",
         });
       }
     } catch (error) {
       console.error("Password reset request failed", error);
       setFeedback({
         kind: "error",
-        text: "The reset email could not be sent. Please wait and try again.\nមិនអាចផ្ញើអ៊ីមែលកំណត់ពាក្យសម្ងាត់ថ្មីបានទេ។ សូមរង់ចាំ ហើយសាកល្បងម្តងទៀត។",
+        text: "មិនអាចផ្ញើអ៊ីមែលកំណត់ពាក្យសម្ងាត់ថ្មីបានទេ។ សូមរង់ចាំ ហើយសាកល្បងម្តងទៀត។\nThe reset email could not be sent. Please wait and try again.",
       });
     } finally {
       setBusy(false);

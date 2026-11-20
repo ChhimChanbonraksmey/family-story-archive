@@ -59,6 +59,14 @@ const styles = {
   entryTitleEn: { color: "#E7B86A", fontFamily: "Georgia, serif", fontSize: 20, lineHeight: 1.4, margin: "0 0 10px" },
   place: { color: "#BFB2A1", margin: 0 },
   notice: { color: "#BFB2A1", lineHeight: 1.7, padding: "24px 0" },
+  noticeKhmer: {
+    display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
+    fontSize: 16, lineHeight: 1.8,
+  },
+  noticeEnglish: {
+    display: "block", marginTop: 9, paddingTop: 9,
+    borderTop: "1px solid #6A5140",
+  },
   reviewNote: { marginTop: 16, padding: "14px 16px", color: "#D8CCBC", backgroundColor: "rgba(242, 166, 154, 0.08)", border: "1px solid rgba(242, 166, 154, 0.35)", borderRadius: 8, lineHeight: 1.7 },
   reviewNoteLabel: { display: "block", color: "#F2A69A", fontSize: 13, fontWeight: 700, marginBottom: 5 },
   reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif" },
@@ -108,18 +116,34 @@ export default async function MyEntriesPage() {
       </section>
 
       {unavailable ? (
-        <p role="alert" style={styles.notice}>We could not check your account right now. Please try again shortly.</p>
+        <p role="alert" style={styles.notice}>
+          <span lang="km" style={styles.noticeKhmer}>
+            មិនអាចពិនិត្យគណនីរបស់អ្នកបាននៅពេលនេះទេ។ សូមព្យាយាមម្តងទៀតបន្តិចទៀត។
+          </span>
+          <span style={styles.noticeEnglish}>We could not check your account right now. Please try again shortly.</span>
+        </p>
       ) : !user ? (
         <div>
-          <p style={styles.notice}>Log in to see the stories you have contributed.</p>
+          <p style={styles.notice}>
+            <span lang="km" style={styles.noticeKhmer}>សូមចូលគណនី ដើម្បីមើលរឿងដែលអ្នកបានចូលរួម។</span>
+            <span style={styles.noticeEnglish}>Log in to see the stories you have contributed.</span>
+          </p>
           <Link href="/login" className={interactive.primary} style={styles.login}>
             <BilingualActionLabel english="Log in" khmer="ចូលគណនី" />
           </Link>
         </div>
       ) : entryError ? (
-        <p role="alert" style={styles.notice}>Your entries could not be retrieved right now. Please try again.</p>
+        <p role="alert" style={styles.notice}>
+          <span lang="km" style={styles.noticeKhmer}>
+            មិនអាចទាញយករឿងរបស់អ្នកបាននៅពេលនេះទេ។ សូមព្យាយាមម្តងទៀត។
+          </span>
+          <span style={styles.noticeEnglish}>Your entries could not be retrieved right now. Please try again.</span>
+        </p>
       ) : entries.length === 0 ? (
-        <p style={styles.notice}>You have not submitted a family story yet.</p>
+        <p style={styles.notice}>
+          <span lang="km" style={styles.noticeKhmer}>អ្នកមិនទាន់បានដាក់ស្នើរឿងរ៉ាវគ្រួសារនៅឡើយទេ។</span>
+          <span style={styles.noticeEnglish}>You have not submitted a family story yet.</span>
+        </p>
       ) : (
         <div style={styles.list}>
           {entries.map((entry) => {

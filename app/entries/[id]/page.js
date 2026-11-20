@@ -133,6 +133,27 @@ const styles = {
     overflowWrap: "anywhere",
     whiteSpace: "pre-line",
   },
+  errorKickerKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 15, letterSpacing: 0, lineHeight: 1.6,
+  },
+  errorKickerEnglish: { display: "block", marginTop: 3 },
+  errorTitleKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: "clamp(30px, 5vw, 46px)", lineHeight: 1.5,
+  },
+  errorTitleEnglish: {
+    display: "block", marginTop: 6, color: "#F1DFC2",
+    fontSize: "clamp(28px, 5vw, 44px)", lineHeight: 1.25,
+  },
+  errorMessageKhmer: {
+    display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
+    fontSize: 18, lineHeight: 1.85,
+  },
+  errorMessageEnglish: {
+    display: "block", marginTop: 16, paddingTop: 16,
+    borderTop: "1px solid #6A5140",
+  },
   englishStory: {
     marginTop: 32,
     paddingTop: 28,
@@ -175,16 +196,22 @@ export default async function EntryPage({ params }) {
           <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
         </Link>
         <section style={styles.story} aria-labelledby="archive-error-title">
-          <p style={styles.number}>ARCHIVE NOTICE</p>
+          <p style={styles.number}>
+            <span lang="km" style={styles.errorKickerKhmer}>សេចក្តីជូនដំណឹងពីបណ្ណសារ</span>
+            <span style={styles.errorKickerEnglish}>ARCHIVE NOTICE</span>
+          </p>
           <h1 id="archive-error-title" style={styles.title}>
-            The archive shelf is temporarily out of reach
+            <span lang="km" style={styles.errorTitleKhmer}>មិនអាចចូលទៅកាន់ធ្នើបណ្ណសារបានជាបណ្តោះអាសន្ន</span>
+            <span style={styles.errorTitleEnglish}>The archive shelf is temporarily out of reach</span>
           </h1>
           <p role="alert" style={styles.description}>
-            The family stories could not be retrieved right now. Your story has not disappeared.
-            Please try again shortly.
-            <span lang="km" style={{ display: "block", marginTop: 16 }}>
+            <span lang="km" style={styles.errorMessageKhmer}>
               មិនអាចភ្ជាប់ទៅបណ្ណសារបាននៅពេលនេះទេ។ រឿងរបស់អ្នកមិនបានបាត់ទេ។
               សូមសាកល្បងម្តងទៀតបន្តិចទៀត។
+            </span>
+            <span style={styles.errorMessageEnglish}>
+              The family stories could not be retrieved right now. Your story has not disappeared.
+              Please try again shortly.
             </span>
           </p>
         </section>
