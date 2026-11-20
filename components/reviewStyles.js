@@ -52,7 +52,7 @@ const reviewStyles = {
   noteLabelKhmerRow: { display: "flex", alignItems: "center", gap: 12 },
   noteLabelKhmer: { fontFamily: "system-ui, sans-serif", fontSize: 21, fontWeight: 700 },
   noteLabelEnglish: { display: "block", marginTop: 4, color: "#D8CCBC", fontSize: 17, fontWeight: 700 },
-  noteHelp: { color: "#BFB2A1", lineHeight: 1.6, margin: "14px 0" },
+  noteHelp: { color: "#BFB2A1", lineHeight: 1.6, margin: "22px 0 14px" },
   noteHelpKhmer: {
     display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
     fontSize: 15, lineHeight: 1.8,
