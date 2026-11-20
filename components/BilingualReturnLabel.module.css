@@ -1,0 +1,52 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 5px;
+  line-height: 1.45;
+}
+
+.wrap:hover .khmer,
+.wrap:hover .english {
+  color: #f2c879;
+}
+
+.arrow {
+  color: #f2c879;
+  font-family: "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.arrow:first-child {
+  margin-right: 5px;
+}
+
+.arrow:last-child {
+  margin-left: 5px;
+}
+
+.khmer {
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 650;
+  transition: color 160ms ease;
+}
+
+.slash {
+  color: #a8947e;
+}
+
+.english {
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .khmer,
+  .english {
+    transition: none;
+  }
+}
