@@ -76,10 +76,10 @@ export default function ReviewQueue({ initialEntries }) {
   if (entries.length === 0) {
     return (
       <div role="status" style={styles.empty}>
-        <p style={styles.emptyText}>No entries are awaiting review.</p>
         <p lang="km" style={styles.emptyKhmer}>
           មិនមានរឿងណាកំពុងរង់ចាំការពិនិត្យទេ។
         </p>
+        <p style={styles.emptyText}>No entries are awaiting review.</p>
       </div>
     );
   }

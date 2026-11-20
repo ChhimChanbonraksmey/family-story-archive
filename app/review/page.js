@@ -32,9 +32,31 @@ const styles = {
     fontSize: "clamp(34px, 6vw, 52px)",
     margin: "0 0 18px",
   },
-  titleKhmer: { display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.45 },
+  queueTitle: { margin: "14px 0 18px" },
+  kicker: {
+    color: "#D49A56", fontFamily: "'Courier New', monospace",
+    fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: 0,
+  },
+  kickerKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 16, fontWeight: 400, letterSpacing: 0, lineHeight: 1.6,
+    marginBottom: 5,
+  },
+  kickerEnglish: { display: "block" },
+  titleKhmer: {
+    display: "block", color: "#E7B86A",
+    fontFamily: "system-ui, sans-serif", lineHeight: 1.45,
+  },
   titleEnglish: { display: "block", marginTop: 3, color: "#D8CCBC", fontSize: "0.62em" },
   intro: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 28px" },
+  introKhmer: {
+    display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
+    fontSize: 18, fontWeight: 400, lineHeight: 1.85,
+  },
+  introEnglish: {
+    display: "block", marginTop: 12, paddingTop: 12,
+    color: "#BFB2A1", borderTop: "1px solid #6A5140",
+  },
   message: { color: "#BFB2A1", lineHeight: 1.7, margin: "0 0 8px" },
   khmer: { color: "#BFB2A1", lineHeight: 1.8, margin: "0 0 24px" },
   link: { color: "#D49A56", textDecoration: "none", fontSize: 14 },
@@ -88,15 +110,16 @@ export default async function ReviewPage() {
         <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <section style={styles.panel}>
-        <h1 style={styles.title}>
-          <span lang="km" style={styles.titleKhmer}>ជួររង់ចាំពិនិត្យ</span>
-          <span style={styles.titleEnglish}>Review queue</span>
-        </h1>
+        <p style={styles.kicker}>
+          <span lang="km" style={styles.kickerKhmer}>ការពិនិត្យរឿងរ៉ាវ</span>
+          <span style={styles.kickerEnglish}>STORY REVIEW</span>
+        </p>
+        <h1 style={{ ...styles.title, ...styles.queueTitle }}>Review queue</h1>
         <p style={styles.intro}>
-          <span lang="km" style={{ display: "block", fontFamily: "system-ui, sans-serif", lineHeight: 1.8 }}>
+          <span lang="km" style={styles.introKhmer}>
             រឿងរ៉ាវគ្រួសារដែលកំពុងរង់ចាំការពិនិត្យ ត្រូវបានបង្ហាញពីរឿងចាស់បំផុតមុន។
           </span>
-          <span style={{ display: "block", marginTop: 4 }}>Pending family stories are shown oldest first.</span>
+          <span style={styles.introEnglish}>Pending family stories are shown oldest first.</span>
         </p>
         <ReviewQueue initialEntries={entries} />
         <Link href="/" style={styles.returnLink}>

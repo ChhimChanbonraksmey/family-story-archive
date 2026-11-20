@@ -8,8 +8,11 @@ const reviewStyles = {
     borderRadius: 10,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.04)",
   },
-  emptyText: { color: "#D8CCBC", lineHeight: 1.7, margin: "0 0 6px" },
-  emptyKhmer: { color: "#BFB2A1", lineHeight: 1.8, margin: 0 },
+  emptyText: { color: "#D8CCBC", lineHeight: 1.7, margin: 0 },
+  emptyKhmer: {
+    color: "#E0B97A", fontFamily: "system-ui, sans-serif",
+    fontSize: 16, lineHeight: 1.8, margin: "0 0 8px",
+  },
   entry: {
     padding: 24, backgroundColor: "#171411",
     backgroundImage: "linear-gradient(145deg, rgba(231, 184, 106, 0.035), transparent 40%), repeating-linear-gradient(90deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px), repeating-linear-gradient(0deg, rgba(231, 184, 106, 0.032) 0 2px, transparent 2px 11px, rgba(183, 98, 61, 0.024) 11px 13px, transparent 13px 22px)",
