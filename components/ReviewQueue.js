@@ -8,6 +8,21 @@ import BilingualActionLabel from "./BilingualActionLabel.js";
 import styles from "./reviewStyles.js";
 import interactive from "./interactive.module.css";
 
+function ReviewFieldLabel({ khmer, english }) {
+  return (
+    <p style={styles.label}>
+      <span style={styles.labelKhmerRow}>
+        <span lang="km" style={styles.labelKhmer}>{khmer}</span>
+        <span style={styles.labelOrnament} aria-hidden="true">
+          <span style={styles.labelDiamond} />
+          <span style={styles.labelLine} />
+        </span>
+      </span>
+      <span style={styles.labelEnglish}>{english}</span>
+    </p>
+  );
+}
+
 export default function ReviewQueue({ initialEntries }) {
   const [entries, setEntries] = useState(initialEntries);
   const [busyId, setBusyId] = useState("");
@@ -95,40 +110,19 @@ export default function ReviewQueue({ initialEntries }) {
             <p style={{ ...styles.languageLabel, ...styles.englishDivider }}>ENGLISH</p>
             <p style={styles.titleEn}>{entry.title}</p>
             <img src={entry.photo_url} alt={entry.photo_alt} style={styles.photo} />
-            <p style={styles.label}>
-              <span lang="km" style={styles.labelKhmer}>ប្រភេទរូបភាព</span>
-              <span style={styles.labelEnglish}>IMAGE TYPE</span>
-            </p>
+            <ReviewFieldLabel khmer="ប្រភេទរូបភាព" english="IMAGE TYPE" />
             <p style={styles.value}>{PHOTO_TYPE_LABELS[entry.photo_type] || entry.photo_type}</p>
-            <p style={styles.label}>
-              <span lang="km" style={styles.labelKhmer}>ការពិពណ៌នារូបភាព</span>
-              <span style={styles.labelEnglish}>IMAGE DESCRIPTION</span>
-            </p>
+            <ReviewFieldLabel khmer="ការពិពណ៌នារូបភាព" english="IMAGE DESCRIPTION" />
             <p style={styles.value}>{entry.photo_alt}</p>
-            <p style={styles.label}>
-              <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ</span>
-              <span style={styles.labelEnglish}>KHMER ORAL-HISTORY STORY</span>
-            </p>
+            <ReviewFieldLabel khmer="រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ" english="KHMER ORAL-HISTORY STORY" />
             <p lang="km" style={styles.story}>{entry.description_kh}</p>
-            <p style={{ ...styles.label, ...styles.storyDivider }}>
-              <span lang="km" style={styles.labelKhmer}>រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាអង់គ្លេស</span>
-              <span style={styles.labelEnglish}>ENGLISH ORAL-HISTORY STORY</span>
-            </p>
+            <ReviewFieldLabel khmer="រឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាអង់គ្លេស" english="ENGLISH ORAL-HISTORY STORY" />
             <p style={styles.story}>{entry.description}</p>
-            <p style={styles.label}>
-              <span lang="km" style={styles.labelKhmer}>ប្រភពរឿងរ៉ាវ</span>
-              <span style={styles.labelEnglish}>STORY SOURCE</span>
-            </p>
+            <ReviewFieldLabel khmer="ប្រភពរឿងរ៉ាវ" english="STORY SOURCE" />
             <p style={styles.value}>{entry.contributor_name}</p>
-            <p style={styles.label}>
-              <span lang="km" style={styles.labelKhmer}>ទីកន្លែង</span>
-              <span style={styles.labelEnglish}>PLACE</span>
-            </p>
+            <ReviewFieldLabel khmer="ទីកន្លែង" english="PLACE" />
             <p style={styles.value}>{entry.place}</p>
-            <p style={styles.label}>
-              <span lang="km" style={styles.labelKhmer}>បានដាក់ស្នើ</span>
-              <span style={styles.labelEnglish}>SUBMITTED</span>
-            </p>
+            <ReviewFieldLabel khmer="បានដាក់ស្នើ" english="SUBMITTED" />
             <p style={styles.value}>{entry.submittedLabel}</p>
             <div style={styles.actions}>
               <button className={interactive.reviewAction} type="button" disabled={busy} onClick={() => decide(entry.id, "published")}
