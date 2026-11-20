@@ -112,7 +112,14 @@ export default function EntryFormFields({
         onClear={() => onClear("place")} clearLabel="Clear place / លុបទីកន្លែង"
         disabled={disabled} style={styles.input} {...accessibility("place")} />
       {counter("place")}
-      <p style={styles.help}>An approximate location or “Unknown” is welcome when an exact place is uncertain.</p>
+      <p style={styles.help}>
+        <span lang="km" style={{ ...styles.khmer, marginTop: 0 }}>
+          ប្រសិនបើមិនប្រាកដអំពីទីកន្លែងជាក់លាក់ អ្នកអាចបញ្ចូលទីតាំងប្រហាក់ប្រហែល ឬ «មិនស្គាល់»។
+        </span>
+        <span style={styles.helpEnglish}>
+          An approximate location or “Unknown” is welcome when an exact place is uncertain.
+        </span>
+      </p>
       {error("place")}
 
       <label htmlFor="photo_type" style={styles.label}>
@@ -142,9 +149,16 @@ export default function EntryFormFields({
         accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
         onChange={onPhotoChange} style={styles.input} {...accessibility("photo")} />
       <p style={styles.help}>
-        {photoRequired
-          ? "JPEG, PNG, or WebP; maximum 5 MB. Landscape 3:2, around 1200 × 800, fits best, but portrait images are accepted. Only upload an image you may publish."
-          : "Optional: leave this empty to keep the current image. Landscape 3:2, around 1200 × 800, fits best, but portrait images are accepted; maximum 5 MB."}
+        <span lang="km" style={{ ...styles.khmer, marginTop: 0 }}>
+          {photoRequired
+            ? "សូមជ្រើសរើសរូបភាព JPEG, PNG ឬ WebP ដែលមានទំហំអតិបរមា ៥ MB។ រូបភាពផ្ដេកសមាមាត្រ 3:2 ប្រហែល 1200 × 800 សមបំផុត ប៉ុន្តែរូបភាពបញ្ឈរក៏អាចប្រើបានដែរ។ សូមបង្ហោះតែរូបភាពដែលអ្នកមានសិទ្ធិបោះពុម្ពផ្សាយ។"
+            : "មិនចាំបាច់៖ ទុកវាលនេះឱ្យទទេ ដើម្បីរក្សារូបភាពបច្ចុប្បន្ន។ រូបភាពផ្ដេកសមាមាត្រ 3:2 ប្រហែល 1200 × 800 សមបំផុត ប៉ុន្តែរូបភាពបញ្ឈរក៏អាចប្រើបានដែរ ហើយទំហំអតិបរមាគឺ ៥ MB។"}
+        </span>
+        <span style={styles.helpEnglish}>
+          {photoRequired
+            ? "JPEG, PNG, or WebP; maximum 5 MB. Landscape 3:2, around 1200 × 800, fits best, but portrait images are accepted. Only upload an image you may publish."
+            : "Optional: leave this empty to keep the current image. Landscape 3:2, around 1200 × 800, fits best, but portrait images are accepted; maximum 5 MB."}
+        </span>
       </p>
       {error("photo")}
 
@@ -156,7 +170,14 @@ export default function EntryFormFields({
         onChange={onChange} disabled={disabled} style={{ ...styles.input, ...styles.textarea }}
         {...accessibility("photo_alt")} />
       {counter("photo_alt")}
-      <p style={styles.help}>Briefly describe the meaningful visible content for screen-reader visitors.</p>
+      <p style={styles.help}>
+        <span lang="km" style={{ ...styles.khmer, marginTop: 0 }}>
+          សូមពិពណ៌នាខ្លីៗអំពីខ្លឹមសារសំខាន់ៗដែលមើលឃើញក្នុងរូបភាព សម្រាប់អ្នកប្រើកម្មវិធីអានអេក្រង់។
+        </span>
+        <span style={styles.helpEnglish}>
+          Briefly describe the meaningful visible content for screen-reader visitors.
+        </span>
+      </p>
       {error("photo_alt")}
     </>
   );
