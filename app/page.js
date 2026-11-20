@@ -245,11 +245,11 @@ export default function Home() {
 
       <div style={styles.archiveInfo}>
         <div style={styles.card}>
-          <p style={styles.cardLabel}>CURATED BY</p>
+          <p style={styles.cardLabel}><span lang="km">រៀបចំដោយ</span> / CURATED BY:</p>
           <p style={styles.cardValue}>{collection.curator}</p>
         </div>
         <div style={styles.card}>
-          <p style={styles.cardLabel}>SOURCE</p>
+          <p style={styles.cardLabel}><span lang="km">ប្រភព</span> / SOURCE:</p>
           <p style={styles.cardValue}>{collection.source}</p>
         </div>
       </div>
