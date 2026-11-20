@@ -68,18 +68,23 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
         <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <section style={styles.panel} aria-labelledby="auth-title">
-        <p style={styles.kicker}>ACCOUNT ACCESS</p>
+        <p style={styles.kicker}>
+          <span lang="km" style={styles.kickerKhmer}>ការចូលប្រើគណនី</span>
+          <span style={styles.kickerEnglish}>ACCOUNT ACCESS</span>
+        </p>
         <h1 id="auth-title" style={styles.title}>
           {isSignup ? "Join the archive" : "Welcome back"}
         </h1>
         <p style={styles.intro}>
-          {isSignup
-            ? "Create an account to take part in the archive."
-            : "Enter your email and password to continue."}
-          <span lang="km" style={{ display: "block" }}>
+          <span lang="km" style={styles.introKhmer}>
             {isSignup
               ? "សូមបង្កើតគណនី ដើម្បីចូលរួមក្នុងបណ្ណសារនេះ។"
               : "សូមបញ្ចូលអាសយដ្ឋានអ៊ីមែល និងពាក្យសម្ងាត់របស់អ្នក ដើម្បីបន្ត។"}
+          </span>
+          <span style={styles.introEnglish}>
+            {isSignup
+              ? "Create an account to take part in the archive."
+              : "Enter your email and password to continue."}
           </span>
         </p>
         <form onSubmit={handleSubmit} noValidate>
@@ -117,11 +122,11 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
           )}
           <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
             {busy ? (
-              <BilingualActionLabel english="Please wait…" khmer="សូមរង់ចាំ…" />
+              <BilingualActionLabel english="Please wait…" khmer="សូមរង់ចាំ…" khmerStyle={styles.buttonKhmer} />
             ) : isSignup ? (
-              <BilingualActionLabel english="Sign up" khmer="បង្កើតគណនី" />
+              <BilingualActionLabel english="Sign up" khmer="បង្កើតគណនី" khmerStyle={styles.buttonKhmer} />
             ) : (
-              <BilingualActionLabel english="Log in" khmer="ចូលគណនី" />
+              <BilingualActionLabel english="Log in" khmer="ចូលគណនី" khmerStyle={styles.buttonKhmer} />
             )}
           </button>
         </form>
