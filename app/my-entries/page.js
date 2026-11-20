@@ -22,9 +22,26 @@ const styles = {
     border: "1px solid #5C4938", borderLeft: "4px solid #B7623D", borderRadius: 12,
     boxShadow: "inset 0 0 0 1px rgba(231, 184, 106, 0.05)",
   },
-  kicker: { color: "#D49A56", fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: 0 },
+  kicker: {
+    color: "#D49A56", fontFamily: "'Courier New', monospace",
+    fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: 0,
+  },
+  kickerKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 16, fontWeight: 400, letterSpacing: 0, lineHeight: 1.6,
+    marginBottom: 5,
+  },
+  kickerEnglish: { display: "block" },
   title: { color: "#F1DFC2", fontFamily: "Georgia, serif", fontSize: "clamp(36px, 7vw, 56px)", margin: "14px 0" },
   intro: { color: "#BFB2A1", lineHeight: 1.7, margin: 0 },
+  introKhmer: {
+    display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
+    fontSize: 18, fontWeight: 400, lineHeight: 1.85,
+  },
+  introEnglish: {
+    display: "block", marginTop: 12, paddingTop: 12,
+    color: "#BFB2A1", borderTop: "1px solid #6A5140",
+  },
   list: { display: "grid", gap: 18 },
   card: {
     display: "block", padding: "22px 24px", color: "inherit", textDecoration: "none",
@@ -75,9 +92,19 @@ export default async function MyEntriesPage() {
         <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <section style={styles.header}>
-        <p style={styles.kicker}>CONTRIBUTOR SHELF</p>
+        <p style={styles.kicker}>
+          <span lang="km" style={styles.kickerKhmer}>ធ្នើអ្នកចូលរួម</span>
+          <span style={styles.kickerEnglish}>CONTRIBUTOR SHELF</span>
+        </p>
         <h1 style={styles.title}>My entries</h1>
-        <p style={styles.intro}>Follow each family story from submission to publication.</p>
+        <p style={styles.intro}>
+          <span lang="km" style={styles.introKhmer}>
+            តាមដានរឿងរ៉ាវគ្រួសារនីមួយៗ ចាប់ពីការដាក់ស្នើរហូតដល់ការបោះពុម្ពផ្សាយ។
+          </span>
+          <span style={styles.introEnglish}>
+            Follow each family story from submission to publication.
+          </span>
+        </p>
       </section>
 
       {unavailable ? (
