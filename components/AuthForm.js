@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AuthFieldLabel from "./AuthFieldLabel.js";
 import ClearableInput from "./ClearableInput.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
 import BilingualReturnLabel from "./BilingualReturnLabel.js";
@@ -89,8 +90,7 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
         </p>
         <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="email" style={styles.label}>
-            <span lang="km" style={styles.labelKhmer}>អ៊ីមែល</span>
-            <span style={styles.labelEnglish}>Email</span>
+            <AuthFieldLabel khmer="អ៊ីមែល" english="Email" />
           </label>
           <ClearableInput
             id="email"
@@ -104,8 +104,7 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
             style={styles.input}
           />
           <label htmlFor="password" style={styles.label}>
-            <span lang="km" style={styles.labelKhmer}>ពាក្យសម្ងាត់</span>
-            <span style={styles.labelEnglish}>Password</span>
+            <AuthFieldLabel khmer="ពាក្យសម្ងាត់" english="Password" />
           </label>
           <ClearableInput
             id="password"

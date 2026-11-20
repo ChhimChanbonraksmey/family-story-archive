@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AuthFieldLabel from "./AuthFieldLabel.js";
 import ClearableInput from "./ClearableInput.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
 import BilingualReturnLabel from "./BilingualReturnLabel.js";
@@ -50,29 +51,38 @@ export default function UpdatePasswordForm() {
         <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <section style={styles.panel} aria-labelledby="password-title">
-        <p style={styles.kicker}>ACCOUNT RECOVERY</p>
+        <p style={styles.kicker}>
+          <span lang="km" style={styles.kickerKhmer}>ការសង្គ្រោះគណនី</span>
+          <span style={styles.kickerEnglish}>ACCOUNT RECOVERY</span>
+        </p>
         <h1 id="password-title" style={styles.title}>Choose a new password</h1>
         <p style={styles.intro}>
-          Use at least 8 characters and enter the same password twice.
-          <span lang="km" style={{ display: "block" }}>
+          <span lang="km" style={styles.introKhmer}>
             ប្រើយ៉ាងតិច ៨ តួអក្សរ ហើយបញ្ចូលពាក្យសម្ងាត់ដូចគ្នាពីរដង។
+          </span>
+          <span style={styles.introEnglish}>
+            Use at least 8 characters and enter the same password twice.
           </span>
         </p>
         <form onSubmit={submit} noValidate>
-          <label htmlFor="new-password" style={styles.label}>New password</label>
+          <label htmlFor="new-password" style={styles.label}>
+            <AuthFieldLabel khmer="ពាក្យសម្ងាត់ថ្មី" english="New password" />
+          </label>
           <ClearableInput id="new-password" name="password" type="password" autoComplete="new-password"
             value={password} onChange={(event) => setPassword(event.target.value)}
             onClear={() => setPassword("")} clearLabel="Clear new password" style={styles.input} />
-          <label htmlFor="confirm-password" style={styles.label}>Confirm new password</label>
+          <label htmlFor="confirm-password" style={styles.label}>
+            <AuthFieldLabel khmer="បញ្ជាក់ពាក្យសម្ងាត់ថ្មី" english="Confirm new password" />
+          </label>
           <ClearableInput id="confirm-password" name="confirmation" type="password" autoComplete="new-password"
             value={confirmation} onChange={(event) => setConfirmation(event.target.value)}
             onClear={() => setConfirmation("")} clearLabel="Clear confirmation password" style={styles.input} />
           {feedback ? <p role="alert" style={styles.error}>{feedback}</p> : null}
           <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
             {busy ? (
-              <BilingualActionLabel english="Updating…" khmer="កំពុងកែប្រែ…" />
+              <BilingualActionLabel english="Updating…" khmer="កំពុងកែប្រែ…" khmerStyle={styles.buttonKhmer} />
             ) : (
-              <BilingualActionLabel english="Update password" khmer="កែប្រែពាក្យសម្ងាត់" />
+              <BilingualActionLabel english="Update password" khmer="កែប្រែពាក្យសម្ងាត់" khmerStyle={styles.buttonKhmer} />
             )}
           </button>
         </form>

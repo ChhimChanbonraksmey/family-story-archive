@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import AuthFieldLabel from "./AuthFieldLabel.js";
 import ClearableInput from "./ClearableInput.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
 import BilingualReturnLabel from "./BilingualReturnLabel.js";
@@ -62,16 +63,23 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
         <BilingualReturnLabel khmer="ត្រឡប់ទៅទំព័រចូលគណនី" english="Back to login" />
       </Link>
       <section style={styles.panel} aria-labelledby="reset-title">
-        <p style={styles.kicker}>ACCOUNT RECOVERY</p>
+        <p style={styles.kicker}>
+          <span lang="km" style={styles.kickerKhmer}>ការសង្គ្រោះគណនី</span>
+          <span style={styles.kickerEnglish}>ACCOUNT RECOVERY</span>
+        </p>
         <h1 id="reset-title" style={styles.title}>Reset your password</h1>
         <p style={styles.intro}>
-          Enter your account email and we will send a secure password-reset link.
-          <span lang="km" style={{ display: "block" }}>
+          <span lang="km" style={styles.introKhmer}>
             បញ្ចូលអ៊ីមែលគណនីរបស់អ្នក ហើយយើងនឹងផ្ញើតំណសុវត្ថិភាពសម្រាប់កំណត់ពាក្យសម្ងាត់ថ្មី។
+          </span>
+          <span style={styles.introEnglish}>
+            Enter your account email and we will send a secure password-reset link.
           </span>
         </p>
         <form onSubmit={submit} noValidate>
-          <label htmlFor="recovery-email" style={styles.label}>Email</label>
+          <label htmlFor="recovery-email" style={styles.label}>
+            <AuthFieldLabel khmer="អ៊ីមែល" english="Email" />
+          </label>
           <ClearableInput id="recovery-email" name="email" type="email" autoComplete="email"
             value={email} onChange={(event) => setEmail(event.target.value)}
             onClear={() => setEmail("")} clearLabel="Clear email" style={styles.input} />
@@ -79,9 +87,9 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
             style={feedback.kind === "error" ? styles.error : styles.success}>{feedback.text}</p> : null}
           <button className={interactive.primary} type="submit" disabled={busy} style={styles.button}>
             {busy ? (
-              <BilingualActionLabel english="Sending…" khmer="កំពុងផ្ញើ…" />
+              <BilingualActionLabel english="Sending…" khmer="កំពុងផ្ញើ…" khmerStyle={styles.buttonKhmer} />
             ) : (
-              <BilingualActionLabel english="Send reset link" khmer="ផ្ញើតំណសង្គ្រោះ" />
+              <BilingualActionLabel english="Send reset link" khmer="ផ្ញើតំណសង្គ្រោះ" khmerStyle={styles.buttonKhmer} />
             )}
           </button>
         </form>

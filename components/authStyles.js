@@ -41,9 +41,20 @@ const styles = {
     color: "#BFB2A1", borderTop: "1px solid #6A5140",
   },
   label: { display: "block", color: "#F1DFC2", margin: "20px 0 8px" },
+  labelKhmerRow: { display: "flex", alignItems: "center", gap: 12 },
   labelKhmer: {
-    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    color: "#E7B86A", fontFamily: "system-ui, sans-serif",
     fontSize: 15, fontWeight: 700, lineHeight: 1.55,
+  },
+  labelOrnament: { display: "flex", alignItems: "center", flex: 1, gap: 8, minWidth: 40 },
+  labelDiamond: {
+    width: 7, height: 7, flex: "0 0 auto",
+    border: "1.5px solid #E7B86A", backgroundColor: "rgba(183, 98, 61, 0.14)",
+    transform: "rotate(45deg)",
+  },
+  labelLine: {
+    height: 1, flex: 1,
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.18), transparent)",
   },
   labelEnglish: {
     display: "block", marginTop: 2, color: "#BFB2A1",
