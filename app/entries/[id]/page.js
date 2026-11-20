@@ -169,8 +169,22 @@ const styles = {
     lineHeight: 1.7,
     whiteSpace: "pre-wrap",
   },
-  reviewNoteLabel: { display: "block", color: "#F2A69A", fontSize: 14, fontWeight: 700, marginBottom: 8 },
-  reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif", marginTop: 3 },
+  reviewNoteLabel: { display: "block", color: "#F2A69A", fontWeight: 700, marginBottom: 12 },
+  reviewNoteKhmerRow: { display: "flex", alignItems: "center", gap: 12 },
+  reviewNoteKhmer: {
+    fontFamily: "system-ui, sans-serif", fontSize: 20, fontWeight: 700,
+    lineHeight: 1.65, color: "#F2A69A",
+  },
+  reviewNoteEnglish: { display: "block", marginTop: 4, fontSize: 17, lineHeight: 1.5 },
+  reviewNoteOrnament: { display: "flex", alignItems: "center", flex: 1, gap: 8, minWidth: 40 },
+  reviewNoteDiamond: {
+    width: 8, height: 8, flex: "0 0 auto", border: "1.5px solid #E7B86A",
+    backgroundColor: "rgba(183, 98, 61, 0.14)", transform: "rotate(45deg)",
+  },
+  reviewNoteLine: {
+    height: 1, flex: 1,
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.18), transparent)",
+  },
   returnLink: {
     display: "inline-block",
     color: "#D49A56",
@@ -287,8 +301,14 @@ export default async function EntryPage({ params }) {
           {userData.user?.id === entry.owner && entry.status === "returned" && entry.review_note ? (
             <div style={styles.reviewNote}>
               <span style={styles.reviewNoteLabel}>
-                Reviewer’s note
-                <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                <span style={styles.reviewNoteKhmerRow}>
+                  <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ:</span>
+                  <span style={styles.reviewNoteOrnament} aria-hidden="true">
+                    <span style={styles.reviewNoteDiamond} />
+                    <span style={styles.reviewNoteLine} />
+                  </span>
+                </span>
+                <span style={styles.reviewNoteEnglish}>Reviewer’s note:</span>
               </span>
               {entry.review_note}
             </div>

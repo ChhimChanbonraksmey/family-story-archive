@@ -67,10 +67,28 @@ const styles = {
     display: "block", marginTop: 9, paddingTop: 9,
     borderTop: "1px solid #6A5140",
   },
+  emptyNotice: {
+    padding: "24px", backgroundColor: "rgba(48, 39, 32, 0.72)",
+    border: "1px solid #5C4938", borderLeft: "4px solid #B7623D", borderRadius: 10,
+  },
+  emptyKhmer: { fontSize: 18, fontWeight: 700, color: "#E7B86A" },
   reviewNote: { marginTop: 16, padding: "14px 16px", color: "#D8CCBC", backgroundColor: "rgba(242, 166, 154, 0.08)", border: "1px solid rgba(242, 166, 154, 0.35)", borderRadius: 8, lineHeight: 1.7 },
-  reviewNoteLabel: { display: "block", color: "#F2A69A", fontSize: 13, fontWeight: 700, marginBottom: 5 },
-  reviewNoteKhmer: { display: "block", fontFamily: "system-ui, sans-serif" },
-  reviewNoteEnglish: { display: "block", marginTop: 3, fontSize: 12 },
+  reviewNoteLabel: { display: "block", color: "#F2A69A", fontWeight: 700, marginBottom: 10 },
+  reviewNoteKhmerRow: { display: "flex", alignItems: "center", gap: 12 },
+  reviewNoteKhmer: {
+    fontFamily: "system-ui, sans-serif", fontSize: 18, fontWeight: 700,
+    lineHeight: 1.6, color: "#F2A69A",
+  },
+  reviewNoteEnglish: { display: "block", marginTop: 4, fontSize: 15, lineHeight: 1.5 },
+  reviewNoteOrnament: { display: "flex", alignItems: "center", flex: 1, gap: 8, minWidth: 40 },
+  reviewNoteDiamond: {
+    width: 7, height: 7, flex: "0 0 auto", border: "1.5px solid #E7B86A",
+    backgroundColor: "rgba(183, 98, 61, 0.14)", transform: "rotate(45deg)",
+  },
+  reviewNoteLine: {
+    height: 1, flex: 1,
+    background: "linear-gradient(90deg, #B7623D, rgba(231, 184, 106, 0.18), transparent)",
+  },
   login: { display: "inline-flex", alignItems: "center", minHeight: 44, padding: "0 16px", color: "#171411", backgroundColor: "#E7B86A", borderRadius: 8, textDecoration: "none", fontWeight: 700 },
 };
 
@@ -140,8 +158,10 @@ export default async function MyEntriesPage() {
           <span style={styles.noticeEnglish}>Your entries could not be retrieved right now. Please try again.</span>
         </p>
       ) : entries.length === 0 ? (
-        <p style={styles.notice}>
-          <span lang="km" style={styles.noticeKhmer}>អ្នកមិនទាន់បានដាក់ស្នើរឿងរ៉ាវគ្រួសារនៅឡើយទេ។</span>
+        <p role="status" style={{ ...styles.notice, ...styles.emptyNotice }}>
+          <span lang="km" style={{ ...styles.noticeKhmer, ...styles.emptyKhmer }}>
+            អ្នកមិនទាន់បានដាក់ស្នើរឿងរ៉ាវគ្រួសារនៅឡើយទេ។
+          </span>
           <span style={styles.noticeEnglish}>You have not submitted a family story yet.</span>
         </p>
       ) : (
@@ -167,8 +187,14 @@ export default async function MyEntriesPage() {
                 {entry.status === "returned" && entry.review_note ? (
                   <div style={styles.reviewNote}>
                     <span style={styles.reviewNoteLabel}>
-                      <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
-                      <span style={styles.reviewNoteEnglish}>Reviewer’s note</span>
+                      <span style={styles.reviewNoteKhmerRow}>
+                        <span lang="km" style={styles.reviewNoteKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ:</span>
+                        <span style={styles.reviewNoteOrnament} aria-hidden="true">
+                          <span style={styles.reviewNoteDiamond} />
+                          <span style={styles.reviewNoteLine} />
+                        </span>
+                      </span>
+                      <span style={styles.reviewNoteEnglish}>Reviewer’s note:</span>
                     </span>
                     {entry.review_note}
                   </div>
