@@ -127,7 +127,7 @@ export default function AccountStatus() {
         </>
       ) : (
         <>
-          <Link href="/login" style={styles.link}>
+          <Link href="/login" className={interactive.textHighlight} style={styles.link}>
             <BilingualActionLabel english="Log in" khmer="ចូលគណនី" />
           </Link>
           <Link href="/signup" className={interactive.primary} style={styles.signup}>

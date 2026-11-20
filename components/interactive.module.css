@@ -74,6 +74,20 @@
   margin-left: auto;
 }
 
+.textHighlight {
+  transition: color 160ms ease;
+}
+
+.textHighlight:hover {
+  color: #f2c879 !important;
+}
+
+.textHighlight:focus-visible {
+  color: #f2c879 !important;
+  outline: 2px solid #e7b86a;
+  outline-offset: 3px;
+}
+
 @media (max-width: 640px) {
   .reviewQueue {
     width: 100%;
@@ -95,6 +109,7 @@
   .reviewQueue,
   .quiet,
   .danger,
+  .textHighlight,
   .cardLink > article {
     transition: none;
   }
