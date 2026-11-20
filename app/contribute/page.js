@@ -21,7 +21,10 @@ export default async function ContributePage() {
         <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <section style={styles.panel} aria-labelledby="contribute-title">
-        <p style={styles.kicker}>CONTRIBUTE A STORY</p>
+        <p style={styles.kicker}>
+          <span lang="km" style={styles.kickerKhmer}>ចូលរួមរឿងរ៉ាវ</span>
+          <span style={styles.kickerEnglish}>CONTRIBUTE A STORY</span>
+        </p>
         <h1 id="contribute-title" style={styles.title}>Add to the family archive</h1>
         {accountUnavailable ? (
           <>
@@ -40,12 +43,14 @@ export default async function ContributePage() {
         ) : user ? (
           <>
             <p style={styles.intro}>
-              <span lang="km" style={styles.khmer}>
+              <span lang="km" style={styles.introKhmer}>
                 អ្នកអាចរក្សាទុករឿងរ៉ាវប្រវត្តិផ្ទាល់មាត់ជាភាសាខ្មែរ និងភាសាអង់គ្លេស។
                 ព័ត៌មាននីមួយៗ និងរូបភាពនឹងត្រូវបានពិនិត្យមុនពេលរក្សាទុក។
               </span>
-              Preserve an oral-history entry in both Khmer and English. Every field is reviewed
-              before the story and its image are saved.
+              <span style={styles.introEnglish}>
+                Preserve an oral-history entry in both Khmer and English. Every field is reviewed
+                before the story and its image are saved.
+              </span>
             </p>
             <ContributionForm />
           </>

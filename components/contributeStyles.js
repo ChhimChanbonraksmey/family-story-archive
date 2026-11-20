@@ -12,11 +12,26 @@ const styles = {
     color: "#D49A56", fontFamily: "'Courier New', monospace",
     fontSize: 13, fontWeight: 700, letterSpacing: 2, margin: 0,
   },
+  kickerKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 16, fontWeight: 400, letterSpacing: 0, lineHeight: 1.6,
+    marginBottom: 5,
+  },
+  kickerEnglish: { display: "block" },
   title: {
     color: "#F1DFC2", fontFamily: "Georgia, 'Times New Roman', serif",
     fontSize: "clamp(36px, 7vw, 54px)", lineHeight: 1.1, margin: "14px 0",
   },
   intro: { color: "#BFB2A1", lineHeight: 1.7, marginBottom: 30 },
+  introKhmer: {
+    display: "block", color: "#E0B97A", fontFamily: "system-ui, sans-serif",
+    fontSize: 18, fontWeight: 400, lineHeight: 1.85,
+  },
+  introEnglish: {
+    display: "block", marginTop: 13, paddingTop: 13,
+    color: "#BFB2A1", borderTop: "1px solid #6A5140",
+    fontSize: 14, lineHeight: 1.7,
+  },
   label: { display: "block", color: "#F1DFC2", fontWeight: 700, margin: "22px 0 8px" },
   labelKhmer: { display: "block", fontFamily: "system-ui, sans-serif", fontSize: 15, lineHeight: 1.55 },
   labelEnglish: { display: "block", marginTop: 2, color: "#BFB2A1", fontSize: 13, lineHeight: 1.45 },
