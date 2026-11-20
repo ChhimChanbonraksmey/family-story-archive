@@ -137,11 +137,22 @@ export default function ReviewQueue({ initialEntries }) {
             {returningId === entry.id ? (
               <div style={styles.notePanel}>
                 <label htmlFor={`review-note-${entry.id}`} style={styles.noteLabel}>
-                  <span lang="km" style={styles.noteLabelKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                  <span style={styles.noteLabelKhmerRow}>
+                    <span lang="km" style={styles.noteLabelKhmer}>កំណត់សម្គាល់របស់អ្នកពិនិត្យ</span>
+                    <span style={styles.labelOrnament} aria-hidden="true">
+                      <span style={styles.labelDiamond} />
+                      <span style={styles.labelLine} />
+                    </span>
+                  </span>
                   <span style={styles.noteLabelEnglish}>Reviewer’s note</span>
                 </label>
                 <p style={styles.noteHelp}>
-                  Explain what the contributor should change before resubmitting.
+                  <span lang="km" style={styles.noteHelpKhmer}>
+                    សូមពន្យល់អំពីអ្វីដែលអ្នកចូលរួមគួរកែប្រែ មុនពេលដាក់ស្នើម្ដងទៀត។
+                  </span>
+                  <span style={styles.noteHelpEnglish}>
+                    Explain what the contributor should change before resubmitting.
+                  </span>
                 </p>
                 <ClearableInput
                   as="textarea"
@@ -161,8 +172,8 @@ export default function ReviewQueue({ initialEntries }) {
                 </p>
                 {noteErrorId === entry.id ? (
                   <p role="alert" style={styles.noteError}>
-                    Please write a note before returning this entry.<br />
-                    <span lang="km">សូមសរសេរកំណត់សម្គាល់ មុនពេលផ្ញើរឿងនេះត្រឡប់។</span>
+                    <span lang="km">សូមសរសេរកំណត់សម្គាល់ មុនពេលផ្ញើរឿងនេះត្រឡប់។</span><br />
+                    Please write a note before returning this entry.
                   </p>
                 ) : null}
                 <div style={styles.noteActions}>
