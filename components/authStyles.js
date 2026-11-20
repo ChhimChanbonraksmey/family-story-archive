@@ -41,6 +41,14 @@ const styles = {
     color: "#BFB2A1", borderTop: "1px solid #6A5140",
   },
   label: { display: "block", color: "#F1DFC2", margin: "20px 0 8px" },
+  labelKhmer: {
+    display: "block", color: "#E7B86A", fontFamily: "system-ui, sans-serif",
+    fontSize: 15, fontWeight: 700, lineHeight: 1.55,
+  },
+  labelEnglish: {
+    display: "block", marginTop: 2, color: "#BFB2A1",
+    fontSize: 13, lineHeight: 1.45,
+  },
   input: {
     boxSizing: "border-box",
     width: "100%",
@@ -69,6 +77,7 @@ const styles = {
   success: { color: "#C7D5B1", lineHeight: 1.7, whiteSpace: "pre-line" },
   switch: { color: "#BFB2A1", marginTop: 24 },
   switchKhmer: { fontFamily: "system-ui, sans-serif", fontSize: 15 },
+  switchLink: { display: "block", width: "fit-content", marginTop: 8 },
   link: { color: "#D49A56" },
 };
 

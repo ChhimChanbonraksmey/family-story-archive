@@ -88,7 +88,10 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
           </span>
         </p>
         <form onSubmit={handleSubmit} noValidate>
-          <label htmlFor="email" style={styles.label}>Email</label>
+          <label htmlFor="email" style={styles.label}>
+            <span lang="km" style={styles.labelKhmer}>អ៊ីមែល</span>
+            <span style={styles.labelEnglish}>Email</span>
+          </label>
           <ClearableInput
             id="email"
             name="email"
@@ -100,7 +103,10 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
             clearLabel="Clear email"
             style={styles.input}
           />
-          <label htmlFor="password" style={styles.label}>Password</label>
+          <label htmlFor="password" style={styles.label}>
+            <span lang="km" style={styles.labelKhmer}>ពាក្យសម្ងាត់</span>
+            <span style={styles.labelEnglish}>Password</span>
+          </label>
           <ClearableInput
             id="password"
             name="password"
@@ -148,7 +154,7 @@ export default function AuthForm({ mode, confirmationFailed = false, redirectTo 
           <Link
             href={isSignup ? "/login" : "/signup"}
             className={interactive.textHighlight}
-            style={styles.link}
+            style={{ ...styles.link, ...styles.switchLink }}
           >
             <span lang="km" style={styles.switchKhmer}>{isSignup ? "ចូលគណនី" : "បង្កើតគណនី"}</span>
             <span aria-hidden="true"> / </span>
