@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/server.js";
 import ReviewQueue from "../../components/ReviewQueue.js";
+import BilingualReturnLabel from "../../components/BilingualReturnLabel.js";
 
 const styles = {
   main: { maxWidth: 840, margin: "0 auto", padding: "72px 24px 80px" },
@@ -59,7 +60,9 @@ export default async function ReviewPage() {
           <p style={{ ...styles.message, margin: "0 0 24px" }}>
             This page is available only to authorized reviewers.
           </p>
-          <Link href="/" style={styles.link}>Return to the family archive →</Link>
+          <Link href="/" style={styles.link}>
+            <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារគ្រួសារ" english="Return to the family archive" arrow="right" />
+          </Link>
         </section>
       </main>
     );
@@ -82,7 +85,7 @@ export default async function ReviewPage() {
   return (
     <main style={styles.main}>
       <Link href="/" style={styles.back}>
-        ← Back to archive
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <section style={styles.panel}>
         <h1 style={styles.title}>
@@ -97,7 +100,7 @@ export default async function ReviewPage() {
         </p>
         <ReviewQueue initialEntries={entries} />
         <Link href="/" style={styles.returnLink}>
-          Return to the family archive →
+          <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារគ្រួសារ" english="Return to the family archive" arrow="right" />
         </Link>
       </section>
     </main>

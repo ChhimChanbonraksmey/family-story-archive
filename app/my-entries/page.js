@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BilingualActionLabel from "../../components/BilingualActionLabel.js";
+import BilingualReturnLabel from "../../components/BilingualReturnLabel.js";
 import { createClient } from "../../lib/supabase/server.js";
 import interactive from "../../components/interactive.module.css";
 import pageStyles from "./myEntries.module.css";
@@ -70,7 +71,9 @@ export default async function MyEntriesPage() {
 
   return (
     <main style={styles.main}>
-      <Link href="/" style={styles.back}>← Back to archive</Link>
+      <Link href="/" style={styles.back}>
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
+      </Link>
       <section style={styles.header}>
         <p style={styles.kicker}>CONTRIBUTOR SHELF</p>
         <h1 style={styles.title}>My entries</h1>
@@ -125,7 +128,7 @@ export default async function MyEntriesPage() {
         </div>
       )}
       <Link href="/" style={{ ...styles.back, ...styles.bottomBack }}>
-        Return to the family archive →
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារគ្រួសារ" english="Return to the family archive" arrow="right" />
       </Link>
     </main>
   );

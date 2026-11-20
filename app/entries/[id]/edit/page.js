@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BilingualReturnLabel from "../../../../components/BilingualReturnLabel.js";
 import { notFound } from "next/navigation";
 import EditEntryForm from "../../../../components/EditEntryForm.js";
 import styles from "../../../../components/contributeStyles.js";
@@ -17,7 +18,9 @@ export default async function EditEntryPage({ params }) {
 
   return (
     <main style={styles.main}>
-      <Link href={`/entries/${entry.id}`} style={styles.back}>← Back to story</Link>
+      <Link href={`/entries/${entry.id}`} style={styles.back}>
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅរឿង" english="Back to story" />
+      </Link>
       <section style={styles.panel} aria-labelledby="edit-title">
         <p style={styles.kicker}>EDIT ARCHIVE ENTRY</p>
         <h1 id="edit-title" style={styles.title}>Edit the family story</h1>

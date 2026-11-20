@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BilingualReturnLabel from "../../../components/BilingualReturnLabel.js";
 
 const styles = {
   wrap: {
@@ -35,17 +36,17 @@ export default function EntryNotFound() {
     <main style={styles.wrap}>
       <p style={styles.kicker}>KHMER LIVING ARCHIVE</p>
       <h1 style={styles.title}>This story is not on the shelf.</h1>
-      <p style={styles.message}>
-        This family story may have moved, or the link may be incomplete. Return
-        to the archive to continue exploring the collection.
-      </p>
       <p lang="km" style={styles.message}>
         រកមិនឃើញរឿងរ៉ាវគ្រួសារនេះទេ។ រឿងនេះអាចត្រូវបានផ្លាស់ទី
         ឬតំណភ្ជាប់មិនពេញលេញ។ សូមត្រឡប់ទៅបណ្ណសារ
         ដើម្បីបន្តស្វែងយល់ពីរឿងរ៉ាវគ្រួសារ។
       </p>
+      <p style={styles.message}>
+        This family story may have moved, or the link may be incomplete. Return
+        to the archive to continue exploring the collection.
+      </p>
       <Link href="/" style={styles.back}>
-        ← Return to the archive
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Return to the archive" />
       </Link>
     </main>
   );

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BilingualActionLabel from "../../components/BilingualActionLabel.js";
+import BilingualReturnLabel from "../../components/BilingualReturnLabel.js";
 import ContributionForm from "../../components/ContributionForm.js";
 import interactive from "../../components/interactive.module.css";
 import styles from "../../components/contributeStyles.js";
@@ -16,7 +17,9 @@ export default async function ContributePage() {
 
   return (
     <main style={styles.main}>
-      <Link href="/" style={styles.back}>← Back to archive</Link>
+      <Link href="/" style={styles.back}>
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
+      </Link>
       <section style={styles.panel} aria-labelledby="contribute-title">
         <p style={styles.kicker}>CONTRIBUTE A STORY</p>
         <h1 id="contribute-title" style={styles.title}>Add to the family archive</h1>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
+import BilingualReturnLabel from "./BilingualReturnLabel.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 import interactive from "./interactive.module.css";
@@ -57,7 +58,9 @@ export default function PasswordResetRequestForm({ recoveryFailed = false }) {
 
   return (
     <main style={styles.main}>
-      <Link href="/login" style={styles.back}>← Back to login</Link>
+      <Link href="/login" style={styles.back}>
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅទំព័រចូលគណនី" english="Back to login" />
+      </Link>
       <section style={styles.panel} aria-labelledby="reset-title">
         <p style={styles.kicker}>ACCOUNT RECOVERY</p>
         <h1 id="reset-title" style={styles.title}>Reset your password</h1>

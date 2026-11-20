@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ClearableInput from "./ClearableInput.js";
 import BilingualActionLabel from "./BilingualActionLabel.js";
+import BilingualReturnLabel from "./BilingualReturnLabel.js";
 import { createClient } from "../lib/supabase/client.js";
 import styles from "./authStyles.js";
 import interactive from "./interactive.module.css";
@@ -45,7 +46,9 @@ export default function UpdatePasswordForm() {
 
   return (
     <main style={styles.main}>
-      <Link href="/" style={styles.back}>← Back to archive</Link>
+      <Link href="/" style={styles.back}>
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
+      </Link>
       <section style={styles.panel} aria-labelledby="password-title">
         <p style={styles.kicker}>ACCOUNT RECOVERY</p>
         <h1 id="password-title" style={styles.title}>Choose a new password</h1>

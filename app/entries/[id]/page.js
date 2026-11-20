@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import OwnerEntryActions from "../../../components/OwnerEntryActions.js";
+import BilingualReturnLabel from "../../../components/BilingualReturnLabel.js";
 import { createClient } from "../../../lib/supabase/server.js";
 import { photoDisclosure } from "../../../lib/entryValidation.js";
 
@@ -170,7 +171,9 @@ export default async function EntryPage({ params }) {
     console.error("Entry detail lookup failed", error);
     return (
       <main style={styles.wrap}>
-        <Link href="/" style={styles.back}>← Back to archive</Link>
+        <Link href="/" style={styles.back}>
+          <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
+        </Link>
         <section style={styles.story} aria-labelledby="archive-error-title">
           <p style={styles.number}>ARCHIVE NOTICE</p>
           <h1 id="archive-error-title" style={styles.title}>
@@ -209,7 +212,7 @@ export default async function EntryPage({ params }) {
   return (
     <main style={styles.wrap}>
       <Link href="/" style={styles.back}>
-        ← Back to archive
+        <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារ" english="Back to archive" />
       </Link>
       <article>
         {entry.photo_url ? (
@@ -267,7 +270,7 @@ export default async function EntryPage({ params }) {
             <OwnerEntryActions entryId={entry.id} photoUrl={entry.photo_url} />
           ) : null}
           <Link href="/" style={styles.returnLink}>
-            Return to the family archive →
+            <BilingualReturnLabel khmer="ត្រឡប់ទៅបណ្ណសារគ្រួសារ" english="Return to the family archive" arrow="right" />
           </Link>
         </div>
       </article>
