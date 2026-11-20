@@ -40,7 +40,7 @@ const styles = {
     display: "block", color: "#D8CCBC", fontFamily: "Georgia, serif",
     fontSize: 19, lineHeight: 1.45,
   },
-  dialogWarningEnglish: { margin: "7px 0 0", color: "#BFB2A1", fontSize: 14, lineHeight: 1.6 },
+  dialogWarningEnglish: { margin: "7px 0 0", color: "#F2A69A", fontSize: 14, fontWeight: 600, lineHeight: 1.6 },
   dialogActions: { display: "flex", flexWrap: "wrap", gap: 12, marginTop: 24 },
   cancelDialog: {
     flex: "1 1 150px", minHeight: 48, padding: "8px 16px",
